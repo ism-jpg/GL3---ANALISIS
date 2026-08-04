@@ -1809,7 +1809,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     #gl3Lab2 .rector-row input { width: 64px; padding: 5px 7px; }
     #gl3Lab2 .tbl-wrap { overflow-x: auto; }
     #gl3Lab2 table.an-t { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; }
-    #gl3Lab2 table.an-t th { text-align: right; padding: 6px 8px; border-bottom: 2px solid var(--lab-border); color: var(--lab-muted-fg); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+    #gl3Lab2 table.an-t th { text-align: right; padding: 6px 8px; border-bottom: 2px solid var(--lab-border); color: var(--lab-muted-fg); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; line-height: 1.25; vertical-align: bottom; }
+    #gl3Lab2 table.an-t th small { display: block; text-transform: none; font-weight: 500; font-size: 10.5px; opacity: .8; letter-spacing: 0; }
     #gl3Lab2 table.an-t td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--lab-muted); white-space: nowrap; }
     #gl3Lab2 table.an-t th:first-child, #gl3Lab2 table.an-t td:first-child { text-align: left; }
     #gl3Lab2 table.an-t td.l { text-align: left; white-space: normal; }
@@ -1817,6 +1818,28 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     #gl3Lab2 .dot { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; border: 1px solid rgba(22,29,25,.3); vertical-align: 0; }
     #gl3Lab2 .delta-pos { color: #2e7d32; } #gl3Lab2 .delta-neg { color: #a33; }
     #gl3Lab2 .def-note { color: #a33; font-size: 12px; margin-top: 8px; }
+    #gl3Lab2 .cmp-intro { margin-bottom: 12px; }
+    #gl3Lab2 .cmp-intro-inner {
+      background: color-mix(in srgb, var(--lab-primary) 5%, var(--lab-card));
+      border-left: 3px solid var(--lab-primary);
+      border-radius: 6px; padding: 10px 14px;
+      font-size: 13.5px; line-height: 1.55; color: var(--lab-fg);
+    }
+    #gl3Lab2 .cmp-intro-inner.muted { border-left-color: var(--lab-border); background: var(--lab-card); color: var(--lab-muted-fg); }
+    #gl3Lab2 .cmp-intro-inner .vs { color: var(--lab-muted-fg); font-size: 12px; margin: 0 4px; font-style: italic; }
+    #gl3Lab2 .cmp-intro-inner .prop-tag,
+    #gl3Lab2 .cmp-intro-inner .lvl-tag {
+      display: inline-block; padding: 1px 8px; border-radius: 10px; margin: 0 3px;
+      background: color-mix(in srgb, var(--lab-primary) 10%, transparent);
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+      color: var(--lab-primary);
+    }
+    #gl3Lab2 .cmp-intro-inner .cmp-hint {
+      display: block; margin-top: 6px; padding-top: 6px;
+      border-top: 1px solid color-mix(in srgb, var(--lab-primary) 20%, transparent);
+      font-size: 12.5px; color: var(--lab-muted-fg); font-weight: 400;
+    }
+    #gl3Lab2 .cmp-intro-inner .cmp-hint b { color: var(--lab-fg); font-weight: 600; }
     #gl3Lab2 .badge { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 10.5px; font-weight: 700; color: #fff; letter-spacing: .03em; }
     #gl3Lab2 .b-senal { background: var(--v-senal); color: #1c2a08; }
     #gl3Lab2 .b-apoyo { background: var(--v-apoyo); }
@@ -1906,7 +1929,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <option>N1</option><option>N2</option><option>N3</option><option>N4</option><option>N5</option><option>S1</option><option>S2</option>
         </select>
       </label>
-      <label class="field"><span class="lbl">Ejes verticales<button type="button" class="info" data-tip="4 o 5 divisiones estructurales en el eje vertical del plano. 4 corresponde a la retícula documentada GRUBORJA (11.8·9.142·9.142·11.8 m). 5 explora una repetición más densa (≈8.4 m por bay). Los módulos ya colocados conservan su posición proporcional.">i</button></span>
+      <label class="field"><span class="lbl">Ejes verticales<button type="button" class="info" data-tip="Sólo cambia el overlay visual del eje vertical del plano: 4 muestra la retícula documentada GRUBORJA (bays 1–4); 5 explora una repetición más densa (bays 1–5). Los módulos ya colocados NO cambian de tamaño ni de posición — mantienen sus m² tal como los tenías.">i</button></span>
         <select id="labVertBays"><option value="4">4</option><option value="5">5</option></select>
       </label>
       <div class="field"><span class="lbl">Vista<button type="button" class="info" data-tip="«Editor» es tu escenario editable. «Plano GRUBORJA» muestra la lámina original de esta propuesta y nivel, para contrastar directo.">i</button></span>
@@ -2068,24 +2091,26 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="an-panel" id="anCmp">
+      <div class="cmp-intro" id="cmpIntro"></div>
       <div class="rector-row">
         <span class="lbl">Módulo rector (carro):<button type="button" class="info" data-tip="La unidad que dimensiona todo: un carro de 3.40 × 6.00 m (editable). Con esa geometría se calcula cuántos carros caben físicamente en cada módulo de uso vehicular (parqueos, exhibición) según su mejor orientación, y se compara contra la capacidad documentada.">i</button></span>
         <input id="recAn" type="number" min="2" step="0.1" /> ×
         <input id="recFo" type="number" min="3" step="0.1" /> m
         <div class="spacer"></div>
-        <span class="lbl" style="margin-right:6px">Referencia GRUBORJA:<button type="button" class="info" data-tip="Contra qué propuesta comparar tu escenario. Por defecto usa la propuesta que estás editando; podés fijar una específica (1R, 1E o 2E) para contrastar contra la misma base aunque cambies de propuesta.">i</button></span>
-        <select id="cmpRefProp" style="margin-right:10px">
-          <option value="">Propuesta actual</option>
-          <option value="1R">1R · Rampas</option>
-          <option value="1E">1E · Elevadores</option>
-          <option value="2E">2E · Sin bodega</option>
-        </select>
         <div class="kpis" id="cmpKpis" style="margin-bottom:0"></div>
       </div>
       <div class="tbl-wrap">
         <table class="an-t" id="cmpTable">
           <thead><tr>
-            <th>Uso / módulo</th><th>Usuario · estadía</th><th>GRUBORJA m²</th><th>Escenario m²</th><th>Δ m²</th><th>Mód.</th><th>Cap. doc</th><th>Cap. calc</th><th>m²/un</th>
+            <th>Uso / módulo</th>
+            <th>Usuario · estadía</th>
+            <th title="Área documentada por GRUBORJA para este uso en el nivel">Base GRUBORJA<br><small>m²</small></th>
+            <th title="Área actual en tu edición del plano">Tu escenario<br><small>m²</small></th>
+            <th title="Diferencia entre tu escenario y GRUBORJA. + = tenés más área que la base, − = menos.">Δ<br><small>m²</small></th>
+            <th title="Cantidad de bloques del mismo tipo en el plano">#<br><small>bloques</small></th>
+            <th title="Capacidad documentada por GRUBORJA (puentes, carros, elevadores)">Cap.<br><small>doc</small></th>
+            <th title="Capacidad calculada según el módulo rector y la orientación óptima">Cap.<br><small>calc</small></th>
+            <th title="m² por unidad — sirve para comparar densidad entre propuestas">m²/<br><small>un</small></th>
           </tr></thead>
           <tbody id="cmpTbody"></tbody>
         </table>
@@ -2128,9 +2153,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     /* ---------- geometry ---------- */
     var GROSS = 2061.11, PLATE_W = 45.44, PLATE_D = 41.884;
     var COL_M = [7.42, 7.65, 7.65, 7.65, 7.65, 7.42];
-    var ROW_M4 = [11.8, 9.142, 9.142, 11.8];
-    var ROW_M5 = [8.4, 8.4, 8.4, 8.4, 8.284];
-    var ROW_M = ROW_M4;
+    var ROW_M = [11.8, 9.142, 9.142, 11.8];
     var NX = 24, NY = 16;
     function fracs(bays, n) {
       var t = bays.reduce(function (a, b) { return a + b; }, 0), out = [0];
@@ -2138,13 +2161,16 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       out[out.length - 1] = 1;
       return out;
     }
-    function rebuildGrid() {
-      var bays = (st && st.vertBays === 5) ? 5 : 4;
-      ROW_M = bays === 5 ? ROW_M5 : ROW_M4;
-      NY = ROW_M.length * 4;
-      CY = fracs(ROW_M, 4);
-    }
     var CX = fracs(COL_M, 4), CY = fracs(ROW_M, 4);
+    // V2 · vertical bays overlay: NY se mantiene constante para no re-escalar
+    // los módulos existentes. `st.vertBays` (4 o 5) solo cambia las líneas
+    // mayores y las etiquetas visibles del eje vertical.
+    function bayMajors() {
+      var bays = (st && st.vertBays === 5) ? 5 : 4;
+      var pos = [];
+      for (var i = 0; i <= bays; i++) pos.push(i / bays);
+      return pos;
+    }
     function fw(x, w) { return CX[x + w] - CX[x]; }
     function fh(y, h) { return CY[y + h] - CY[y]; }
     function areaOf(m) { return fw(m.x, m.w) * fh(m.y, m.h) * GROSS; }
@@ -2343,7 +2369,6 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     }
     st = loadState();
     if (!st.vertBays) st.vertBays = 4;
-    rebuildGrid();
 
     function levelMods(prop, lvl) {
       if (!lvl) return [];
@@ -2579,16 +2604,25 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           wrap.appendChild(ax);
         }
       }
+      // minor horizontal gridlines siguen la retícula base CY (16 filas)
       for (var j = 0; j <= NY; j++) {
-        var maj2 = j % 4 === 0;
         var l2 = document.createElement("div");
-        l2.className = "gridline h" + (maj2 ? "" : " minor");
+        l2.className = "gridline h minor";
         l2.style.top = (CY[j] * 100) + "%";
         canvas.appendChild(l2);
-        if (maj2 && j < NY) {
+      }
+      // majors + labels vienen del overlay bayMajors() (4 o 5 divisiones)
+      var majs = bayMajors();
+      for (var b = 0; b < majs.length; b++) {
+        var pos = majs[b];
+        var lM = document.createElement("div");
+        lM.className = "gridline h";
+        lM.style.top = (pos * 100) + "%";
+        canvas.appendChild(lM);
+        if (b < majs.length - 1) {
           var ay = document.createElement("span");
-          ay.className = "axis ay"; ay.textContent = AXY[j / 4];
-          ay.style.top = "calc(20px + (100% - 20px) * " + ((CY[j] + CY[Math.min(j + 4, NY)]) / 2) + ")";
+          ay.className = "axis ay"; ay.textContent = AXY[b];
+          ay.style.top = "calc(20px + (100% - 20px) * " + ((pos + majs[b + 1]) / 2) + ")";
           wrap.appendChild(ay);
         }
       }
@@ -2811,14 +2845,25 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     }
     function renderCompare() {
       if (!cur.lvl) {
-        $("cmpKpis").innerHTML = "<div class='no-lvl-msg' style='padding:14px;color:var(--lab-muted-fg);font-size:13px'>Elegí un nivel para ver la comparativa. Los datos del edificio completo siguen disponibles en la pestaña «Edificio».</div>";
+        if ($("cmpIntro")) $("cmpIntro").innerHTML = "<div class='cmp-intro-inner muted'>Elegí un nivel arriba para ver la comparativa. La pestaña «Edificio completo» funciona con todos los niveles a la vez.</div>";
+        $("cmpKpis").innerHTML = "";
         if ($("cmpTbody")) $("cmpTbody").innerHTML = "";
         if ($("defNote")) $("defNote").hidden = true;
         return;
       }
-      var refProp = (st.cmpRefProp && st.cmpRefProp !== "") ? st.cmpRefProp : cur.prop;
+      var PROP_LABEL = { "1R": "1R · Espejo invertido con rampas", "1E": "1E · Espejo invertido con elevadores", "2E": "2E · Sin bodega de repuestos + elevadores" };
+      if ($("cmpIntro")) {
+        $("cmpIntro").innerHTML =
+          "<div class='cmp-intro-inner'>" +
+          "<b>Tu escenario editable</b> <span class='vs'>vs</span> " +
+          "<b>plano original GRUBORJA</b> · " +
+          "<span class='prop-tag'>" + (PROP_LABEL[cur.prop] || cur.prop) + "</span> · " +
+          "<span class='lvl-tag'>Nivel " + cur.lvl + "</span>" +
+          "<div class='cmp-hint'>Cada fila muestra un uso del programa: cuánto m² tenía en el plano de GRUBORJA, cuánto tiene ahora en tu edición, y la diferencia. Los usos con <b>＊</b> están comprimidos: el bloque no alcanza a albergar los m² documentados. Cambiá de propuesta o nivel arriba para actualizar la comparativa.</div>" +
+          "</div>";
+      }
       var sk = scopeKey(cur.prop, cur.lvl);
-      var refSk = scopeKey(refProp, cur.lvl);
+      var refSk = sk;
       var stt = levelStats(cur.prop, cur.lvl);
       $("recAn").value = st.rector.an;
       $("recFo").value = st.rector.fo;
@@ -3038,9 +3083,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     function hideStackPop() { if (pop) pop.classList.remove("show"); }
 
     function renderAnalysis() {
-      var refProp = (st.cmpRefProp && st.cmpRefProp !== "") ? st.cmpRefProp : cur.prop;
-      var refTxt = refProp === cur.prop ? "" : " · ref " + refProp;
-      $("anCtx").textContent = "Propuesta " + cur.prop + " · Nivel " + (cur.lvl || "—") + refTxt;
+      $("anCtx").textContent = "Propuesta " + cur.prop + " · Nivel " + (cur.lvl || "—");
       $("anCmp").hidden = cur.atab !== "cmp";
       $("anUses").hidden = cur.atab !== "uses";
       $("anBldg").hidden = cur.atab !== "bldg";
@@ -3430,17 +3473,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     lvlSel.addEventListener("change", function () { cur.lvl = lvlSel.value || null; cur.selUid = null; routeOpen = false; renderAll(); });
     $("labVertBays").addEventListener("change", function () {
       st.vertBays = Number($("labVertBays").value) || 4;
-      rebuildGrid();
-      // clamp modules to new NY
-      Object.keys(st.data).forEach(function (sk) {
-        st.data[sk].forEach(function (m) {
-          if (m.h > NY) m.h = NY;
-          if (m.y + m.h > NY) m.y = Math.max(0, NY - m.h);
-        });
-      });
-      cur.selUid = null;
       renderAll(); save();
-      toast("Ejes verticales: " + st.vertBays + " bays");
+      toast("Ejes verticales: " + st.vertBays + " divisiones (solo overlay visual, módulos intactos)");
     });
     $("viewEditor").addEventListener("click", function () { setView("editor"); });
     $("viewReference").addEventListener("click", function () { setView("ref"); });
@@ -3459,11 +3493,6 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     $("recFo").addEventListener("change", function () {
       st.rector.fo = clamp(Number($("recFo").value) || 6.0, 3, 9);
       renderAll(); save();
-    });
-    $("cmpRefProp").addEventListener("change", function () {
-      st.cmpRefProp = $("cmpRefProp").value || "";
-      renderAll(); save();
-      toast(st.cmpRefProp ? ("Comparativa vs " + st.cmpRefProp) : "Comparativa vs propuesta actual");
     });
     document.addEventListener("click", function (ev) {
       var btn = ev.target.closest(".pull-btn");
@@ -3545,7 +3574,6 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     propSel.value = cur.prop;
     lvlSel.value = cur.lvl || "";
     $("labVertBays").value = String(st.vertBays || 4);
-    if ($("cmpRefProp")) $("cmpRefProp").value = st.cmpRefProp || "";
     setView("editor");
     renderAll();
     save();
