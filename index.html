@@ -1677,11 +1677,12 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     }
     #gl3Lab2 .module.ghost {
       border: 1.5px dashed rgba(22,29,25,.7); opacity: .55; background-image: repeating-linear-gradient(45deg, transparent 0 6px, rgba(255,255,255,.5) 6px 12px);
-      cursor: default;
+      cursor: default; pointer-events: none; z-index: 1;
     }
     #gl3Lab2 .module.ghost .ghost-apply {
       font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-top: 2px;
       background: var(--lab-primary); color: var(--lab-primary-fg); border: 0; cursor: pointer; width: max-content;
+      pointer-events: auto;
     }
     #gl3Lab2 .rz {
       position: absolute; right: -1px; bottom: -1px; width: 14px; height: 14px; cursor: nwse-resize;
@@ -1690,6 +1691,13 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     #gl3Lab2 .module.tiny .rz { width: 10px; height: 10px; }
     #gl3Lab2 .module.ghost .rz { display: none; }
     #gl3Lab2 .route-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 25; }
+    #gl3Lab2 .no-level {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 40px 20px; color: var(--lab-muted-fg); font-size: 13.5px; gap: 8px;
+      background-image: repeating-linear-gradient(45deg, transparent 0 10px, color-mix(in srgb, var(--lab-border) 40%, transparent) 10px 11px);
+      min-height: 100%;
+    }
+    #gl3Lab2 .no-level small { font-size: 11.5px; opacity: .8; }
 
     /* ---- tray ---- */
     #gl3Lab2 .tray { border: 1.5px dashed var(--lab-border); border-radius: 10px; background: color-mix(in srgb, var(--lab-card) 55%, transparent); padding: 10px 12px; }
@@ -1892,10 +1900,14 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <option value="2E">2E · Sin bodega de repuestos + elevadores</option>
         </select>
       </label>
-      <label class="field"><span class="lbl">Nivel<button type="button" class="info" data-tip="Cinco niveles y dos sótanos. S1 y S2 son compartidos entre las tres propuestas, igual que en el proyecto real: lo que edités ahí se ve en todas.">i</button></span>
+      <label class="field"><span class="lbl">Nivel<button type="button" class="info" data-tip="Cinco niveles y dos sótanos. S1 y S2 son compartidos entre las tres propuestas. La primera opción («— sin nivel —») deja el plano vacío para revisar el edificio completo sin editar un piso.">i</button></span>
         <select id="labLevel">
+          <option value="">— sin nivel —</option>
           <option>N1</option><option>N2</option><option>N3</option><option>N4</option><option>N5</option><option>S1</option><option>S2</option>
         </select>
+      </label>
+      <label class="field"><span class="lbl">Ejes verticales<button type="button" class="info" data-tip="4 o 5 divisiones estructurales en el eje vertical del plano. 4 corresponde a la retícula documentada GRUBORJA (11.8·9.142·9.142·11.8 m). 5 explora una repetición más densa (≈8.4 m por bay). Los módulos ya colocados conservan su posición proporcional.">i</button></span>
+        <select id="labVertBays"><option value="4">4</option><option value="5">5</option></select>
       </label>
       <div class="field"><span class="lbl">Vista<button type="button" class="info" data-tip="«Editor» es tu escenario editable. «Plano GRUBORJA» muestra la lámina original de esta propuesta y nivel, para contrastar directo.">i</button></span>
         <div class="view-switch" aria-label="Vista">
@@ -2061,6 +2073,13 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <input id="recAn" type="number" min="2" step="0.1" /> ×
         <input id="recFo" type="number" min="3" step="0.1" /> m
         <div class="spacer"></div>
+        <span class="lbl" style="margin-right:6px">Referencia GRUBORJA:<button type="button" class="info" data-tip="Contra qué propuesta comparar tu escenario. Por defecto usa la propuesta que estás editando; podés fijar una específica (1R, 1E o 2E) para contrastar contra la misma base aunque cambies de propuesta.">i</button></span>
+        <select id="cmpRefProp" style="margin-right:10px">
+          <option value="">Propuesta actual</option>
+          <option value="1R">1R · Rampas</option>
+          <option value="1E">1E · Elevadores</option>
+          <option value="2E">2E · Sin bodega</option>
+        </select>
         <div class="kpis" id="cmpKpis" style="margin-bottom:0"></div>
       </div>
       <div class="tbl-wrap">
@@ -2109,13 +2128,21 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     /* ---------- geometry ---------- */
     var GROSS = 2061.11, PLATE_W = 45.44, PLATE_D = 41.884;
     var COL_M = [7.42, 7.65, 7.65, 7.65, 7.65, 7.42];
-    var ROW_M = [11.8, 9.142, 9.142, 11.8];
+    var ROW_M4 = [11.8, 9.142, 9.142, 11.8];
+    var ROW_M5 = [8.4, 8.4, 8.4, 8.4, 8.284];
+    var ROW_M = ROW_M4;
     var NX = 24, NY = 16;
     function fracs(bays, n) {
       var t = bays.reduce(function (a, b) { return a + b; }, 0), out = [0];
       bays.forEach(function (b) { for (var i = 0; i < n; i++) out.push(out[out.length - 1] + b / t / n); });
       out[out.length - 1] = 1;
       return out;
+    }
+    function rebuildGrid() {
+      var bays = (st && st.vertBays === 5) ? 5 : 4;
+      ROW_M = bays === 5 ? ROW_M5 : ROW_M4;
+      NY = ROW_M.length * 4;
+      CY = fracs(ROW_M, 4);
     }
     var CX = fracs(COL_M, 4), CY = fracs(ROW_M, 4);
     function fw(x, w) { return CX[x + w] - CX[x]; }
@@ -2254,7 +2281,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     var LS_KEY = "gl3lab2_v3";
     var st = null;
     var LEVELS = ["N1", "N2", "N3", "N4", "N5", "S1", "S2"];
-    function scopeKey(prop, lvl) { return (lvl === "S1" || lvl === "S2") ? "ALL:" + lvl : prop + ":" + lvl; }
+    function scopeKey(prop, lvl) { if (!lvl) return "__none__"; return (lvl === "S1" || lvl === "S2") ? "ALL:" + lvl : prop + ":" + lvl; }
     function prettySk(sk) { return sk.replace("ALL:", "").replace(":", " · "); }
     function catFor(sk) { return CAT[sk] || []; }
     function catEntry(sk, k) {
@@ -2315,8 +2342,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       return migrate({ v: 4, uid: 0, data: {} });
     }
     st = loadState();
+    if (!st.vertBays) st.vertBays = 4;
+    rebuildGrid();
 
     function levelMods(prop, lvl) {
+      if (!lvl) return [];
       var sk = scopeKey(prop, lvl);
       if (!st.data[sk]) { st.data[sk] = buildDefault(sk); }
       return st.data[sk];
@@ -2527,11 +2557,15 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     /* ---------- rendering: canvas ---------- */
     var AXX = ["A", "B", "C", "D", "E", "F", "G"], AXY = ["1", "2", "3", "4", "5"];
     function renderCanvas() {
-      var mods = levelMods(cur.prop, cur.lvl);
       canvas.innerHTML = "";
-      canvas.classList.toggle("route-mode", cur.route);
+      canvas.classList.toggle("route-mode", !!cur.route && !!cur.lvl);
       var wrap = canvas.parentElement;
       wrap.querySelectorAll(".axis").forEach(function (n) { n.remove(); });
+      if (!cur.lvl) {
+        canvas.innerHTML = "<div class='no-level'>Elegí un nivel en el selector, o hacé clic en un piso del edificio apilado abajo.<br><small>Al hacer clic dos veces sobre el mismo piso, lo deseleccionás.</small></div>";
+        return;
+      }
+      var mods = levelMods(cur.prop, cur.lvl);
       for (var i = 0; i <= NX; i++) {
         var maj = i % 4 === 0;
         var l = document.createElement("div");
@@ -2638,8 +2672,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
     /* ---------- tray / panel / summary ---------- */
     function renderTray() {
-      var mods = levelMods(cur.prop, cur.lvl).filter(function (m) { return m.out; });
       trayList.innerHTML = "";
+      if (!cur.lvl) { trayCount.textContent = ""; var e0 = document.createElement("span"); e0.className = "tray-empty"; e0.textContent = "Elegí un nivel para ver su bandeja."; trayList.appendChild(e0); return; }
+      var mods = levelMods(cur.prop, cur.lvl).filter(function (m) { return m.out; });
       trayCount.textContent = mods.length ? (mods.length + " módulo" + (mods.length > 1 ? "s" : "") + " · " + fmt(mods.reduce(function (s, m) { return s + areaOf(m); }, 0)) + " m²") : "";
       if (!mods.length) {
         var e = document.createElement("span"); e.className = "tray-empty";
@@ -2745,6 +2780,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       } else { img.removeAttribute("src"); img.hidden = true; miss.hidden = false; }
     }
     function renderNote() {
+      if (!cur.lvl) { $("planTitle").textContent = "Propuesta " + cur.prop + " · sin nivel activo"; return; }
       $("planTitle").textContent = "Propuesta " + cur.prop + " · Nivel " + cur.lvl +
         (cur.lvl === "S1" || cur.lvl === "S2" ? " · compartido entre propuestas" : "");
     }
@@ -2774,7 +2810,15 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       return "<div class='kpi'>" + label + "<b class='" + (cls || "") + "'>" + val + "</b></div>";
     }
     function renderCompare() {
+      if (!cur.lvl) {
+        $("cmpKpis").innerHTML = "<div class='no-lvl-msg' style='padding:14px;color:var(--lab-muted-fg);font-size:13px'>Elegí un nivel para ver la comparativa. Los datos del edificio completo siguen disponibles en la pestaña «Edificio».</div>";
+        if ($("cmpTbody")) $("cmpTbody").innerHTML = "";
+        if ($("defNote")) $("defNote").hidden = true;
+        return;
+      }
+      var refProp = (st.cmpRefProp && st.cmpRefProp !== "") ? st.cmpRefProp : cur.prop;
       var sk = scopeKey(cur.prop, cur.lvl);
+      var refSk = scopeKey(refProp, cur.lvl);
       var stt = levelStats(cur.prop, cur.lvl);
       $("recAn").value = st.rector.an;
       $("recFo").value = st.rector.fo;
@@ -2787,7 +2831,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       $("cmpKpis").innerHTML = kp;
 
       var groups = {}, order = [];
-      catFor(sk).forEach(function (ce) { groups[ce.k] = { ce: ce, scen: 0, cnt: 0, cars: 0, defs: [] }; order.push(ce.k); });
+      catFor(refSk).forEach(function (ce) { groups[ce.k] = { ce: ce, scen: 0, cnt: 0, cars: 0, defs: [] }; order.push(ce.k); });
       var customs = [];
       stt.mods.forEach(function (m) {
         if (m.out || m.ghost) return;
@@ -2994,7 +3038,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     function hideStackPop() { if (pop) pop.classList.remove("show"); }
 
     function renderAnalysis() {
-      $("anCtx").textContent = "Propuesta " + cur.prop + " · Nivel " + cur.lvl;
+      var refProp = (st.cmpRefProp && st.cmpRefProp !== "") ? st.cmpRefProp : cur.prop;
+      var refTxt = refProp === cur.prop ? "" : " · ref " + refProp;
+      $("anCtx").textContent = "Propuesta " + cur.prop + " · Nivel " + (cur.lvl || "—") + refTxt;
       $("anCmp").hidden = cur.atab !== "cmp";
       $("anUses").hidden = cur.atab !== "uses";
       $("anBldg").hidden = cur.atab !== "bldg";
@@ -3381,7 +3427,21 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
     /* ---------- toolbar / tabs / rector ---------- */
     propSel.addEventListener("change", function () { cur.prop = propSel.value; cur.selUid = null; routeOpen = false; renderAll(); });
-    lvlSel.addEventListener("change", function () { cur.lvl = lvlSel.value; cur.selUid = null; routeOpen = false; renderAll(); });
+    lvlSel.addEventListener("change", function () { cur.lvl = lvlSel.value || null; cur.selUid = null; routeOpen = false; renderAll(); });
+    $("labVertBays").addEventListener("change", function () {
+      st.vertBays = Number($("labVertBays").value) || 4;
+      rebuildGrid();
+      // clamp modules to new NY
+      Object.keys(st.data).forEach(function (sk) {
+        st.data[sk].forEach(function (m) {
+          if (m.h > NY) m.h = NY;
+          if (m.y + m.h > NY) m.y = Math.max(0, NY - m.h);
+        });
+      });
+      cur.selUid = null;
+      renderAll(); save();
+      toast("Ejes verticales: " + st.vertBays + " bays");
+    });
     $("viewEditor").addEventListener("click", function () { setView("editor"); });
     $("viewReference").addEventListener("click", function () { setView("ref"); });
     function setView(v) {
@@ -3400,6 +3460,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       st.rector.fo = clamp(Number($("recFo").value) || 6.0, 3, 9);
       renderAll(); save();
     });
+    $("cmpRefProp").addEventListener("change", function () {
+      st.cmpRefProp = $("cmpRefProp").value || "";
+      renderAll(); save();
+      toast(st.cmpRefProp ? ("Comparativa vs " + st.cmpRefProp) : "Comparativa vs propuesta actual");
+    });
     document.addEventListener("click", function (ev) {
       var btn = ev.target.closest(".pull-btn");
       if (!btn) return;
@@ -3416,12 +3481,21 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       var row = ev.target.closest(".stk-row");
       if (!row) return;
       hideStackPop();
-      lvlSel.value = row.dataset.lvl;
-      cur.lvl = row.dataset.lvl; cur.selUid = null;
+      var clicked = row.dataset.lvl;
+      if (clicked === cur.lvl) {
+        // toggle off — deselect
+        cur.lvl = null; lvlSel.value = "";
+        cur.selUid = null;
+        renderAll();
+        return;
+      }
+      lvlSel.value = clicked;
+      cur.lvl = clicked; cur.selUid = null;
       renderAll();
       canvas.scrollIntoView({ behavior: "smooth", block: "center" });
     });
     $("resetLevelBtn").addEventListener("click", function () {
+      if (!cur.lvl) { toast("Elegí un nivel antes de restaurar"); return; }
       armConfirm($("resetLevelBtn"), "¿Confirmar restaurar?", function () {
         st.data[scopeKey(cur.prop, cur.lvl)] = buildDefault(scopeKey(cur.prop, cur.lvl));
         cur.selUid = null;
@@ -3467,6 +3541,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); b.focus(); });
     });
 
+    // V2 · sync toolbar controls with loaded/default state
+    propSel.value = cur.prop;
+    lvlSel.value = cur.lvl || "";
+    $("labVertBays").value = String(st.vertBays || 4);
+    if ($("cmpRefProp")) $("cmpRefProp").value = st.cmpRefProp || "";
     setView("editor");
     renderAll();
     save();
