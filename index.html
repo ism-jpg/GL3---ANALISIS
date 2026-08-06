@@ -441,6 +441,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <button data-t="t6"><span class="n">06</span>Organizaciones posibles</button>
     <button data-t="t7"><span class="n">07</span>Pendientes y datos</button>
     <button data-t="t8"><span class="n">08</span>Laboratorios</button>
+    <button data-t="t9"><span class="n">09</span>Circulación vertical</button>
   </nav>
   <div class="foot">NOTA DE TRABAJO INTERNA<br>29 · JUL · 2026<br>CONFIRMADO / POR CONFIRMAR / FALTANTE</div>
 </aside>
@@ -3583,6 +3584,218 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   </script>
 </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ 09 CIRCULACIÓN VERTICAL ============ -->
+<section class="tab" id="t9">
+  <div class="wrap" style="padding-top:48px">
+    <div class="eyebrow">09 · Circulación vertical del taller</div>
+    <h2 class="sec">Cómo mover vehículos entre 4 niveles sin romper el ciclo del taller</h2>
+    <p class="secsub">El taller opera en 4 niveles: cliente entra en N2, servicio en N3 y N4, lavado y entrega vuelven a N2. En el Escenario B (sin rampas), los <b>VRC — Vertical Reciprocating Conveyors</b> son la columna vertebral operativa. Esta sección justifica la tecnología elegida (VRC mecánico de cadena), el fabricante candidato (PFlow F-Series), la cantidad de unidades por escenario y las coordinaciones estructurales críticas para arquitecto e ingeniero civil.</p>
+
+    <div class="grid3" style="margin:24px 0 36px">
+      <div class="kpi"><div class="v">2–3</div><div class="l">VRCs mecánicos independientes según escenario</div><div class="how">2 unidades para Esc. A (29 puestos) · 3 unidades para Esc. B (47 puestos)</div></div>
+      <div class="kpi"><div class="v">5,000 kg</div><div class="l">Capacidad mínima especificada</div><div class="how">Cayenne ~2,200 kg + margen para EV Taycan ~2,700 kg</div></div>
+      <div class="kpi warn"><div class="v">0.4 m</div><div class="l">Fosa a coordinar ANTES de vaciar la losa</div><div class="how">Interfaz crítica con estructural — VRC mecánico permite fosa somera 10–40 cm</div></div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">1 · Tres familias de elevadores de carro — no confundir</h3>
+      <p class="secsub" style="margin-bottom:16px">Dentro de "elevador de vehículos" existen tres familias técnicamente distintas. Mezclarlas lleva a comparar precios y especificaciones que no son comparables.</p>
+      <div class="grid3">
+        <div class="card">
+          <span class="badge ok" style="margin-bottom:8px">RECOMENDADO</span>
+          <h3 style="margin-top:6px">VRC mecánico<br><small style="color:#5a625c;font-weight:400;font-size:12px">cadena · sin conductor</small></h3>
+          <p style="margin-top:10px;font-size:13px">Norma <b>ASME B20.1</b>. Recorrido vertical y número de ciclos prácticamente ilimitados. Es la familia recomendada para el flujo interno de un taller. El técnico sube el vehículo, se baja, el equipo lo traslada solo entre niveles.</p>
+        </div>
+        <div class="card">
+          <span class="badge fal" style="margin-bottom:8px">DESCARTADO</span>
+          <h3 style="margin-top:6px">VRC hidráulico<br><small style="color:#5a625c;font-weight:400;font-size:12px">sin conductor</small></h3>
+          <p style="margin-top:10px;font-size:13px">Misma norma ASME B20.1 pero con pistón hidráulico. Límites duros: <b>máx 6,000 lb</b> (proyecto requiere 11,000 lb), práctico solo en 2 niveles (~9 m), y <b>100 ciclos/día</b>. Fuera de rango técnico para 4 paradas y 13.35 m.</p>
+        </div>
+        <div class="card">
+          <span class="badge fal" style="margin-bottom:8px">DESCARTADO</span>
+          <h3 style="margin-top:6px">Elevador driver-in<br><small style="color:#5a625c;font-weight:400;font-size:12px">con conductor adentro</small></h3>
+          <p style="margin-top:10px;font-size:13px">Normas <b>EN 81 / ASME A17.1</b>. Exige cabina certificada, puertas automáticas, frenos de seguridad, inspecciones anuales. Fosa de 15 cm a 1.8 m. Sirve para "experiencia de entrega" al cliente (Audi/Porsche dealership), <b>no</b> para flujo interno de servicio.</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top:14px">
+        <b>Sistema multi-vehículo (Wöhr/Klaus)</b> queda fuera de scope: no es un elevador individual sino un rack automatizado tipo "museo". Responde a un problema distinto — densidad de parqueo, no flujo de trabajo.
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">2 · Fabricantes que cumplen la especificación mínima</h3>
+      <p class="secsub" style="margin-bottom:12px">Filtro aplicado: <b>capacidad ≥ 5,000 kg · ancho plataforma ≥ 3.0 m · largo plataforma ≥ 5.55 m</b> (Panamera 5.05 m + 0.5 m de holgura). Evaluado sobre todos los proveedores investigados, en ambas categorías (VRC y driver-in), para máxima transparencia.</p>
+      <table>
+        <thead>
+          <tr><th>Proveedor / Modelo</th><th>Categoría</th><th>Capacidad máx.</th><th>Ancho / Largo máx.</th><th>Veredicto</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>PFlow F-Series</b><br><small>EE.UU. — Milwaukee, WI</small></td><td>VRC mecánico</td><td class="num">50,000–200,000 lb<br>(22–90 t)</td><td class="num">Sin límite superior<br>(caso real: 8.84 m)</td><td><span class="badge ok">CUMPLE — candidato principal</span></td></tr>
+          <tr><td><b>Wildeck Mechanical Straddle</b><br><small>EE.UU.</small></td><td>VRC mecánico</td><td class="num">30,000 lb (13.6 t)</td><td class="num">3.66 m / 6.10 m</td><td><span class="badge ok">CUMPLE — segundo candidato</span></td></tr>
+          <tr><td><b>CIP FP-Series</b><br><small>EE.UU. — Florida</small></td><td>VRC mecánico</td><td class="num">30,000 lb (13.6 t)</td><td class="num">No publicado ("escalable")</td><td><span class="badge pc">PROBABLE — confirmar con fabricante</span></td></tr>
+          <tr><td><b>Autoquip 4-Post Mecánico</b><br><small>EE.UU. — Oklahoma</small></td><td>VRC mecánico</td><td class="num">6,000–20,000 lb</td><td class="num">A la medida / no publicado</td><td><span class="badge pc">NO CONFIRMADO — falta largo máx.</span></td></tr>
+          <tr><td><b>Lödige TRAFFICO</b><br><small>Alemania — Warburg</small></td><td>Driver-in</td><td class="num">5,730 kg</td><td class="num">3.0 m (exacto) / 7.0 m</td><td><span class="badge fal">CUMPLE al límite pero DESCARTADO por categoría</span></td></tr>
+          <tr><td><b>Hidral ECH · IdealPark V08 · Lödige PEGASOS</b></td><td>Driver-in</td><td class="num">≤ 3,500 kg</td><td>—</td><td><span class="badge fal">Capacidad insuficiente</span></td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:12px">
+        <b>PFlow F-Series</b> es el candidato más sólido: capacidad, ancho y largo sin límite superior; casos documentados en concesionarios multi-nivel (Audi Central Houston, 7 niveles) y torres de exhibición de motos. Recorrido vertical ilimitado — ideal para uso continuo/alta frecuencia.
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">3 · Especificación técnica del VRC recomendado</h3>
+      <table>
+        <thead>
+          <tr><th>Parámetro</th><th>Valor</th><th>Razón</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tipo</td><td>VRC mecánico de cadena, 4 postes</td><td>Estabilidad para SUVs pesados, sin límite de ciclos</td></tr>
+          <tr><td>Capacidad</td><td class="num">5,000 kg</td><td>Cayenne ~2,200 kg + margen para EVs (Taycan ~2,700 kg)</td></tr>
+          <tr><td>Plataforma — ancho</td><td class="num">3.5 m (mín 3.0 m)</td><td>Cayenne 2.19 m con espejos — 3.5 m da margen sin doblarlos</td></tr>
+          <tr><td>Plataforma — largo</td><td class="num">6.5 m (mín 6.0 m)</td><td>Panamera 5.05 m + margen frente y fondo</td></tr>
+          <tr><td>Alto libre de plataforma</td><td class="num">2.4 m</td><td>Cayenne 1.70 m + margen para antenas y accesorios</td></tr>
+          <tr><td>Paradas</td><td>Esc. A: 4 (N1–N4)<br>Esc. B: 5 (N1–N5)</td><td>Todos los niveles operativos del edificio</td></tr>
+          <tr><td>Velocidad</td><td class="num">0.30–0.60 m/s</td><td>Ciclo total ~2.5–3.5 min por vehículo (subir + operar + bajar vacío)</td></tr>
+          <tr><td>Fosa (pit)</td><td class="num">0.3–0.5 m</td><td>VRC mecánico no requiere fosa profunda (vs 1.5 m+ de traction lift)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">4 · Cuántos VRCs — dimensionamiento por escenario</h3>
+      <table>
+        <thead>
+          <tr><th></th><th>Escenario A · 29 puestos <span class="chip min">CON RAMPAS</span></th><th>Escenario B · 47 puestos <span class="chip meses">SIN RAMPAS</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Carros/día total</td><td class="num">~85</td><td class="num">~132</td></tr>
+          <tr><td>Viajes verticales/día</td><td class="num">~118 <small>(solo N3–N4 usan elevador)</small></td><td class="num">~228</td></tr>
+          <tr><td>Promedio viajes/hora (8h)</td><td class="num">~15</td><td class="num">~28</td></tr>
+          <tr><td>Pico mañana (viajes/hora)</td><td class="num">~22–25</td><td class="num">~35–40</td></tr>
+          <tr><td><b>Configuración recomendada</b></td><td><b>2 VRC mecánicos independientes</b></td><td><b>3 VRC mecánicos independientes</b></td></tr>
+          <tr><td>Capacidad combinada</td><td class="num">24–30 viajes/hora <small>(cubre pico con holgura)</small></td><td class="num">42–48 viajes/hora <small>(cubre pico con margen)</small></td></tr>
+          <tr><td>Redundancia si falla 1 elevador</td><td>50% de operación continúa</td><td>67% de operación continúa</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">5 · Huella en planta que el arquitecto debe reservar</h3>
+      <p class="secsub" style="margin-bottom:12px">⚠ La ubicación de los shafts debe definirse <b>ANTES</b> de que el arquitecto fije la retícula estructural del edificio.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Escenario A · 2 VRC</h3>
+          <dl class="spec">
+            <dt>Shafts juntos</dt><dd class="num">7.5–8.0 m ancho × 6.5 m largo</dd>
+            <dt>Zona maniobra</dt><dd class="num">5.0–6.0 m libres frente a puertas — sin columnas ni muros</dd>
+            <dt>Fabricantes viables</dt><dd>PFlow F-Series · Wildeck Straddle · Autoquip 4-Post · CIP FP</dd>
+          </dl>
+        </div>
+        <div class="card">
+          <h3>Escenario B · 3 VRC</h3>
+          <dl class="spec">
+            <dt>Shafts juntos</dt><dd class="num">11.5–12.0 m ancho × 6.5 m largo</dd>
+            <dt>Zona maniobra</dt><dd class="num">5.0–6.0 m libres frente a puertas</dd>
+            <dt>Fabricantes viables</dt><dd>Idéntico al Escenario A</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">6 · Comparativa de tecnologías — resumen</h3>
+      <table>
+        <thead>
+          <tr><th>Criterio</th><th>Hidráulico</th><th>VRC Mecánico de Cadena</th><th>Traction Lift</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Velocidad</td><td class="num">0.15–0.20 m/s</td><td class="num">0.30–0.60 m/s</td><td class="num">0.80–1.00+ m/s</td></tr>
+          <tr><td>Ciclos diarios</td><td>Restringido — fluido se calienta con 200+ viajes/día</td><td>Sin límite: motor electromecánico para 24/7</td><td>Sin límite: sistema continuo con contrapesos</td></tr>
+          <tr><td>Niveles máx.</td><td class="num">2–3</td><td>Ilimitado (Audi Houston: 7)</td><td>Ilimitado</td></tr>
+          <tr><td>Técnico en el vehículo durante trayecto</td><td>Según regulación local</td><td>NO — ASME B20.1 (conveyor)</td><td>SÍ — ASME A17.1 (elevador pasajeros)</td></tr>
+          <tr><td>Fosa requerida</td><td>Profunda — cilindro telescópico</td><td class="num">0.3–0.5 m</td><td>1.5 m+ + cuarto de máquinas</td></tr>
+          <tr><td>CapEx</td><td>Bajo (base)</td><td>Moderado (~30–40% menos que traction)</td><td>Alto</td></tr>
+          <tr><td>OpEx</td><td>Medio — sellos, aceite, fugas</td><td>Bajo — cadena y motor simples</td><td>Alto — inspección anual, certificación</td></tr>
+          <tr><td>Veredicto para este proyecto</td><td><span class="badge fal">NO</span></td><td><span class="badge ok">RECOMENDADO</span></td><td><span class="badge fal">Innecesario</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">7 · Fosa (pit) — variable estructural crítica</h3>
+      <p class="secsub" style="margin-bottom:12px">La profundidad de la fosa debe definirse <b>ANTES</b> de vaciar la losa del nivel donde se instalará el equipo — el mismo principio que ya aplicamos a la cabina de pintura.</p>
+      <div class="grid3">
+        <div class="kpi"><div class="v">10–40 cm</div><div class="l">VRC mecánico o hidráulico — instalación superficial es posible sin fosa</div></div>
+        <div class="kpi warn"><div class="v">15 cm – 1.8 m</div><div class="l">Rango driver-in — 8× de variación dentro de la misma marca (PEGASOS vs TRAFFICO)</div></div>
+        <div class="kpi warn"><div class="v">1.5 m+</div><div class="l">Traction lift — más cuarto de máquinas dedicado</div></div>
+      </div>
+      <div class="note" style="margin-top:12px">
+        La fosa debe impermeabilizarse y coordinarse con el sistema de drenaje del edificio. En niveles subterráneos esto es una <b>interfaz crítica con el ingeniero civil</b>. No asumir cifras "por marca" — dentro de Lödige, dos modelos difieren por más de 8 veces.
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">8 · Por qué la circulación vertical es la columna vertebral del Escenario B</h3>
+      <p class="secsub" style="margin-bottom:12px">El taller de agencia maneja simultáneamente tres flujos de vehículos, cada uno con recorrido vertical distinto. Sin rampas, los VRCs son el único enlace entre niveles y su capacidad determina el throughput del edificio.</p>
+      <div class="grid3">
+        <div class="card">
+          <h3>Flujo 1 · Servicio mecánico</h3>
+          <div class="mono" style="font-size:11px;color:#4c554f;margin:8px 0 10px">N2 recepción → N3/N4 taller → N2 lavado + entrega</div>
+          <p style="font-size:13px">El más frecuente. Frenos, suspensión, diagnóstico, garantía de fábrica. El vehículo baja al final para lavado de cortesía antes de entregar al cliente.</p>
+        </div>
+        <div class="card">
+          <h3>Flujo 2 · Carrocería y pintura</h3>
+          <div class="mono" style="font-size:11px;color:#4c554f;margin:8px 0 10px">N2 recepción → N3 prep + cabina + túnel de luz → N2 ensamble</div>
+          <p style="font-size:13px">El más complejo. Prep, cabina de pintura y túnel de inspección están en N3. Es el único flujo con <b>recorrido vertical completo</b>: por eso la comunicación N2–N3 es crítica para carrocería.</p>
+        </div>
+        <div class="card">
+          <h3>Flujo 3 · PDI vehículos nuevos</h3>
+          <div class="mono" style="font-size:11px;color:#4c554f;margin:8px 0 10px">N1/N2 recepción → N3/N4 inspección → N2 lavado</div>
+          <p style="font-size:13px">Pre-Delivery Inspection. Retiro de protecciones, inspección multipunto, calibración de ADAS, instalación de accesorios. Lavado y entrega formal al cliente en N2.</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top:14px">
+        <b>Principio operativo:</b> los vehículos que llegan nunca deben cruzarse con los que salen — el lavado en N2 al final actúa como filtro de calidad antes de la entrega. La cantidad de VRCs (2 vs 3) se dimensiona para cubrir el <b>pico de mañana</b> de los tres flujos ejecutándose en paralelo.
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">9 · Pendientes antes de cerrar la especificación</h3>
+      <table>
+        <thead><tr><th>Ítem</th><th>Qué pasa</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Precios de VRC</td><td>Ningún fabricante publica lista pública. Cada equipo se cotiza a medida por capacidad, altura, paradas, acabados y normativa. Solicitar cotización formal a PFlow, Wildeck, CIP y Autoquip con los datos ya definidos.</td><td><span class="badge fal">FALTANTE</span></td></tr>
+          <tr><td>Fosa exacta del PFlow F-Series</td><td>Rango VRC general documentado: 10–30 cm+ con transición a ras. Ficha específica del modelo F-Series pendiente de solicitar al fabricante para submittal.</td><td><span class="badge pc">CONFIRMAR</span></td></tr>
+          <tr><td>Escenario A vs B</td><td>Decisión de modelo de negocio del inversionista: 29 puestos con rampas vs 47 puestos con VRCs (+62% capacidad). Determina cantidad de shafts y huella estructural.</td><td><span class="badge pc">DECISIÓN INVERSIONISTA</span></td></tr>
+          <tr><td>Ubicación de shafts</td><td>Reservar 7.5–8.0 m (Esc. A) o 11.5–12.0 m (Esc. B) de ancho × 6.5 m largo antes de fijar retícula estructural. Sin columnas ni muros en la zona de maniobra frente a puertas.</td><td><span class="badge pc">CRÍTICO PARA ARQUITECTO</span></td></tr>
+          <tr><td>Autoquip 4-Post — largo máx.</td><td>Cumple ancho y capacidad, pero no hay dato público de largo máximo. Solicitar al fabricante para confirmar como candidato adicional.</td><td><span class="badge pc">SOLICITAR</span></td></tr>
+          <tr><td>Impermeabilización + drenaje del pit</td><td>Interfaz con ingeniero civil, especialmente en niveles subterráneos. Definir cotas antes de vaciar losa del nivel de instalación.</td><td><span class="badge pc">COORDINAR CIVIL</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:17px;margin-bottom:12px">10 · Fuentes verificadas</h3>
+      <div class="card" style="font-size:13px;line-height:1.9">
+        <b>Candidato principal — PFlow Industries:</b>
+        <a href="https://www.pflow.com/vertical-conveyors/mechanical/f-series/" target="_blank" rel="noopener">F-Series (VRC 4-post mecánico)</a> ·
+        <a href="https://www.pflow.com/case-studies/audi-central-houston/" target="_blank" rel="noopener">Caso Audi Central Houston (7 niveles)</a> ·
+        <a href="https://www.pflow.com/vertical-conveyors/mechanical/" target="_blank" rel="noopener">Mechanical VRCs</a> ·
+        <a href="https://www.pflow.com/vertical-conveyors/hydraulic/" target="_blank" rel="noopener">Hydraulic VRCs</a> ·
+        <a href="https://www.pflow.com/blog/hydraulic-vs-mechanical-lifts/" target="_blank" rel="noopener">Hydraulic vs Mechanical Lifts</a>.<br>
+        <b>Otros VRC mecánicos:</b> Wildeck (Straddle & Cantilever, brochure PDF) · Custom Industrial Products (FP Series, uso automotriz) · Autoquip (caso Beverly Hills Porsche autoportante) · Handling Specialty (línea industrial pesada).<br>
+        <b>Driver-in (descartados por categoría):</b> Lödige TRAFFICO (NBS Source) · Lödige PEGASOS (brochure oficial) · Hidral ECH · IdealPark IP1-HMT V08 (caso Exclusive Cars Vicenza).<br>
+        <b>Sistemas multi-vehículo (fuera de scope):</b> Wöhr Autoparksysteme · Klaus Multiparking (Levelparker / Multiparker 750).<br>
+        <b>Normativa aplicable:</b> ASME B20.1 (conveyor — VRC) · ASME A17.1 (elevador de pasajeros / Clase B freight) · EN 81 (Europa) · Directiva de Máquinas 2006/42/CE · DIN EN 81-41:2011.<br>
+        <b>Flujos operativos:</b> DealerPro Training (servicio mecánico) · 3M Collision Repair · Car-O-Liner · Accudraft (pintura y prep).<br>
+        <b>Metodología de estimación:</b> AACE International 18R-97 (Cost Estimate Classification System — Clase 5 / ROM). Cifras de precio omitidas deliberadamente por falta de fuente confiable en fabricante o institución.
+      </div>
+    </div>
+
   </div>
 </section>
 
