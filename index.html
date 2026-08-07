@@ -778,7 +778,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
               <div class="floor-row workshop"><div class="floor-level">N2</div><div class="floor-program">Recepción + exprés</div><div class="floor-detail">6 puentes · lavado 60 m² · rampa 873 m².</div></div>
               <div class="floor-row sales"><div class="floor-level">N1</div><div class="floor-program">Venta + servicio</div><div class="floor-detail">Showroom 550 m² · zona violeta 198 m² (cuadro: exprés; planta: 9 posiciones) · bodega 183 m² · rampa de tráiler 104 m².</div></div>
               <div class="floor-row basement"><div class="floor-level">S1</div><div class="floor-program">Parqueo + apoyo</div><div class="floor-detail">44 carros + 40 motos · oficinas/equipos/bodegas.</div></div>
-              <div class="floor-row basement"><div class="floor-level">S2</div><div class="floor-program">Parqueo</div><div class="floor-detail">61 carros · cuadro y planta coinciden; la planta está titulada S2 aunque una etiqueta interior dice S3.</div></div>
+              <div class="floor-row basement"><div class="floor-level">S2</div><div class="floor-program">Parqueo</div><div class="floor-detail">61 carros · cuadro y planta coinciden.</div></div>
             </div>
           </div>
           <div class="proposal-flow">
@@ -833,7 +833,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
               <div class="floor-row workshop"><div class="floor-level">N2</div><div class="floor-program">Recepción + exprés</div><div class="floor-detail">8 puentes · lavado 60 m² · rampa 229 + elevadores 61 m².</div></div>
               <div class="floor-row sales"><div class="floor-level">N1</div><div class="floor-program">Venta + servicio</div><div class="floor-detail">Showroom 550 m² · exprés 198 m² · entrega · bodega 183 m² · rampa de tráiler 104 m².</div></div>
               <div class="floor-row basement"><div class="floor-level">S1</div><div class="floor-program">Parqueo + apoyo</div><div class="floor-detail">44 carros + 40 motos · oficinas/equipos/bodegas.</div></div>
-              <div class="floor-row basement"><div class="floor-level">S2</div><div class="floor-program">Parqueo</div><div class="floor-detail">61 carros · cuadro y planta coinciden; solo queda una inconsistencia de nomenclatura S2/S3.</div></div>
+              <div class="floor-row basement"><div class="floor-level">S2</div><div class="floor-program">Parqueo</div><div class="floor-detail">61 carros · cuadro y planta coinciden.</div></div>
             </div>
           </div>
           <div class="proposal-flow">
@@ -1232,7 +1232,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       --lp-cli-externo:#9CC2B4;--lp-cli-tecnico:#7A9A96;--lp-cli-empleado:#8B9BB1;--lp-cli-interno:#59615C;
       font-family:'Albert Sans',system-ui,sans-serif;color:var(--lp-ink)}
     #labPri *{box-sizing:border-box}
-    .lp-topbar{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;margin-bottom:18px;align-items:end}
+    .lp-topbar{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:12px;margin-bottom:18px;align-items:end}
     .lp-kpi{background:var(--lp-card);border:1px solid var(--lp-line);border-left:4px solid var(--forest);border-radius:8px;padding:12px 14px}
     .lp-kpi .v{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--forest);line-height:1.15}
     .lp-kpi .l{font-size:11.5px;color:var(--lp-muted);margin-top:3px;letter-spacing:.02em}
@@ -1330,9 +1330,10 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
   <!-- Franja superior · KPIs siempre visibles -->
   <div class="lp-topbar">
-    <div class="lp-kpi"><div class="v" id="lpKpiArea">—</div><div class="l">m² activos consumidos / 8,244 disponibles</div><div class="how" id="lpKpiAreaHow">—</div></div>
-    <div class="lp-kpi"><div class="v" id="lpKpiCap">—</div><div class="l">capacidad resultante · puentes + posiciones + carros</div><div class="how" id="lpKpiCapHow">—</div></div>
+    <div class="lp-kpi"><div class="v" id="lpKpiArea">—</div><div class="l">m² consumidos / 14,428 del edificio total</div><div class="how" id="lpKpiAreaHow">—</div></div>
+    <div class="lp-kpi"><div class="v" id="lpKpiCap">—</div><div class="l">capacidad · puentes + posiciones + carros</div><div class="how" id="lpKpiCapHow">—</div></div>
     <div class="lp-kpi"><div class="v" id="lpKpiCosto">—</div><div class="l">costo de permanencia del edificio (m²·día)</div><div class="how" id="lpKpiCostoHow">—</div></div>
+    <div class="lp-kpi"><div class="v" id="lpKpiUsdUnit">—</div><div class="l">costo espacial anual por unidad de capacidad · USD/año<span class="tt" tabindex="0" data-tipo="cal" data-que="Fórmula: m² consumidos × USD $670/m²/año ÷ capacidad total (puentes + posiciones + carros). El USD $670/m² es un supuesto editable del anclaje económico de la síntesis. La capacidad total es la suma reactiva de lo que cada uso adentro aporta." data-src="Definición URBOP; USD $670 marcado como supuesto en sec 01">&nbsp;ⓘ</span></div><div class="how" id="lpKpiUsdUnitHow">—</div></div>
     <div class="lp-basebox">
       <label for="lpBase">Base</label>
       <select id="lpBase">
@@ -1402,42 +1403,37 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 <script>
 /* ============ LAB · Prioridades de uso · lógica ============ */
 (function(){
-  const LP_PLATE=2061.11, LP_ACTIVE_LEVELS=4;
-  const LP_ACTIVE_CAPACITY=LP_PLATE*LP_ACTIVE_LEVELS;   // 8244.44 m²
+  const LP_PLATE=2061.11, LP_LEVELS_TOTAL=7;
+  const LP_TOTAL_CAPACITY=LP_PLATE*LP_LEVELS_TOTAL;   // 14,427.77 m² (7 placas)
 
   // Los 21 usos ordenados por permanencia (mismo orden que la matriz de sec 03).
   // m² provienen de los cuadros GRUBORJA dibujados; los faltantes están marcados como SUPUESTO.
   // tiempo en días (para costo de permanencia = m² × días).
   const LP_USES=[
-    {id:'despacho',   name:'Despacho de repuestos',       v:'esencial', cli:'externo',  tDias:0.0087, tStr:'10–15 min',   escala:'minutos', m2:{'1R':30, '1E':30, '2E':30}, m2Doc:false, dest:null,                 servAdentro:[]},
-    {id:'recepcion',  name:'Recepción de vehículos',      v:'esencial', cli:'externo',  tDias:0.0104, tStr:'10–20 min',   escala:'minutos', m2:{'1R':278,'1E':195,'2E':176}, m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'lavado',     name:'Lavado',                       v:'esencial', cli:'tecnico',  tDias:0.0191, tStr:'20–35 min',   escala:'minutos', m2:{'1R':60, '1E':60, '2E':60},  m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'entrega',    name:'Entrega + preparación',        v:'esencial', cli:'externo',  tDias:0.0313, tStr:'30–60 min',   escala:'minutos', m2:{'1R':100,'1E':100,'2E':100}, m2Doc:false, dest:null,                 servAdentro:[]},
-    {id:'express',    name:'Taller exprés',                v:'esencial', cli:'tecnico',  tDias:0.0469, tStr:'45m–1.5h',    escala:'horas',   m2:{'1R':200,'1E':200,'2E':200}, m2Doc:false, dest:null,                 servAdentro:[]},
-    {id:'visitas',    name:'Parqueo de visitas',           v:'esencial', cli:'externo',  tDias:0.0573, tStr:'45m–2h',      escala:'horas',   m2:{'1R':500,'1E':500,'2E':500}, m2Doc:false, dest:null,                 servAdentro:[]},
-    {id:'gym',        name:'Gym / comedor / duchas',       v:'cond',     cli:'empleado', tDias:0.208,  tStr:'1–9 h',       escala:'horas',   m2:{'1R':220,'1E':220,'2E':220}, m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'oficinas',   name:'Oficinas operativas',          v:'nice',     cli:'empleado', tDias:0.375,  tStr:'9 h',         escala:'horas',   m2:{'1R':262,'1E':166,'2E':243}, m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'empleados',  name:'Parqueo de empleados',         v:'nice',     cli:'empleado', tDias:0.396,  tStr:'9–10 h',      escala:'horas',   m2:{'1R':480,'1E':480,'2E':480}, m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'motos',      name:'Motos empleados',              v:'nice',     cli:'empleado', tDias:0.396,  tStr:'9–10 h',      escala:'horas',   m2:{'1R':80, '1E':80, '2E':80},  m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'seguridad',  name:'Casetas de seguridad',         v:'nice',     cli:'empleado', tDias:1.0,    tStr:'24 h · turno',escala:'horas',   m2:{'1R':12, '1E':12, '2E':12},  m2Doc:false, dest:null,                 servAdentro:[]},
-    {id:'aptos',      name:'Apartamentos efficiency 5º/6º',v:'afuera',   cli:'interno',  tDias:30.0,   tStr:'meses · residencial', escala:'meses', m2:{'1R':0,'1E':0,'2E':0},   m2Doc:false, dest:'Otro terreno · concepto Muni', servAdentro:[]},
-    {id:'mecanica',   name:'Taller mecánica',              v:'esencial', cli:'tecnico',  tDias:1.75,   tStr:'4h–3d',       escala:'dias',    m2:{'1R':1104,'1E':1870,'2E':1870}, m2Doc:true, dest:null,                 servAdentro:[]},
-    {id:'wip',        name:'Mecánica larga / WIP',         v:'cond',     cli:'interno',  tDias:9.0,    tStr:'3–15 d',      escala:'dias',    m2:{'1R':300,'1E':300,'2E':300}, m2Doc:false, dest:null,                 servAdentro:[]},
-    {id:'pintura',    name:'Enderezado y pintura',         v:'afuera',   cli:'tecnico',  tDias:11.0,   tStr:'7–15 d/veh',  escala:'dias',    m2:{'1R':190,'1E':190,'2E':190}, m2Doc:true,  dest:'Otro terreno',       servAdentro:[{n:'Ducto extracción a cubierta',m2:60},{n:'Trincheras N3',m2:25}]},
-    {id:'bodegasT',   name:'Bodegas materiales por taller',v:'nice',     cli:'tecnico',  tDias:21.0,   tStr:'semanas',     escala:'semanas', m2:{'1R':142,'1E':136,'2E':96},  m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'showroom',   name:'Showroom Jetour',              v:'esencial', cli:'externo',  tDias:60.0,   tStr:'30–90 d',     escala:'meses',   m2:{'1R':550,'1E':550,'2E':693}, m2Doc:true,  dest:null,                 servAdentro:[]},
-    {id:'invNuevos',  name:'Inventario de nuevos',         v:'afuera',   cli:'interno',  tDias:60.0,   tStr:'30–90 d',     escala:'meses',   m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Otro terreno · playa nueva', servAdentro:[]},
-    {id:'bodegaC',    name:'Bodega central de repuestos',  v:'afuera',   cli:'interno',  tDias:60.0,   tStr:'meses',       escala:'meses',   m2:{'1R':287,'1E':287,'2E':0},   m2Doc:true,  dest:'Plaza del Sol · búnker', servAdentro:[{n:'Rampa tráiler 53′ + andén',m2:104}]},
-    {id:'invUsados',  name:'Inventario de usados',         v:'afuera',   cli:'interno',  tDias:90.0,   tStr:'60–120 d',    escala:'meses',   m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Otro terreno · playa usados', servAdentro:[]},
-    {id:'baterias',   name:'Cuarentena baterías litio',    v:'cond',     cli:'tecnico',  tDias:1.0,    tStr:'eventual',    escala:'eventual',m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Área exterior separada', servAdentro:[]}
+    {id:'despacho',   name:'Despacho de repuestos',       v:'esencial', cli:'externo',  tDias:0.0087, tStr:'10–15 min',   escala:'minutos', m2:{'1R':30, '1E':30, '2E':30}, m2Doc:false, dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'recepcion',  name:'Recepción de vehículos',      v:'esencial', cli:'externo',  tDias:0.0104, tStr:'10–20 min',   escala:'minutos', m2:{'1R':278,'1E':195,'2E':176}, m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'lavado',     name:'Lavado',                       v:'esencial', cli:'tecnico',  tDias:0.0191, tStr:'20–35 min',   escala:'minutos', m2:{'1R':60, '1E':60, '2E':60},  m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'entrega',    name:'Entrega + preparación',        v:'esencial', cli:'externo',  tDias:0.0313, tStr:'30–60 min',   escala:'minutos', m2:{'1R':100,'1E':100,'2E':100}, m2Doc:false, dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'express',    name:'Taller exprés',                v:'esencial', cli:'tecnico',  tDias:0.0469, tStr:'45m–1.5h',    escala:'horas',   m2:{'1R':200,'1E':200,'2E':200}, m2Doc:false, dest:null,                 servAdentro:[],aporta:{puentes:{'1R':6,'1E':8,'2E':8},posiciones:0,carros:0}},
+    {id:'visitas',    name:'Parqueo de visitas',           v:'esencial', cli:'externo',  tDias:0.0573, tStr:'45m–2h',      escala:'horas',   m2:{'1R':500,'1E':500,'2E':500}, m2Doc:false, dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:{'1R':45,'1E':45,'2E':45}}},
+    {id:'gym',        name:'Gym / comedor / duchas',       v:'cond',     cli:'empleado', tDias:0.208,  tStr:'1–9 h',       escala:'horas',   m2:{'1R':220,'1E':220,'2E':220}, m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'oficinas',   name:'Oficinas operativas',          v:'nice',     cli:'empleado', tDias:0.375,  tStr:'9 h',         escala:'horas',   m2:{'1R':262,'1E':166,'2E':243}, m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'empleados',  name:'Parqueo de empleados',         v:'nice',     cli:'empleado', tDias:0.396,  tStr:'9–10 h',      escala:'horas',   m2:{'1R':480,'1E':480,'2E':480}, m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:{'1R':105,'1E':112,'2E':112}}},
+    {id:'motos',      name:'Motos empleados',              v:'nice',     cli:'empleado', tDias:0.396,  tStr:'9–10 h',      escala:'horas',   m2:{'1R':80, '1E':80, '2E':80},  m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'seguridad',  name:'Casetas de seguridad',         v:'nice',     cli:'empleado', tDias:1.0,    tStr:'24 h · turno',escala:'horas',   m2:{'1R':12, '1E':12, '2E':12},  m2Doc:false, dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'aptos',      name:'Apartamentos efficiency 5º/6º',v:'afuera',   cli:'interno',  tDias:30.0,   tStr:'meses · residencial', escala:'meses', m2:{'1R':0,'1E':0,'2E':0},   m2Doc:false, dest:'Otro terreno · concepto Muni', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'mecanica',   name:'Taller mecánica',              v:'esencial', cli:'tecnico',  tDias:1.75,   tStr:'4h–3d',       escala:'dias',    m2:{'1R':1104,'1E':1870,'2E':1870}, m2Doc:true, dest:null,                 servAdentro:[],aporta:{puentes:{'1R':23,'1E':41,'2E':41},posiciones:0,carros:0}},
+    {id:'wip',        name:'Mecánica larga / WIP',         v:'cond',     cli:'interno',  tDias:9.0,    tStr:'3–15 d',      escala:'dias',    m2:{'1R':300,'1E':300,'2E':300}, m2Doc:false, dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'pintura',    name:'Enderezado y pintura',         v:'afuera',   cli:'tecnico',  tDias:11.0,   tStr:'7–15 d/veh',  escala:'dias',    m2:{'1R':190,'1E':190,'2E':190}, m2Doc:true,  dest:'Otro terreno',       servAdentro:[{n:'Ducto extracción a cubierta',m2:60},{n:'Trincheras N3',m2:25}],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'bodegasT',   name:'Bodegas materiales por taller',v:'nice',     cli:'tecnico',  tDias:21.0,   tStr:'semanas',     escala:'semanas', m2:{'1R':142,'1E':136,'2E':96},  m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'showroom',   name:'Showroom Jetour',              v:'esencial', cli:'externo',  tDias:60.0,   tStr:'30–90 d',     escala:'meses',   m2:{'1R':550,'1E':550,'2E':693}, m2Doc:true,  dest:null,                 servAdentro:[],aporta:{puentes:0,posiciones:{'1R':9,'1E':9,'2E':12},carros:0}},
+    {id:'invNuevos',  name:'Inventario de nuevos',         v:'afuera',   cli:'interno',  tDias:60.0,   tStr:'30–90 d',     escala:'meses',   m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Otro terreno · playa nueva', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'bodegaC',    name:'Bodega central de repuestos',  v:'afuera',   cli:'interno',  tDias:60.0,   tStr:'meses',       escala:'meses',   m2:{'1R':287,'1E':287,'2E':0},   m2Doc:true,  dest:'Plaza del Sol · búnker', servAdentro:[{n:'Rampa tráiler 53′ + andén',m2:104}],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'invUsados',  name:'Inventario de usados',         v:'afuera',   cli:'interno',  tDias:90.0,   tStr:'60–120 d',    escala:'meses',   m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Otro terreno · playa usados', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}},
+    {id:'baterias',   name:'Cuarentena baterías litio',    v:'cond',     cli:'tecnico',  tDias:1.0,    tStr:'eventual',    escala:'eventual',m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Área exterior separada', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0}}
   ];
 
-  // Capacidad por escenario (congelada de la comparativa de sec 05)
-  const LP_CAPACITY={
-    '1R':{puentes:29, posiciones:9,  carros:150, verticalM2:3931},
-    '1E':{puentes:49, posiciones:9,  carros:157, verticalM2:1649},
-    '2E':{puentes:49, posiciones:12, carros:157, verticalM2:1423}
-  };
+  // Capacidad ya no es hardcoded — se computa reactivamente de aporta[]
 
   // Etiquetas
   const CLI_LABELS={externo:'Cliente externo', tecnico:'Técnico', empleado:'Empleado', interno:'Interno / piloto'};
@@ -1473,38 +1469,68 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     return st;
   }
 
+  // Costo espacial: USD $670 por m² por año (supuesto vigente, marcado en el sitio)
+  const LP_COST_M2_YEAR = 670;
+
+  function usoAporta(u, kind, base){
+    if(!u.aporta) return 0;
+    const v = u.aporta[kind];
+    if(typeof v === 'number') return v;
+    if(v && typeof v === 'object') return v[base] || 0;
+    return 0;
+  }
+
+  function computeSnapshot(orden, estado, base, m2Overrides, tOverrides){
+    // Estado puro: no lee variables globales de LP más allá de las que recibe
+    const adentro = orden.filter(id => estado[id] === 'adentro').map(id => use(id));
+    const afuera = orden.filter(id => estado[id] === 'afuera').map(id => use(id));
+    const m2Of = u => (u.id in m2Overrides) ? m2Overrides[u.id] : (u.m2[base] || 0);
+    const tOf = u => (u.id in tOverrides) ? tOverrides[u.id] : u.tDias;
+    const m2 = adentro.reduce((s,u)=>s+m2Of(u), 0);
+    const servM2 = adentro.reduce((s,u)=>s+u.servAdentro.reduce((a,x)=>a+x.m2,0), 0);
+    const costoM2Dia = adentro.reduce((s,u)=>s+m2Of(u)*tOf(u), 0);
+    const puentes = adentro.reduce((s,u)=>s+usoAporta(u,'puentes',base), 0);
+    const posiciones = adentro.reduce((s,u)=>s+usoAporta(u,'posiciones',base), 0);
+    const carros = adentro.reduce((s,u)=>s+usoAporta(u,'carros',base), 0);
+    const capTotal = puentes + posiciones + carros;
+    const permProm = m2>0 ? costoM2Dia/m2 : 0;
+    // Costo espacial anual por unidad de capacidad
+    // = m² consumidos × USD 670 ÷ capacidad total
+    const costoUsdPorUnidad = capTotal>0 ? (m2 * LP_COST_M2_YEAR) / capTotal : 0;
+    // Costo por cliente (para mix)
+    const costoPorCli = {externo:0, tecnico:0, empleado:0, interno:0};
+    adentro.forEach(u => { costoPorCli[u.cli] += m2Of(u) * tOf(u); });
+    const mix = {};
+    Object.keys(costoPorCli).forEach(c => { mix[c] = costoM2Dia>0 ? costoPorCli[c]/costoM2Dia*100 : 0; });
+    return {adentro, afuera, m2, servM2, costoM2Dia, puentes, posiciones, carros, capTotal, permProm, costoUsdPorUnidad, costoPorCli, mix};
+  }
+
+  function baselineFor(base){
+    // Snapshot de la base dibujada — sin toggles ni overrides del usuario
+    const orden = LP_USES.map(u=>u.id);
+    const estado = {};
+    LP_USES.forEach(u => { estado[u.id] = (u.m2[base]>0) ? 'adentro' : 'afuera'; });
+    return computeSnapshot(orden, estado, base, {}, {});
+  }
+
   function calcularTodo(){
-    const orden=LP.orden.map(id=>use(id));
-    const adentro=orden.filter(u=>LP.estado[u.id]==='adentro');
-    const afuera=orden.filter(u=>LP.estado[u.id]==='afuera');
-
-    // m² del edificio activo
-    let m2Consumidos=adentro.reduce((s,u)=>s+usoM2(u),0);
-    // servidumbres arrastradas
-    let m2Servidumbres=adentro.reduce((s,u)=>s+u.servAdentro.reduce((a,x)=>a+x.m2,0),0);
-    // costo de permanencia (m²·día)
-    let costoTotal=adentro.reduce((s,u)=>s+usoCosto(u),0);
-    // costo por cliente
-    const costoPorCli={externo:0,tecnico:0,empleado:0,interno:0};
-    adentro.forEach(u=>{costoPorCli[u.cli]+=usoCosto(u);});
-    // mix de clientes: fracción del costo total
-    const mix={};
-    Object.keys(costoPorCli).forEach(c=>{mix[c]=costoTotal>0?costoPorCli[c]/costoTotal*100:0;});
-    // permanencia promedio ponderada
-    const permanenciaProm=m2Consumidos>0?costoTotal/m2Consumidos:0;
-
-    // Capacidad (fija por base)
-    const cap=LP_CAPACITY[LP.base];
-    // Ajustes por retirar esenciales
-    const esencialesRetirados=afuera.filter(u=>u.v==='esencial');
-    // Warning si algún esencial retirado + estimación de puentes perdidos
-    // Sin modelo detallado, marcamos como aviso
-    // Gano: qué se libera si se dejan afuera los "afuera" adentro y viceversa
-    // "Gano" = suma de m² + servidumbres de usos que están afuera y potencialmente ganables
-    // Interpretación práctica: sumar los m² + servidumbres de los usos afuera cuyos m²Base > 0
-    const ganoM2=afuera.reduce((s,u)=>s+usoM2(u)+u.servAdentro.reduce((a,x)=>a+x.m2,0),0);
-
-    return {orden,adentro,afuera,m2Consumidos,m2Servidumbres,costoTotal,costoPorCli,mix,permanenciaProm,cap,esencialesRetirados,ganoM2};
+    const orden = LP.orden.map(id => use(id));  // usos ordenados para render
+    const snap = computeSnapshot(LP.orden, LP.estado, LP.base, LP.m2Overrides, LP.tOverrides);
+    const baseline = baselineFor(LP.base);
+    // Esenciales retirados (para warning)
+    const esencialesRetirados = snap.afuera.filter(u => u.v==='esencial');
+    // ganoM2: si dejo afuera todos los que están afuera hoy, cuántos m² recupero vs base
+    const m2Of = u => (u.id in LP.m2Overrides) ? LP.m2Overrides[u.id] : (u.m2[LP.base] || 0);
+    const ganoM2 = snap.afuera.reduce((s,u) => s + m2Of(u) + u.servAdentro.reduce((a,x)=>a+x.m2,0), 0);
+    return {
+      orden, adentro:snap.adentro, afuera:snap.afuera,
+      m2Consumidos:snap.m2, m2Servidumbres:snap.servM2, costoTotal:snap.costoM2Dia,
+      costoPorCli:snap.costoPorCli, mix:snap.mix, permanenciaProm:snap.permProm,
+      cap:{puentes:snap.puentes, posiciones:snap.posiciones, carros:snap.carros, total:snap.capTotal},
+      costoUsdPorUnidad:snap.costoUsdPorUnidad,
+      esencialesRetirados, ganoM2,
+      baseline
+    };
   }
 
   // ---- Render ----
@@ -1521,14 +1547,32 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   }
 
   function renderKpis(r){
-    const pct=(r.m2Consumidos/LP_ACTIVE_CAPACITY*100);
-    $('lpKpiArea').textContent=fmt(r.m2Consumidos,0)+' m²';
-    $('lpKpiAreaHow').textContent=`${fmt(pct,1)}% · +${fmt(r.m2Servidumbres,0)} m² de servidumbres adentro`;
-    const cap=r.cap;
-    $('lpKpiCap').textContent=`${cap.puentes} + ${cap.posiciones} + ${cap.carros}`;
-    $('lpKpiCapHow').textContent=`puentes · posiciones · carros (base ${LP.base})`;
-    $('lpKpiCosto').textContent=fmt(r.costoTotal,0);
-    $('lpKpiCostoHow').textContent=`permanencia promedio: ${fmt(r.permanenciaProm,1)} días · ${r.adentro.length} usos adentro`;
+    const b = r.baseline;
+    const fmtDelta = (v, unit='', digits=0) => {
+      if(Math.abs(v)<0.5 && digits===0) return `sin cambio vs base`;
+      const sign = v>0?'+':'';
+      return `${sign}${fmt(v,digits)}${unit} vs base ${LP.base}`;
+    };
+    const pct = (r.m2Consumidos / LP_TOTAL_CAPACITY * 100);
+    // KPI 1 · m² consumidos
+    $('lpKpiArea').textContent = fmt(r.m2Consumidos, 0) + ' m²';
+    $('lpKpiAreaHow').textContent = `${fmt(pct,1)}% de 8,244 · ${fmtDelta(r.m2Consumidos-b.m2,' m²')}`;
+    // KPI 2 · Capacidad reactiva
+    $('lpKpiCap').textContent = `${r.cap.puentes} + ${r.cap.posiciones} + ${r.cap.carros}`;
+    const dPuentes = r.cap.puentes - b.puentes;
+    const dPosic = r.cap.posiciones - b.posiciones;
+    const dCarros = r.cap.carros - b.carros;
+    const parts = [];
+    if(dPuentes) parts.push(`${dPuentes>0?'+':''}${dPuentes} puentes`);
+    if(dPosic) parts.push(`${dPosic>0?'+':''}${dPosic} posiciones`);
+    if(dCarros) parts.push(`${dCarros>0?'+':''}${dCarros} carros`);
+    $('lpKpiCapHow').textContent = parts.length ? `${parts.join(' · ')} vs base ${LP.base}` : `sin cambio vs base ${LP.base}`;
+    // KPI 3 · Costo permanencia total
+    $('lpKpiCosto').textContent = fmt(r.costoTotal, 0);
+    $('lpKpiCostoHow').textContent = `${fmt(r.permanenciaProm,1)} días promedio · ${fmtDelta(r.costoTotal-b.costoM2Dia,' m²·día')}`;
+    // KPI 4 · Costo espacial anual por unidad de capacidad
+    $('lpKpiUsdUnit').textContent = 'USD $' + fmt(r.costoUsdPorUnidad, 0);
+    $('lpKpiUsdUnitHow').textContent = `${fmtDelta(r.costoUsdPorUnidad-b.costoUsdPorUnidad,'',0)}`;
   }
 
   function renderList(r){
@@ -1683,7 +1727,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     let maxCosto=0;
     Object.entries(r.costoPorCli).forEach(([c,v])=>{if(v>maxCosto){maxCosto=v;domCli=c;}});
     // Fracción global sobre placa activa (aplica a N1-N4)
-    const fracActiva=Math.min(1,r.m2Consumidos/LP_ACTIVE_CAPACITY);
+    const fracActiva=Math.min(1,r.m2Consumidos/LP_TOTAL_CAPACITY);
     // Colores por cliente
     const colClient={externo:'var(--lp-cli-externo)',tecnico:'var(--lp-cli-tecnico)',empleado:'var(--lp-cli-empleado)',interno:'var(--lp-cli-interno)'};
     niveles.forEach(nv=>{
@@ -1871,7 +1915,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   $('lpExportJson').addEventListener('click',()=>{
     const r=calcularTodo();
     const payload={base:LP.base,
-      resumen:{m2_consumidos:r.m2Consumidos, m2_disponibles:LP_ACTIVE_CAPACITY, costo_permanencia_total:r.costoTotal, permanencia_promedio_dias:r.permanenciaProm, mix_clientes_pct:r.mix, capacidad:r.cap},
+      resumen:{m2_consumidos:r.m2Consumidos, m2_disponibles:LP_TOTAL_CAPACITY, costo_permanencia_total:r.costoTotal, permanencia_promedio_dias:r.permanenciaProm, mix_clientes_pct:r.mix, capacidad:r.cap},
       usos:r.orden.map((u,i)=>({pos:i+1, id:u.id, name:u.name, cliente:u.cli, veredicto:u.v, tiempo_dias:usoTDias(u), tiempo_str:u.tStr, m2:usoM2(u), costo_permanencia:usoCosto(u), estado:LP.estado[u.id], destino:u.dest, m2_supuesto:esSupuesto(u)}))
     };
     download('gl3-prioridades-'+LP.base+'.json','application/json',JSON.stringify(payload,null,2));
