@@ -426,6 +426,39 @@ td .tt,.kpi .tt{border-bottom-color:#c3ccc0}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-offset:2px}
 </style>
+<style id="pw-init">html.pw-locked body{visibility:hidden}</style>
+<script>
+(function(){
+  var KEY='urbop_legacy_ok';
+  if(sessionStorage.getItem(KEY))return;
+  document.documentElement.classList.add('pw-locked');
+  document.addEventListener('DOMContentLoaded',function(){
+    var g=document.createElement('div');
+    g.id='pw-gate';
+    g.style.cssText='position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#1B4D3E 0%,#161d19 100%);display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;visibility:visible';
+    g.innerHTML='<div style="background:#fff;padding:34px 38px;border-radius:8px;max-width:360px;width:88%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)"><div style="font-family:Sora,system-ui,sans-serif;font-weight:800;letter-spacing:.28em;color:#1B4D3E;font-size:20px;margin-bottom:6px">URBOP</div><div style="font-family:JetBrains Mono,monospace;font-size:10.5px;letter-spacing:.14em;color:#5a625c;margin-bottom:22px">VERSI\u00d3N ARCHIVADA \u00b7 USO INTERNO</div><h2 style="font-family:Sora,system-ui,sans-serif;font-size:16px;color:#161d19;margin:0 0 6px;font-weight:600">Acceso restringido</h2><p style="font-size:12.5px;color:#5a625c;margin:0 0 18px;line-height:1.5">Material interno de trabajo, previo a la versi\u00f3n publicada del dashboard.</p><input id="pw-input" type="password" placeholder="Contrase\u00f1a" style="width:100%;padding:10px 12px;border:1.5px solid #d8d5cb;border-radius:5px;font-family:JetBrains Mono,monospace;font-size:14px;box-sizing:border-box;outline:none" autocomplete="off"><button id="pw-submit" style="width:100%;margin-top:10px;padding:10px 14px;background:#1B4D3E;color:#fff;border:0;border-radius:5px;font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;cursor:pointer">Entrar</button><div id="pw-error" style="color:#6B1F1F;font-size:12px;margin-top:10px;min-height:16px;font-family:JetBrains Mono,monospace"></div><a href="/" style="display:block;margin-top:14px;font-size:11px;color:#5a625c;text-decoration:none;font-family:JetBrains Mono,monospace;letter-spacing:.08em">\u2190 volver al sitio p\u00fablico</a></div>';
+    document.body.appendChild(g);
+    var input=document.getElementById('pw-input');
+    var btn=document.getElementById('pw-submit');
+    var err=document.getElementById('pw-error');
+    input.focus();
+    function check(){
+      var pw=input.value;
+      if(pw===atob('VVJCT1AyMDI2')){
+        sessionStorage.setItem(KEY,'1');
+        g.remove();
+        document.documentElement.classList.remove('pw-locked');
+      }else{
+        err.textContent='Contrase\u00f1a incorrecta';
+        input.value='';
+        input.focus();
+      }
+    }
+    btn.addEventListener('click',check);
+    input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();check();}});
+  });
+})();
+</script>
 </head>
 <body>
 <aside class="rail">
