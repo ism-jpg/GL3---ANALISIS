@@ -30,6 +30,14 @@ a{color:var(--forest)}
 .rail nav>a.rail-legacy:hover{color:#fff;background:rgba(255,255,255,.06)}
 .rail nav>a.rail-legacy .n{font-family:'JetBrains Mono';font-size:9px;color:var(--sage);margin-right:8px;padding:1px 5px;border:1px solid rgba(141,175,163,.4);border-radius:3px}
 .rail nav>.rail-group{display:block;padding:14px 22px 6px;margin-top:10px;font-family:'JetBrains Mono';font-size:9.5px;font-weight:700;letter-spacing:.22em;color:var(--sage);text-transform:uppercase;border-top:1px dashed rgba(255,255,255,.15)}
+details.collapsed-block{margin:0;padding:0;background:transparent;border:0}
+details.collapsed-block>summary{cursor:pointer;padding:10px 14px;background:#eef0ea;border:1px solid var(--line);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--forest);text-transform:uppercase;list-style:none;user-select:none}
+details.collapsed-block>summary:hover{background:#e4e8de}
+details.collapsed-block>summary::-webkit-details-marker{display:none}
+details.collapsed-block>summary::before{content:'▸ ';color:var(--sage);font-family:'Sora',sans-serif;font-weight:800;margin-right:4px;display:inline-block;transition:transform .15s ease}
+details.collapsed-block[open]>summary::before{transform:rotate(90deg)}
+details.collapsed-block>.collapsed-body{padding:14px 0 0;animation:fade .25s ease}
+
 .rail .brand .verbadge{font-family:'JetBrains Mono';font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.55);margin-top:6px;text-transform:uppercase}
 .v2-badge{display:inline-block;font-family:'JetBrains Mono';font-size:10px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:3px;background:var(--arctic);color:var(--forest);vertical-align:middle;margin-left:10px}
 .def-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
@@ -492,6 +500,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
     <!-- =============== FIN SÍNTESIS PRIORITARIA =============== -->
 
+    <details class="collapsed-block" style="margin-top:32px">
+      <summary>Cómo usar este informe · vocabulario común · guía de lectura por sección</summary>
+      <div class="collapsed-body">
     <div class="howto" style="margin-top:32px">💡<div><b>CÓMO USAR EL INFORME.</b> Pase el cursor —o seleccione en móvil— sobre cualquier <span class="tt" tabindex="0" data-tipo="met" data-que="Una línea punteada indica que el término tiene una explicación y una fuente asociada. Al abrirla se muestra qué significa, de dónde sale y si es documento, cálculo, solicitud, norma o supuesto." data-src="Sistema de trazabilidad de este informe">término con línea punteada</span>. El recuadro emergente explica <b>qué significa</b> y <b>de dónde sale</b>. En los diagramas, los pisos de igual ancho muestran organización vertical y <b>no escala real</b>; las barras solo se comparan cuando comparten la misma escala indicada; gris o línea discontinua significa dato incompleto. La sección central es la <b>Matriz de usos</b>: allí se decide qué programa merece ocupar el edificio antes de comparar plantas o mover columnas.</div></div>
     <div class="card" style="margin-top:14px;border-left:5px solid var(--lime)">
       <p style="font-size:13.5px"><b>VERSIÓN CORREGIDA · 29 JUL 2026.</b> En este informe, “dibujado” significa que aparece en planos o cuadros GRUBORJA; “solicitado” proviene de los correos del cliente; “calculado” es aritmética sobre esas fuentes; y “escenario” depende de supuestos todavía no confirmados. La <b>2E</b> es una recomendación condicionada, no una aprobación final.</p>
@@ -538,7 +549,13 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       </div>
       <p class="note" style="margin-top:12px"><b>Lectura recomendada para trabajar el proyecto:</b> la sección 03 define <i>qué piezas existen</i>; la sección 05 aporta <i>sus áreas y capacidades actuales</i>; la sección 07 define <i>dónde pueden ir y con qué retícula</i>; y la sección 09 permite <i>probar combinaciones</i>. El drag-and-drop y el data placer son la evolución geométrica de esta misma lógica.</p>
     </div>
-    <div class="block" style="margin-top:26px">
+      </div>
+    </details>
+
+    <details class="collapsed-block" style="margin-top:14px">
+      <summary>La aritmética detrás — decisión en cuatro números y posición URBOP preliminar</summary>
+      <div class="collapsed-body">
+<div class="block" style="margin-top:26px">
       <h2 class="sec">La decisión en cuatro números — con su aritmética a la vista</h2>
       <p class="secsub">Comparación entre la opción con rampas y la opción con <span class="tt" tabindex="0" data-tipo="doc" data-que="Montacoches: ascensor para carros. Ocupa solo su ducto (61 m² por nivel) en vez de cientos de m² de rampa, pero mueve un carro a la vez." data-src="Cuadros GRUBORJA, fila 'Acceso por elevadores'">elevadores vehiculares</span> en niveles 2–5. Cada tarjeta muestra de dónde sale el número.</p>
       <div class="grid2">
@@ -570,7 +587,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <span class="tt" tabindex="0" data-tipo="sup" data-que="Modelo paramétrico de capacidad (Excel de 88 fórmulas) construido tras auditar el benchmark: estima 48–56 posiciones productivas para 3 niveles de servicio. Sus entradas de demanda, rotación y permanencia son hipótesis editables; no son datos confirmados de Grupo Los 3." data-src="Investigacion_Taller_Automotriz_Vertical.pdf + Modelo_Viabilidad_Taller_Vertical.xlsx, 28-jul-2026">escenario paramétrico preliminar</span>
       de 48–56 posiciones, dentro del cual caen los 49 puentes dibujados. <b>La recomendación no está cerrada financiera ni operativamente</b>: faltan demanda real, cotización y ciclo de los elevadores, WIP, costo de bodega externa, pintura, apartamentos y validación de conexiones.</p></div>
     </div>
-  </div>
+      </div>
+    </details>
+    </div>
 </section>
 
 <!-- ============ 01 PROBLEMA ============ -->
@@ -937,7 +956,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <h2 class="sec">Lo esencial y lo que puede resolverse afuera</h2>
     <p class="secsub">El test: es esencial lo que, si falta un día, detiene la línea ese mismo día. Todo lo demás compite por el m² contra lo que sí produce — y arrastra servidumbres al salir.</p>
 
-    <div class="case"><div class="head"><h3>1 · Bodega central de repuestos</h3><span class="badge ok">RESUELTO EN PROPUESTA 2</span></div><div class="body">
+    <div class="case"><div class="head"><h3>1 · Bodega central de repuestos</h3><span class="badge ok">RESUELTO EN 2E</span></div><div class="body">
       <p style="font-size:14px">Permanencia de meses, rotación bajísima. La <b>2E</b> la exporta a bodega perimetral + <span class="tt" tabindex="0" data-tipo="doc" data-que="'Búnker': el sótano 2 de Plaza del Sol, que no tiene comunicación con el sótano de Plaza del Sol pero sí se conectaría con el sótano 1 del nuevo edificio. Propuesta del propio GRUBORJA para absorber bodega." data-src="Comentarios de GRUBORJA sobre la Propuesta 2, cuadro Requerimientos N1">búnker de Plaza del Sol</span>. <b>Cascada capturada:</b> +143 sala, +164 exprés, −104 rampa de tráiler, −183 bodega N1. Dos análisis independientes llegaron a lo mismo. Falta un número: costo mensual de la bodega afuera.</p>
     </div></div>
 
@@ -1070,42 +1089,6 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="block">
-      <h3 style="font-size:17px;margin-bottom:6px">Espacio por carro o puente — área específica y placa completa</h3>
-      <p class="secsub" style="margin-bottom:16px"><b>m² de zona/unidad</b> mide el rectángulo programático donde están los carros; <b>m² de placa/unidad</b> reparte los 2,061.11 m² completos —incluye circulación, núcleos y apoyos—; <b>unidades/1,000 m²</b> permite comparar densidad. Ninguno de los tres sustituye el vano estructural.</p>
-      <div class="case-metrics">
-        <div class="case-metric"><div class="v">46.2 / 213.2</div><div class="l">P1 Rampas · N2–N4: m² de zona / m² de placa por puente · 29 puentes · 4.69 puentes/1,000 m².</div></div>
-        <div class="case-metric"><div class="v">45.6 / 126.2</div><div class="l">P1 Elevadores · N2–N4: m² de zona / m² de placa por puente · 49 puentes · 7.92 puentes/1,000 m².</div></div>
-        <div class="case-metric"><div class="v">47.1 / 126.2</div><div class="l">P2 Elevadores · N2–N4: m² de zona / m² de placa por puente · 49 puentes · 7.92 puentes/1,000 m².</div></div>
-      </div>
-      <div class="card" style="margin-top:14px">
-        <div class="table-responsive">
-          <table>
-            <thead><tr><th>Nivel · uso</th><th>Propuesta GRUBORJA</th><th>Área de zona</th><th>Conteo</th><th>m² zona / unidad</th><th>m² placa / unidad</th><th>Unid. / 1,000 m²</th></tr></thead>
-            <tbody>
-              <tr><td>N1 · showroom</td><td>P1 Rampas / P1 Elevadores</td><td class="num">550 m²</td><td>no documentado</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-              <tr><td>N1 · zona violeta*</td><td>P1 Rampas / P1 Elevadores</td><td class="num">198 m²</td><td class="num">9 posiciones</td><td class="num">22.0</td><td class="num">229.0</td><td class="num">4.37</td></tr>
-              <tr><td>N1 · showroom</td><td>P2 Elevadores + bodega externa</td><td class="num">693 m²</td><td>no documentado</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-              <tr><td>N1 · zona violeta*</td><td>P2 Elevadores + bodega externa</td><td class="num">362 m²</td><td class="num">12 posiciones</td><td class="num">30.2</td><td class="num">171.8</td><td class="num">5.82</td></tr>
-              <tr><td>N2 · puentes</td><td>P1 Rampas</td><td class="num">237 m²</td><td class="num">6</td><td class="num">39.5</td><td class="num">343.5</td><td class="num">2.91</td></tr>
-              <tr><td>N2 · puentes</td><td>P1 Elevadores</td><td class="num">365 m²</td><td class="num">8</td><td class="num">45.6</td><td class="num">257.6</td><td class="num">3.88</td></tr>
-              <tr><td>N2 · puentes</td><td>P2 Elevadores + bodega externa</td><td class="num">436 m²</td><td class="num">8</td><td class="num">54.5</td><td class="num">257.6</td><td class="num">3.88</td></tr>
-              <tr><td>N3 · puentes</td><td>P1 Rampas</td><td class="num">552 m²</td><td class="num">10</td><td class="num">55.2</td><td class="num">206.1</td><td class="num">4.85</td></tr>
-              <tr><td>N3 · puentes</td><td>P1 / P2 Elevadores</td><td class="num">935 m²</td><td class="num">19</td><td class="num">49.2</td><td class="num">108.5</td><td class="num">9.22</td></tr>
-              <tr><td>N4 · puentes</td><td>P1 Rampas</td><td class="num">552 m²</td><td class="num">13</td><td class="num">42.5</td><td class="num">158.5</td><td class="num">6.31</td></tr>
-              <tr><td>N4 · puentes</td><td>P1 / P2 Elevadores</td><td class="num">935 m²</td><td class="num">22</td><td class="num">42.5</td><td class="num">93.7</td><td class="num">10.67</td></tr>
-              <tr><td>N5 · parqueo</td><td>P1 Rampas</td><td class="num">745 m²</td><td class="num">45 carros</td><td class="num">16.6</td><td class="num">45.8</td><td class="num">21.83</td></tr>
-              <tr><td>N5 · parqueo</td><td>P1 / P2 Elevadores</td><td class="num">831 m²</td><td class="num">52 carros</td><td class="num">16.0</td><td class="num">39.6</td><td class="num">25.23</td></tr>
-              <tr><td>S1 · parqueo**</td><td>Todas</td><td class="num">1,174 m²</td><td class="num">44 carros</td><td class="num">26.7</td><td class="num">46.8</td><td class="num">21.35</td></tr>
-              <tr><td>S2 · parqueo</td><td>Todas</td><td class="num">1,174 m²</td><td class="num">61 carros</td><td class="num">19.2</td><td class="num">33.8</td><td class="num">29.60</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note" style="margin-top:12px">*En N1 existe una diferencia de clasificación: el cuadro llama a esa área “taller exprés”, mientras las plantas muestran 9 o 12 posiciones numeradas. Se conserva el cociente geométrico, pero no se lo trata como meta operativa hasta definir el uso. **La zona de S1 también contiene 40 motos; por eso 26.7 m²/carro no es un benchmark limpio de parqueo exclusivo.</p>
-        <p class="note" style="margin-top:8px"><b>La lectura clave:</b> en N4 el área local por puente casi no cambia —42.5 m² en ambos sistemas—, pero la placa completa mejora de 158.5 a 93.7 m²/puente. El aumento de capacidad viene principalmente de liberar rampa y repetir más celdas, no de apretar el espacio alrededor de cada carro.</p>
-      </div>
-    </div>
-
-    <div class="block">
       <h3 style="font-size:17px;margin-bottom:12px">El módulo también debe reservar el WIP</h3>
       <div class="card"><p style="font-size:14.5px">Los puentes no contienen todos los carros del sistema. La <span class="tt" tabindex="0" data-tipo="cal" data-que="Ley de Little: vehículos en sistema = throughput × permanencia promedio. La fórmula es una identidad matemática; el resultado depende de órdenes reales y tiempos de permanencia." data-src="Modelo de viabilidad, hoja 'Módulo por carro'">Ley de Little</span> obliga a reservar módulos de espera. Como ejemplo todavía hipotético, 72 veh/día × 1.2 días ≈ 84 vehículos dentro del sistema; si 48 están en posiciones activas, 36 necesitan una plaza WIP con nombre. <b>Una retícula eficiente para 49 puentes puede fracasar si no deja módulo para esos carros fuera de puente.</b></p></div>
     </div>
@@ -1153,12 +1136,12 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="block">
-      <h3 style="font-size:17px;margin-bottom:8px">Base preparada para el configurador modular del siguiente paso</h3>
-      <p class="secsub" style="margin-bottom:16px">El futuro esquema tipo drag-and-drop debe mover piezas con reglas y devolver números; no basta con dibujar rectángulos. Esta versión ya separa las entradas que serán fijas de las variables que sí podremos manipular.</p>
+      <h3 style="font-size:17px;margin-bottom:8px">La lógica de este análisis vive en el LAB de la sección 09</h3>
+      <p class="secsub" style="margin-bottom:16px">Las mismas entradas fijas, piezas movibles y resultados automáticos que se identifican en esta sección son el motor del <a href="#t8" onclick="show('t8');return false;"><b>Lab · Prioridades de uso</b></a>: allí se prueba el impacto de mover un uso en tiempo real.</p>
       <div class="grid3">
         <div class="card"><h3>Entradas fijas</h3><p style="font-size:13px">Placa 2,061.11 m²; límites y núcleos; rampas/elevadores dibujados; áreas por uso; conteos actuales; retícula GRUBORJA; programa obligatorio por nivel.</p></div>
-        <div class="card"><h3>Piezas que podremos mover</h3><p style="font-size:13px">Columnas y vanos; celdas de puente, parqueo, WIP y recepción; pasillos; rampa/elevador; bodega y apoyos. Cada pieza debe tener ancho, profundidad, permanencia y nivel permitido.</p></div>
-        <div class="card"><h3>Resultados automáticos</h3><p style="font-size:13px">Unidades completas; residuo; m² zona/unidad; m² placa/unidad; densidad por 1,000 m²; porcentaje de circulación; interferencias; capacidad por nivel y total.</p></div>
+        <div class="card"><h3>Piezas que se pueden mover</h3><p style="font-size:13px">Los 21 usos de la matriz, cada uno con m², tiempo de permanencia, tipo de cliente y capacidad aportada (puentes, posiciones, carros).</p></div>
+        <div class="card"><h3>Resultados automáticos</h3><p style="font-size:13px">m² consumidos, capacidad resultante, costo de permanencia (m²·día), mix de clientes, costo espacial anual por unidad, servidumbres retiradas.</p></div>
       </div>
     </div>
   </div>
