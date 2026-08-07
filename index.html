@@ -75,7 +75,7 @@ section.tab.on{display:block;animation:fade .35s ease}
 .ver.senal{background:#dff0cf;color:#2c4d16}
 .ver.apoyo{background:#e6ecf4;color:#27415c}
 .ver.cond{background:#f3e8d2;color:#7a5510}
-.ver.ruido{background:#f2dcdc;color:var(--oxblood)}
+.ver.afuera{background:#f2dcdc;color:var(--oxblood)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
@@ -291,7 +291,7 @@ tr:hover td{background:#f6f8f2}
 .play-btn.primary:hover{background:#123b2f}
 .play-use-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:12px}
 .play-use{display:flex;gap:7px;align-items:flex-start;border:1px solid var(--line);border-left:4px solid var(--sage);border-radius:6px;background:#fff;padding:8px 9px;font-size:11px;cursor:pointer}
-.play-use.senal{border-left-color:var(--lime)}.play-use.apoyo{border-left-color:#6f8fb4}.play-use.cond{border-left-color:var(--ochre)}.play-use.ruido{border-left-color:var(--oxblood)}
+.play-use.senal{border-left-color:var(--lime)}.play-use.apoyo{border-left-color:#6f8fb4}.play-use.cond{border-left-color:var(--ochre)}.play-use.afuera{border-left-color:var(--oxblood)}
 .play-use input{margin-top:2px}.play-use b{display:block;font-size:11.5px;color:#2f3933}.play-use small{display:block;font-family:'JetBrains Mono';font-size:8.5px;color:#747d77;text-transform:uppercase}
 .play-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px}
 .play-kpi{border-top:3px solid var(--lime);background:#f9faf7;padding:10px 11px}
@@ -468,9 +468,33 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
   </div></div>
   <div class="wrap">
-    <div class="howto">💡<div><b>CÓMO USAR EL INFORME.</b> Pasá el cursor —o tocá en móvil— sobre cualquier <span class="tt" tabindex="0" data-tipo="met" data-que="Una línea punteada indica que el término tiene una explicación y una fuente asociada. Al abrirla se muestra qué significa, de dónde sale y si es documento, cálculo, solicitud, norma o supuesto." data-src="Sistema de trazabilidad de este informe">término con línea punteada</span>. El recuadro emergente explica <b>qué significa</b> y <b>de dónde sale</b>. En los diagramas, los pisos de igual ancho muestran organización vertical y <b>no escala real</b>; las barras solo se comparan cuando comparten la misma escala indicada; gris o línea discontinua significa dato incompleto. La sección central es la <b>Matriz de usos</b>: allí se decide qué programa merece ocupar el edificio antes de comparar plantas o mover columnas.</div></div>
+
+    <!-- =============== SÍNTESIS PRIORITARIA (Fase 2b) =============== -->
+    <div class="block" style="margin-top:26px">
+      <div class="card" style="border-left:5px solid var(--forest);background:#fbfaf6;padding:22px 26px">
+        <p style="font-size:15.5px;line-height:1.65;margin-bottom:14px"><b>Se recibió el encargo de evaluar tres propuestas arquitectónicas.</b> Al analizarlas se identificó que la diferencia determinante entre ellas es la proporción de placa destinada a circulación, y que esa proporción no se define desde el diseño sino desde los usos que el edificio debe albergar y el tiempo que cada uno permanece. La evaluación de usos es, por lo tanto, el paso previo necesario para comparar las propuestas con criterio.</p>
+        <p style="font-size:14.5px;line-height:1.6;color:#3a423d;font-style:italic;margin:0">Un hotel no se evalúa por el número de habitaciones, sino por quién las ocupa y cuánto tiempo permanece. Este edificio se comporta igual.</p>
+      </div>
+
+      <h3 style="font-size:15px;color:var(--forest);margin:26px 0 10px;letter-spacing:.02em">Anclaje económico</h3>
+      <div class="grid3">
+        <div class="kpi"><div class="v">USD $1.38 M</div><div class="l">Costo aproximado por planta</div><div class="how">2,061.11 m² × <span class="tt" tabindex="0" data-tipo="sup" data-que="Supuesto vigente USD $670 por metro cuadrado construido. Editable en la conversación con el cliente cuando se defina la calidad final." data-src="Supuesto URBOP 2026, por confirmar">USD $670/m²</span> — supuesto marcado</div></div>
+        <div class="kpi"><div class="v">USD $9.6 M</div><div class="l">Costo aproximado de placa construida en los siete niveles</div><div class="how">1.38 × 7. Es la cifra que hace que la pregunta de usos importe: cada metro que se desperdicia en un uso equivocado tiene precio.</div></div>
+        <div class="kpi warn"><div class="v">3</div><div class="l">Datos que el cliente aún no ha entregado</div><div class="how">Sin ellos ninguna recomendación de esta síntesis puede aprobarse.</div></div>
+      </div>
+
+      <h3 style="font-size:15px;color:var(--forest);margin:26px 0 10px;letter-spacing:.02em">Datos que faltan para tomar la decisión</h3>
+      <div class="grid3">
+        <div class="kpi warn"><div class="v">1</div><div class="l"><b>Órdenes de servicio por mes</b> por tipo (exprés · mecánica · larga)</div><div class="how">Decide si 49 puentes son crecimiento programado o capacidad ociosa cara.</div></div>
+        <div class="kpi warn"><div class="v">2</div><div class="l"><b>Ticket promedio de mano de obra</b> (Q por orden)</div><div class="how">Convierte puentes en quetzales y da el <i>payback</i> de los elevadores vehiculares.</div></div>
+        <div class="kpi warn"><div class="v">3</div><div class="l"><b>Costo de bodega afuera</b> (renta + logística + habilitar búnker)</div><div class="how">Cierra la viabilidad de la propuesta <b>2E</b> (elevadores + bodega externa).</div></div>
+      </div>
+    </div>
+    <!-- =============== FIN SÍNTESIS PRIORITARIA =============== -->
+
+    <div class="howto" style="margin-top:32px">💡<div><b>CÓMO USAR EL INFORME.</b> Pase el cursor —o seleccione en móvil— sobre cualquier <span class="tt" tabindex="0" data-tipo="met" data-que="Una línea punteada indica que el término tiene una explicación y una fuente asociada. Al abrirla se muestra qué significa, de dónde sale y si es documento, cálculo, solicitud, norma o supuesto." data-src="Sistema de trazabilidad de este informe">término con línea punteada</span>. El recuadro emergente explica <b>qué significa</b> y <b>de dónde sale</b>. En los diagramas, los pisos de igual ancho muestran organización vertical y <b>no escala real</b>; las barras solo se comparan cuando comparten la misma escala indicada; gris o línea discontinua significa dato incompleto. La sección central es la <b>Matriz de usos</b>: allí se decide qué programa merece ocupar el edificio antes de comparar plantas o mover columnas.</div></div>
     <div class="card" style="margin-top:14px;border-left:5px solid var(--lime)">
-      <p style="font-size:13.5px"><b>VERSIÓN CORREGIDA · 29 JUL 2026.</b> En este informe, “dibujado” significa que aparece en planos o cuadros GRUBORJA; “solicitado” proviene de los correos del cliente; “calculado” es aritmética sobre esas fuentes; y “escenario” depende de supuestos todavía no confirmados. La <b>Propuesta 2 · Elevadores + bodega externa</b> es una recomendación condicionada, no una aprobación final.</p>
+      <p style="font-size:13.5px"><b>VERSIÓN CORREGIDA · 29 JUL 2026.</b> En este informe, “dibujado” significa que aparece en planos o cuadros GRUBORJA; “solicitado” proviene de los correos del cliente; “calculado” es aritmética sobre esas fuentes; y “escenario” depende de supuestos todavía no confirmados. La <b>2E</b> es una recomendación condicionada, no una aprobación final.</p>
     </div>
     <div class="block" id="definiciones" style="margin-top:28px">
       <h2 class="sec">Definiciones — vocabulario común antes de la matriz</h2>
@@ -487,7 +511,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <div class="def-item"><b>Área de apoyo</b><span>Área necesaria para que la operación funcione, aunque no genere directamente una orden, venta o servicio.</span></div>
         <div class="def-item"><b>Circulación necesaria no productiva</b><span>Rampas, calles internas, vestíbulos y recorridos requeridos para operar. Se miden como costo y oportunidad — no como "desperdicio".</span></div>
         <div class="def-item"><b>Costo espacial</b><span>Costo de mantener un uso dentro de determinada cantidad de m², incorporando una proporción de circulación y áreas comunes.</span></div>
-        <div class="def-item"><b>Veredicto · Hipótesis URBOP</b><span>SEÑAL, APOYO, CONDICIONAL o RUIDO. Es hipótesis inicial: puede cambiar al incorporar datos reales de área, permanencia, demanda, rotación y costo.</span></div>
+        <div class="def-item"><b>Veredicto · Hipótesis URBOP</b><span>ESENCIAL, NICE TO HAVE, CONDICIONAL o SE RESUELVE AFUERA. Es hipótesis inicial: puede cambiar al incorporar datos reales de área, permanencia, demanda, rotación y costo.</span></div>
       </div>
     </div>
     <div class="block" id="guia-lectura" style="margin-top:28px">
@@ -520,10 +544,10 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <div class="grid2">
         <div class="kpi"><div class="v">2,526–2,530 m² brutos liberados</div>
           <div class="l">Piso que deja de ser tránsito para ser producción al quitar las rampas de los niveles 2 al 5.</div>
-          <div class="how">873 + 790 + 790 + 302 = 2,755 m². <b>Propuesta 1 · Elevadores</b> conserva 229 m² de rampa: libera 2,526 brutos y 2,282 netos. <b>Propuesta 2 · Elevadores + bodega externa</b> conserva 225 m²: libera 2,530 brutos y 2,286 netos. <span class="tt" tabindex="0" data-tipo="cal" data-que="El neto descuenta 61 m² de ductos de elevadores por cada uno de los 4 niveles: 61 × 4 = 244 m². Propuesta 1 · Elevadores: 2,755 − 229 − 244 = 2,282. Propuesta 2: 2,755 − 225 − 244 = 2,286." data-src="Cálculo sobre los cuadros GRUBORJA">Ver aritmética</span></div></div>
+          <div class="how">873 + 790 + 790 + 302 = 2,755 m². <b>1E</b> conserva 229 m² de rampa: libera 2,526 brutos y 2,282 netos. <b>2E</b> conserva 225 m²: libera 2,530 brutos y 2,286 netos. <span class="tt" tabindex="0" data-tipo="cal" data-que="El neto descuenta 61 m² de ductos de elevadores por cada uno de los 4 niveles: 61 × 4 = 244 m². 1E: 2,755 − 229 − 244 = 2,282. Propuesta 2: 2,755 − 225 − 244 = 2,286." data-src="Cálculo sobre los cuadros GRUBORJA">Ver aritmética</span></div></div>
         <div class="kpi"><div class="v">29 → 49 puentes</div>
           <div class="l">Los <span class="tt" tabindex="0" data-tipo="doc" data-que="'Puente' = puesto de trabajo de taller: el elevador de 2 postes que levanta el carro para trabajarle debajo, con su espacio de maniobra. Más puentes = más carros atendidos a la vez." data-src="Jerga de taller; conteos en cuadros GRUBORJA por nivel">puestos de trabajo</span> aumentan <b>69%</b> con el espacio que las rampas devuelven.</div>
-          <div class="how">N2: 6→8 · N3: 10→19 · N4: 13→22. Aumento: (49−29)/29 = 69%. El cuadro dice literalmente “aumenta casi el doble”, pero no es una duplicación matemática. <span class="tt" tabindex="0" data-tipo="doc" data-que="La Propuesta 1 · Rampas suma además 3 'estaciones de trabajo' en N3 que no cuentan como puentes completos." data-src="Cuadro Requerimientos N2-N3, GRUBORJA mar-2026">(+3 estaciones en Propuesta 1 · Rampas)</span></div></div>
+          <div class="how">N2: 6→8 · N3: 10→19 · N4: 13→22. Aumento: (49−29)/29 = 69%. El cuadro dice literalmente “aumenta casi el doble”, pero no es una duplicación matemática. <span class="tt" tabindex="0" data-tipo="doc" data-que="La 1R suma además 3 'estaciones de trabajo' en N3 que no cuentan como puentes completos." data-src="Cuadro Requerimientos N2-N3, GRUBORJA mar-2026">(+3 estaciones en 1R)</span></div></div>
         <div class="kpi"><div class="v">42% → 11% del piso N2</div>
           <div class="l">Lo que la rampa se come del nivel más productivo (recepción + exprés) en cada opción.</div>
           <div class="how">Rampa 873 / placa 2,061 = 42% → rampa 229 / 2,061 = 11% <span class="tt" tabindex="0" data-tipo="cal" data-que="Sumando el ducto de elevadores (61 m² = 3%), la circulación vertical total del N2 queda en 14%. El benchmark de un edificio sano es circulación total ≤ 30–38% del bruto." data-src="Cuadros GRUBORJA; benchmark de circulación: referencia de industria URBOP (supuesto)">+ 3% de elevadores = 14% total</span></div></div>
@@ -542,7 +566,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
     <div class="block">
       <h2 class="sec">Posición URBOP</h2>
-      <div class="card"><p><b>URBOP recomienda estudiar como alternativa preferente la Propuesta 2 · Elevadores + bodega externa.</b> La recomendación se apoya en la matriz de usos, los cuadros de GRUBORJA y un
+      <div class="card"><p><b>URBOP recomienda estudiar como alternativa preferente la 2E.</b> La recomendación se apoya en la matriz de usos, los cuadros de GRUBORJA y un
       <span class="tt" tabindex="0" data-tipo="sup" data-que="Modelo paramétrico de capacidad (Excel de 88 fórmulas) construido tras auditar el benchmark: estima 48–56 posiciones productivas para 3 niveles de servicio. Sus entradas de demanda, rotación y permanencia son hipótesis editables; no son datos confirmados de Grupo Los 3." data-src="Investigacion_Taller_Automotriz_Vertical.pdf + Modelo_Viabilidad_Taller_Vertical.xlsx, 28-jul-2026">escenario paramétrico preliminar</span>
       de 48–56 posiciones, dentro del cual caen los 49 puentes dibujados. <b>La recomendación no está cerrada financiera ni operativamente</b>: faltan demanda real, cotización y ciclo de los elevadores, WIP, costo de bodega externa, pintura, parqueo de empleados, apartamentos y validación de conexiones.</p></div>
     </div>
@@ -553,8 +577,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 <section class="tab" id="t1">
   <div class="wrap" style="padding-top:48px">
     <div class="eyebrow">02 · Hotel de carros</div>
-    <h2 class="sec">En un terreno chico, cada m² que mueve carros es un m² que no produce</h2>
-    <p class="secsub">El miedo que la mesa puso en palabras — "50% rampas, 20% talleres, 30% parqueos, así no sale" — resultó real: en la versión con rampas, el Nivel 2 pierde el <span class="tt" tabindex="0" data-tipo="doc" data-que="873 m² de rampa sobre una placa de 2,061 m². El propio cuadro lo marca en rojo." data-src="Cuadro/plano Nivel 2 Opción 1 con rampas, GRUBORJA: '873.00 → 42%'">42% de su piso</span> solo en rampa.</p>
+    <h2 class="sec">El edificio es un hotel de carros</h2>
+    <p class="secsub">Un hotel se mide por rotación, tarifa por noche y mix de huéspedes — exactamente carros / tiempo / cliente. Un uso que permanece meses no puede ocupar la misma placa que uno que permanece minutos. Esa es la regla que ordena todo lo demás del informe.<br><br>El miedo que la mesa puso en palabras — "50% rampas, 20% talleres, 30% parqueos, así no sale" — resultó real: en la versión con rampas, el Nivel 2 pierde el <span class="tt" tabindex="0" data-tipo="doc" data-que="873 m² de rampa sobre una placa de 2,061 m². El propio cuadro lo marca en rojo." data-src="Cuadro/plano Nivel 2 Opción 1 con rampas, GRUBORJA: '873.00 → 42%'">42% de su piso</span> solo en rampa.</p>
 
     <div class="block grid2">
       <div class="card">
@@ -569,7 +593,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <p class="note" style="margin-top:12px"><span class="tt" tabindex="0" data-tipo="sup" data-que="Marco analítico construido por URBOP en este proyecto a partir de permanencia, frecuencia, horario, usuario y complejidad — los cinco parámetros acordados con jefatura." data-src="Notas de discusión URBOP, jul-2026; validado contra cuadros GRUBORJA">La regla es marco URBOP</span>; los números que la prueban son de los planos.</p>
       </div>
       <div class="card">
-        <h3>La segunda regla: el ruido cuesta sus <span class="tt" tabindex="0" data-tipo="sup" data-que="Servidumbre: infraestructura que existe solo para servir a un uso (una rampa, un ducto, un equipo). No puede ser ruido por sí misma — hereda la clasificación del uso que sirve, y muere con él." data-src="Marco URBOP, regla de herencia">servidumbres</span></h3>
+        <h3>La segunda regla: cada uso arrastra sus <span class="tt" tabindex="0" data-tipo="sup" data-que="Servidumbre: infraestructura que existe solo para servir a un uso (una rampa, un ducto, un equipo). No tiene identidad propia — hereda la clasificación del uso que sirve. Si ese uso se reubica en otro terreno, la infraestructura deja de ser necesaria y el edificio recupera esa área." data-src="Marco URBOP, regla de herencia">servidumbres</span></h3>
         <p style="font-size:14px;margin-top:6px">Cada uso que sale arrastra la infraestructura que existía solo para él:</p>
         <ul style="font-size:14px;margin:12px 0 0 18px;line-height:1.9">
           <li><b>Bodega fuera</b> → muere la rampa de tráiler (104 m²) y su andén; el N1 gana 307 m².</li>
@@ -591,14 +615,14 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   <div class="wrap" style="padding-top:48px">
     <div class="eyebrow">03 · Huéspedes: usos, tiempos y clientes</div>
     <h2 class="sec">Matriz de usos — Uso → Usuario → estadía → veredicto</h2>
-    <p class="secsub">La columna <b>Usuario</b> aparece inmediatamente después de <b>Uso</b> para que la lectura empiece por <i>quién</i> ocupa el espacio. El chip de <b>Tipo de estadía</b> muestra cuánto tiempo permanece. El <b>Veredicto · Hipótesis URBOP</b> —SEÑAL, APOYO, CONDICIONAL, RUIDO— es una hipótesis inicial que puede cambiar al incorporar datos reales de área, permanencia, demanda, rotación y costo. Rotación, movimiento/destino y costo espacial se irán llenando conforme el cliente confirme los datos: por ahora aparecen como pendientes.</p>
+    <p class="secsub">La columna <b>Usuario</b> aparece inmediatamente después de <b>Uso</b> para que la lectura empiece por <i>quién</i> ocupa el espacio. El chip de <b>Tipo de estadía</b> muestra cuánto tiempo permanece. El <b>Veredicto · Hipótesis URBOP</b> —ESENCIAL, NICE TO HAVE, CONDICIONAL, SE RESUELVE AFUERA— es una hipótesis inicial que puede cambiar al incorporar datos reales de área, permanencia, demanda, rotación y costo. Rotación, movimiento/destino y costo espacial se irán llenando conforme el cliente confirme los datos: por ahora aparecen como pendientes.</p>
     <div class="block" style="margin-bottom:24px">
       <h3 style="font-size:17px;margin-bottom:12px">Cómo leer los cuatro veredictos</h3>
       <div class="grid2">
-        <div class="card" style="border-left:4px solid #8DC63F"><h3><span class="ver senal">SEÑAL</span></h3><p style="font-size:13.5px"><b>Produce directamente el propósito principal.</b> Atiende, repara, entrega o vende. Si se elimina, una parte esencial de la operación o de la experiencia del cliente deja de funcionar.</p></div>
-        <div class="card" style="border-left:4px solid #6f8fb4"><h3><span class="ver apoyo">APOYO</span></h3><p style="font-size:13.5px"><b>No produce por sí solo, pero habilita la señal.</b> Hace posible que trabajen las personas, circulen materiales o se mantenga la seguridad. Debe existir, pero dimensionarse sin quitarle área innecesaria a la producción.</p></div>
+        <div class="card" style="border-left:4px solid #8DC63F"><h3><span class="ver senal">ESENCIAL</span></h3><p style="font-size:13.5px"><b>Produce directamente el propósito principal.</b> Atiende, repara, entrega o vende. Si se elimina, una parte esencial de la operación o de la experiencia del cliente deja de funcionar.</p></div>
+        <div class="card" style="border-left:4px solid #6f8fb4"><h3><span class="ver apoyo">NICE TO HAVE</span></h3><p style="font-size:13.5px"><b>No produce por sí solo, pero habilita la señal.</b> Hace posible que trabajen las personas, circulen materiales o se mantenga la seguridad. Debe existir, pero dimensionarse sin quitarle área innecesaria a la producción.</p></div>
         <div class="card" style="border-left:4px solid #B07C1E"><h3><span class="ver cond">CONDICIONAL</span></h3><p style="font-size:13.5px"><b>Puede ser necesario, pero depende de un dato o una decisión todavía abierta.</b> Antes de reservarle m² hay que confirmar demanda, permanencia, flota, normativa, costo o modelo de negocio.</p></div>
-        <div class="card" style="border-left:4px solid #6B1F1F"><h3><span class="ver ruido">RUIDO</span></h3><p style="font-size:13.5px"><b>Consume mucho espacio o complejidad frente al valor que aporta en este edificio.</b> No significa “inútil”: significa que debe trasladarse, reducirse o demostrar con números que merece permanecer.</p></div>
+        <div class="card" style="border-left:4px solid #6B1F1F"><h3><span class="ver afuera">SE RESUELVE AFUERA</span></h3><p style="font-size:13.5px"><b>Consume mucho espacio o complejidad frente al valor que aporta en este edificio.</b> No significa “inútil”: significa que debe trasladarse, reducirse o demostrar con números que merece permanecer.</p></div>
       </div>
     </div>
     <div class="complexity-key">
@@ -615,55 +639,73 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
     <div class="filters" id="filtros">
       <button class="on" data-f="all">TODOS</button>
-      <button data-f="senal">SEÑAL</button>
-      <button data-f="apoyo">APOYO</button>
+      <button data-f="senal">ESENCIAL</button>
+      <button data-f="apoyo">NICE TO HAVE</button>
       <button data-f="cond">CONDICIONAL</button>
-      <button data-f="ruido">RUIDO</button>
+      <button data-f="afuera">SE RESUELVE AFUERA</button>
     </div>
     <table id="tusos">
-      <thead><tr><th><span class="tt" tabindex="0" data-tipo="sup" data-que="SEÑAL: si falta un día, la línea productiva se detiene ese día. CONDICIONAL: aporta pero no detiene. RUIDO: compite por el m² contra lo que produce. APOYO: habilita a la señal." data-src="Test de clasificación acordado con jefatura">Uso</span></th><th>Usuario</th><th>Tipo de estadía</th><th><span class="tt" tabindex="0" data-tipo="met" data-que="Escala 0–5 de exigencia física: 0 = sin instalación fija; 1 = losa/marca/luz; 2 = instalaciones estándar; 3 = agua, drenaje o ambiente controlado; 4 = equipo y cargas de taller; 5 = extracción, tratamiento o riesgo regulado." data-src="Escala de complejidad del análisis, jul-2026">Complejidad</span></th><th>Veredicto · Hipótesis URBOP</th><th>Área por nivel y propuesta</th><th>Estado</th></tr></thead>
+      <thead><tr><th><span class="tt" tabindex="0" data-tipo="sup" data-que="ESENCIAL: sostiene el propósito del edificio y su ausencia detiene la línea productiva ese día. CONDICIONAL: aporta pero no detiene; su necesidad depende de un dato aún abierto. SE RESUELVE AFUERA: existe y se reubica en otros terrenos de la propiedad porque su permanencia consume placa cara. NICE TO HAVE: habilita a lo esencial sin generar servicio o venta directa." data-src="Test de clasificación acordado con jefatura">Uso</span></th><th>Usuario</th><th>Tipo de estadía</th><th><span class="tt" tabindex="0" data-tipo="met" data-que="Escala 0–5 de exigencia física: 0 = sin instalación fija; 1 = losa/marca/luz; 2 = instalaciones estándar; 3 = agua, drenaje o ambiente controlado; 4 = equipo y cargas de taller; 5 = extracción, tratamiento o riesgo regulado." data-src="Escala de complejidad del análisis, jul-2026">Complejidad</span></th><th>Veredicto · Hipótesis URBOP</th><th>Área por nivel y propuesta</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Carril donde el cliente entrega su carro y el asesor abre la orden. Diego pidió eliminarla como 'sala de exposición 2º nivel' y convertirla en recepción con circulación + espera de clientes." data-src="Correo Diego Cuestas (Gerente General), 10-jun-2025">Recepción de vehículos</span></b> · pico 7:00–9:30</td><td><span class="chip min">10–20 MIN</span></td><td>Cliente</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL porque aquí comienza el servicio: se recibe el carro, se identifica al cliente y se abre la orden. Sin recepción no existe un ingreso controlado al proceso." data-src="Clasificación URBOP sobre el flujo solicitado por Diego Cuestas">SEÑAL</span></td><td>N2 · 195–278 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Servicios rápidos (aceite, filtros, revisión): el carro entra y sale el mismo turno. Es el m² que más produce por hora en todo el edificio." data-src="Cuadros GRUBORJA (N1 'taller express autos chinos'); rotación 4–6 OS/día/puente = supuesto de industria, editable">Taller exprés</span></b></td><td><span class="chip min">45M–1.5H</span></td><td>Técnico</td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL porque ejecuta órdenes cobrables de alta rotación. Produce servicio directamente y convierte el área en ingresos varias veces durante la jornada." data-src="Clasificación URBOP sobre el programa GRUBORJA">SEÑAL</span></td><td>N1–N2</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b>Taller mecánica</b></td><td><span class="chip dias">4H–3D</span></td><td>Técnico</td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL porque constituye la línea productiva principal del taller: diagnóstico, reparación y horas facturables. Quitarla elimina la razón operativa de N3–N4." data-src="Clasificación URBOP sobre los puentes dibujados por GRUBORJA">SEÑAL</span></td><td>N3–N4 · 935 m² c/u</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b>Lavado</b> · cierra la línea; dimensiona la cisterna</td><td><span class="chip min">20–35 MIN</span></td><td>Operario</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL porque forma parte del cierre del servicio y de la preparación del vehículo para entrega. Sin capacidad de lavado se acumula producto terminado y se bloquea la salida." data-src="Clasificación URBOP sobre la secuencia recepción–servicio–entrega">SEÑAL</span></td><td>N2 · 60 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Preparación e inspección antes de devolver el carro al cliente. Pedida explícita en la lista de puntos de talleres." data-src="Correo Erik Maquiz, 12-jun-2025">Entrega + preparación/inspección</span></b></td><td><span class="chip min">30–60 MIN</span></td><td>Cliente</td><td class="num">2–3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL porque verifica la calidad y devuelve el carro al cliente. Sin inspección y entrega formal, la orden no se completa ni se libera correctamente." data-src="Clasificación URBOP sobre la solicitud de preparación e inspección">SEÑAL</span></td><td>N1–N2</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Mostrador de venta de repuestos con stock de 24–48 h. Diego pidió habilitar el frente al local 'Wichos' en S1 para este mostrador. El despacho es señal; la BODEGA central no." data-src="Correo Diego Cuestas, 10-jun-2025">Despacho de repuestos</span></b></td><td><span class="chip min">10–15 MIN</span></td><td>Técnico + público</td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL porque abastece la reparación inmediata y atiende la venta de mostrador. Se clasifica el despacho de alta rotación, no la bodega central de inventario lento." data-src="Clasificación URBOP; solicitud de mostrador de repuestos">SEÑAL</span></td><td>S1 frente Wichos</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b>Parqueo de visitas</b></td><td><span class="chip min">45M–2H</span></td><td>Cliente</td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL para la experiencia comercial: permite que clientes de ventas y servicio accedan y permanezcan durante su atención. La cantidad dedicada exclusivamente a visitas todavía debe asignarse." data-src="Clasificación URBOP sobre el uso confirmado en S1–S2">SEÑAL</span></td><td>S1–S2 · <span class="tt" tabindex="0" data-tipo="doc" data-que="44 carros en S1 + 61 carros en S2 = 105 posiciones totales. El conteo está documentado; falta separar cuántas son de clientes, empleados y otros usuarios." data-src="Cuadros y plantas S1-S2, GRUBORJA">105 carros totales</span></td><td><span class="badge pc">USO POR ASIGNAR</span></td></tr>
-        <tr data-v="apoyo"><td><b>Parqueo de empleados (carros)</b> · esencial y huérfano</td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td class="num">1–2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es APOYO porque permite el acceso del personal, pero no repara ni vende carros directamente. Debe dimensionarse con la plantilla y los modos reales de llegada; hoy no tiene plazas asignadas." data-src="Clasificación URBOP; revisión de S1–S2">APOYO</span></td><td><b><span class="tt" tabindex="0" data-tipo="fal" data-que="Los sótanos están rotulados 'parqueo de vehículos de clientes y usuarios varios'. Ningún plano asigna plazas de carro a empleados; solo 40 motos tienen lugar explícito en S1. Es el único uso esencial sin casa." data-src="Revisión URBOP de plantas S1-S2 y cuadros, jul-2026">SIN ASIGNAR</span></b></td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
-        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Diego pidió estudiar parqueo de motos en S1 ó S2 'como espina de pescado entrando por el lado sur y saliendo por el norte' — plazas a 45° en fila." data-src="Correo Diego Cuestas, 10-jun-2025">Motos empleados/mensajeros</span></td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es APOYO porque facilita la llegada de empleados y mensajeros con menor consumo de área que el automóvil. Habilita la operación sin ser una posición productiva." data-src="Clasificación URBOP sobre la solicitud y las 40 motos dibujadas">APOYO</span></td><td>S1 · 40 motos</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Sala de ventas de autos chinos con fachada Jetour. Diego eligió el 'ejercicio 2': SOLO la sala resaltada tipo Jetour y el resto del edificio en otro color/textura, rotulable aparte." data-src="Correo Diego Cuestas, 11-jun-2025 ('creo esto sería lo mejor')">Showroom Jetour</span></b></td><td><span class="chip dias">30–90 D</span></td><td>Cliente</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es SEÑAL para la función comercial del proyecto: exhibe y vende los vehículos de la marca. Su inventario de exposición debe mantenerse limitado para no convertir la sala en almacenamiento." data-src="Clasificación URBOP sobre el programa comercial confirmado">SEÑAL</span></td><td>N1 · 550→693 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="apoyo"><td>Oficinas operativas (jefes de taller, asesores)</td><td><span class="chip min">9 H</span></td><td>Empleado</td><td class="num">2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es APOYO porque coordina técnicos, asesores, órdenes y clientes, pero no constituye una bahía productiva. Debe permanecer cerca de la operación y dimensionarse por plantilla." data-src="Clasificación URBOP sobre oficinas N2–N3">APOYO</span></td><td>N2–N3</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Bodega de materiales y de herramienta EN CADA TALLER (compartibles entre sí) — distintas de la bodega central de repuestos." data-src="Correo Erik Maquiz, 12-jun-2025">Bodegas de materiales por taller</span></td><td><span class="chip meses">SEMANAS</span></td><td>Técnico</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es APOYO porque mantiene herramientas y consumibles junto a los técnicos, reduciendo recorridos y tiempos muertos. Debe ser una bodega local compacta, no inventario central de meses." data-src="Clasificación URBOP; solicitud de Erik Maquiz">APOYO</span></td><td>N2–N4</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Carril donde el cliente entrega su carro y el asesor abre la orden. Diego pidió eliminarla como 'sala de exposición 2º nivel' y convertirla en recepción con circulación + espera de clientes." data-src="Correo Diego Cuestas (Gerente General), 10-jun-2025">Recepción de vehículos</span></b> · pico 7:00–9:30</td><td><span class="chip min">10–20 MIN</span></td><td>Cliente</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque aquí comienza el servicio: se recibe el carro, se identifica al cliente y se abre la orden. Sin recepción no existe un ingreso controlado al proceso." data-src="Clasificación URBOP sobre el flujo solicitado por Diego Cuestas">ESENCIAL</span></td><td>N2 · 195–278 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Servicios rápidos (aceite, filtros, revisión): el carro entra y sale el mismo turno. Es el m² que más produce por hora en todo el edificio." data-src="Cuadros GRUBORJA (N1 'taller express autos chinos'); rotación 4–6 OS/día/puente = supuesto de industria, editable">Taller exprés</span></b></td><td><span class="chip min">45M–1.5H</span></td><td>Técnico</td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque ejecuta órdenes cobrables de alta rotación. Produce servicio directamente y convierte el área en ingresos varias veces durante la jornada." data-src="Clasificación URBOP sobre el programa GRUBORJA">ESENCIAL</span></td><td>N1–N2</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b>Taller mecánica</b></td><td><span class="chip dias">4H–3D</span></td><td>Técnico</td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque constituye la línea productiva principal del taller: diagnóstico, reparación y horas facturables. Quitarla elimina la razón operativa de N3–N4." data-src="Clasificación URBOP sobre los puentes dibujados por GRUBORJA">ESENCIAL</span></td><td>N3–N4 · 935 m² c/u</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b>Lavado</b> · cierra la línea; dimensiona la cisterna</td><td><span class="chip min">20–35 MIN</span></td><td>Operario</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque forma parte del cierre del servicio y de la preparación del vehículo para entrega. Sin capacidad de lavado se acumula producto terminado y se bloquea la salida." data-src="Clasificación URBOP sobre la secuencia recepción–servicio–entrega">ESENCIAL</span></td><td>N2 · 60 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Preparación e inspección antes de devolver el carro al cliente. Pedida explícita en la lista de puntos de talleres." data-src="Correo Erik Maquiz, 12-jun-2025">Entrega + preparación/inspección</span></b></td><td><span class="chip min">30–60 MIN</span></td><td>Cliente</td><td class="num">2–3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque verifica la calidad y devuelve el carro al cliente. Sin inspección y entrega formal, la orden no se completa ni se libera correctamente." data-src="Clasificación URBOP sobre la solicitud de preparación e inspección">ESENCIAL</span></td><td>N1–N2</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Mostrador de venta de repuestos con stock de 24–48 h. Diego pidió habilitar el frente al local 'Wichos' en S1 para este mostrador. El despacho es esencial; la BODEGA central no." data-src="Correo Diego Cuestas, 10-jun-2025">Despacho de repuestos</span></b></td><td><span class="chip min">10–15 MIN</span></td><td>Técnico + público</td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque abastece la reparación inmediata y atiende la venta de mostrador. Se clasifica el despacho de alta rotación, no la bodega central de inventario lento." data-src="Clasificación URBOP; solicitud de mostrador de repuestos">ESENCIAL</span></td><td>S1 frente Wichos</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b>Parqueo de visitas</b></td><td><span class="chip min">45M–2H</span></td><td>Cliente</td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL para la experiencia comercial: permite que clientes de ventas y servicio accedan y permanezcan durante su atención. La cantidad dedicada exclusivamente a visitas todavía debe asignarse." data-src="Clasificación URBOP sobre el uso confirmado en S1–S2">ESENCIAL</span></td><td>S1–S2 · <span class="tt" tabindex="0" data-tipo="doc" data-que="44 carros en S1 + 61 carros en S2 = 105 posiciones totales. El conteo está documentado; falta separar cuántas son de clientes, empleados y otros usuarios." data-src="Cuadros y plantas S1-S2, GRUBORJA">105 carros totales</span></td><td><span class="badge pc">USO POR ASIGNAR</span></td></tr>
+        <tr data-v="apoyo"><td><b>Parqueo de empleados (carros)</b> · esencial y huérfano</td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td class="num">1–2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque permite el acceso del personal, pero no repara ni vende carros directamente. Debe dimensionarse con la plantilla y los modos reales de llegada; hoy no tiene plazas asignadas." data-src="Clasificación URBOP; revisión de S1–S2">NICE TO HAVE</span></td><td><b><span class="tt" tabindex="0" data-tipo="fal" data-que="Los sótanos están rotulados 'parqueo de vehículos de clientes y usuarios varios'. Ningún plano asigna plazas de carro a empleados; solo 40 motos tienen lugar explícito en S1. Es el único uso esencial sin casa." data-src="Revisión URBOP de plantas S1-S2 y cuadros, jul-2026">SIN ASIGNAR</span></b></td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
+        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Diego pidió estudiar parqueo de motos en S1 ó S2 'como espina de pescado entrando por el lado sur y saliendo por el norte' — plazas a 45° en fila." data-src="Correo Diego Cuestas, 10-jun-2025">Motos empleados/mensajeros</span></td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque facilita la llegada de empleados y mensajeros con menor consumo de área que el automóvil. Habilita la operación sin ser una posición productiva." data-src="Clasificación URBOP sobre la solicitud y las 40 motos dibujadas">NICE TO HAVE</span></td><td>S1 · 40 motos</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Sala de ventas de autos chinos con fachada Jetour. Diego eligió el 'ejercicio 2': SOLO la sala resaltada tipo Jetour y el resto del edificio en otro color/textura, rotulable aparte." data-src="Correo Diego Cuestas, 11-jun-2025 ('creo esto sería lo mejor')">Showroom Jetour</span></b></td><td><span class="chip dias">30–90 D</span></td><td>Cliente</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL para la función comercial del proyecto: exhibe y vende los vehículos de la marca. Su inventario de exposición debe mantenerse limitado para no convertir la sala en almacenamiento." data-src="Clasificación URBOP sobre el programa comercial confirmado">ESENCIAL</span></td><td>N1 · 550→693 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="apoyo"><td>Oficinas operativas (jefes de taller, asesores)</td><td><span class="chip min">9 H</span></td><td>Empleado</td><td class="num">2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque coordina técnicos, asesores, órdenes y clientes, pero no constituye una bahía productiva. Debe permanecer cerca de la operación y dimensionarse por plantilla." data-src="Clasificación URBOP sobre oficinas N2–N3">NICE TO HAVE</span></td><td>N2–N3</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Bodega de materiales y de herramienta EN CADA TALLER (compartibles entre sí) — distintas de la bodega central de repuestos." data-src="Correo Erik Maquiz, 12-jun-2025">Bodegas de materiales por taller</span></td><td><span class="chip meses">SEMANAS</span></td><td>Técnico</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque mantiene herramientas y consumibles junto a los técnicos, reduciendo recorridos y tiempos muertos. Debe ser una bodega local compacta, no inventario central de meses." data-src="Clasificación URBOP; solicitud de Erik Maquiz">NICE TO HAVE</span></td><td>N2–N4</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
         <tr data-v="cond"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Comedor, gimnasio y lockers/baños/duchas para operarios. Pedido textual: 'Diseñar área de comedor, de gimnasio y de lockers/baños/duchas en 4to ó 5to nivel'. No produce directo, pero retiene técnicos — el activo escaso del taller." data-src="Correo Diego Cuestas, 10-jun-2025 → ejecutado en N5 por GRUBORJA (gym 81 + comedor 79 + sanitarios 60)">Gym / comedor / duchas</span></td><td><span class="chip min">1–9 H</span></td><td>Empleado</td><td class="num">2–3</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque mejora bienestar y retención del personal, pero su tamaño y mezcla —gym, comedor, duchas— deben justificarse con la plantilla y el valor de esos 220 m² frente a otros usos." data-src="Clasificación URBOP sobre la solicitud ejecutada en N5">CONDICIONAL</span></td><td>N5 · ~220 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
         <tr data-v="cond"><td><b><span class="tt" tabindex="0" data-tipo="sup" data-que="WIP (work in process): carros dentro del edificio que no están en una bahía — esperan repuesto, turno o entrega. El escenario de 72 veh/día produciría ~84 vehículos en sistema y 36 fuera de bahías, pero demanda y permanencias todavía no son datos confirmados del cliente." data-src="Modelo de viabilidad, escenario editable; GRUBORJA lo tiene difuso como 'vehículos en espera' N3–N5">Mecánica larga / espera (WIP)</span></b></td><td><span class="chip dias">3–15 D</span></td><td>Piloto interno</td><td class="num">1</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque sí se necesitará staging si existe WIP, pero su cantidad depende de órdenes diarias y permanencia real. Sin esos datos, asignar 36 o 48 plazas sería convertir un escenario en programa." data-src="Clasificación URBOP; Ley de Little con entradas pendientes">CONDICIONAL</span></td><td>N3–N5</td><td><span class="badge pc">ESCENARIO</span></td></tr>
-        <tr data-v="ruido"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Almacén central de piezas (meses de permanencia, rotación bajísima). La Propuesta 2 de GRUBORJA la exporta a bodega perimetral + 'búnker' de Plaza del Sol. El análisis llegó a la misma conclusión por la regla de estadía — convergencia independiente." data-src="Cuadro Propuesta 2 y comentarios GRUBORJA; matriz del análisis">Bodega central de repuestos</span></b></td><td><span class="chip meses">MESES</span></td><td>Interno</td><td class="num">2</td><td><span class="ver ruido tt" tabindex="0" data-tipo="sup" data-que="Es RUIDO en este edificio porque guarda inventario durante meses y obliga a disponer bodega, carga, descarga y rampa de tráiler en una placa escasa. El despacho diario sí permanece como SEÑAL." data-src="Clasificación del análisis y Propuesta 2 de GRUBORJA">RUIDO</span></td><td>N1 · Propuesta 1 · 183 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="ruido"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Cabina de pintado + preparación con rejillas + iluminación especial, dibujadas en N3. Colisión abierta: los parámetros la sacan (complejidad 5, el carro vive 7–15 días), pero Erik la pidió explícita. Se decide valorizando su cascada, no por decreto." data-src="Correo Erik Maquiz 12-jun-2025 + plantas N3 GRUBORJA + advertencia del modelo auditado">Enderezado y pintura</span></b></td><td><span class="chip dias">7–15 D/VEH</span></td><td>Técnico</td><td class="num">5</td><td><span class="ver ruido tt" tabindex="0" data-tipo="sup" data-que="Es RUIDO* con colisión porque ocupa el carro 7–15 días y arrastra cabina, extracción, rejillas, iluminación, compresores y residuos. Sin embargo, fue solicitado y está dibujado: solo sale si una evaluación económica y ambiental demuestra que conviene externalizarlo." data-src="Clasificación URBOP; solicitud de Erik y planta N3">RUIDO*</span></td><td>N3 · ~190 m² <span class="tt" tabindex="0" data-tipo="sup" data-que="Área estimada por lectura de la planta N3 (cabina + preparación + iluminación especial). No hay cifra desglosada en cuadros." data-src="Lectura URBOP de planta N3 — Por confirmar">(est.)</span></td><td><span class="badge pc">VALORIZAR</span></td></tr>
-        <tr data-v="ruido"><td>Inventario de nuevos <span class="tt" tabindex="0" data-tipo="sup" data-que="Consumo espacio-tiempo ≈960 m²·día por venta (60 días × 16 m²). Ilustra por qué el inventario no merece este m²; se recalcula con datos reales del cliente." data-src="Supuesto URBOP: permanencia × huella, jornada 10 h">≈960 m²·día/venta</span></td><td><span class="chip meses">30–90 D</span></td><td>Piloto</td><td class="num">1–2</td><td><span class="ver ruido tt" tabindex="0" data-tipo="sup" data-que="Es RUIDO porque cada vehículo permanece 30–90 días y consume área sin producir órdenes de servicio. El showroom conserva solo las unidades necesarias para exhibición; el inventario masivo debe vivir en otra ubicación." data-src="Clasificación URBOP por permanencia y huella">RUIDO</span></td><td>Sin inventario masivo dibujado; conteo de exhibición no documentado</td><td><span class="badge pc">CONTEO FALTANTE</span></td></tr>
-        <tr data-v="ruido"><td>Inventario de usados <span class="tt" tabindex="0" data-tipo="sup" data-que="≈1,440 m²·día por venta (90 días × 16 m²) — el espacio-tiempo de unas 450 órdenes exprés. Supuesto ilustrativo URBOP, ajustable." data-src="Supuesto URBOP: permanencia × huella">≈1,440 m²·día/venta</span></td><td><span class="chip meses">60–120 D</span></td><td>Piloto</td><td class="num">1</td><td><span class="ver ruido tt" tabindex="0" data-tipo="sup" data-que="Es RUIDO porque su permanencia estimada de 60–120 días produce el mayor consumo de espacio-tiempo y no requiere la infraestructura vertical del taller. Los planos correctamente no le asignan área." data-src="Clasificación URBOP por permanencia y huella">RUIDO</span></td><td>No está</td><td><span class="badge ok">COHERENTE</span></td></tr>
-        <tr data-v="ruido"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Pedido textual de Diego: 'Resto de 5to y 6to nivel apartamentos efficiency (concepto Muni sin parqueos)' — apartamentos pequeños acogidos a incentivos municipales. En los cuadros de mar-2026 NO aparecen: la línea 'área de apartamentos' está vacía. ¿La idea murió o quedó diferida? Nadie lo ha dicho por escrito." data-src="Correo Diego Cuestas 10-jun-2025 vs. cuadros GRUBORJA mar-2026">Apartamentos efficiency 5º/6º</span></b></td><td><span class="chip h24">24 H</span></td><td>Residencial</td><td class="num">3–4</td><td><span class="ver ruido tt" tabindex="0" data-tipo="sup" data-que="Es RUIDO* porque introduce un usuario residencial de 24 horas sobre talleres y exige accesos, seguridad, evacuación, instalaciones y regulación propias. Solo merece volver al programa si el incentivo y la rentabilidad compensan toda esa cascada." data-src="Clasificación URBOP; solicitud de Diego ausente en cuadros 2026">RUIDO*</span></td><td>Línea vacía en cuadros</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
-        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="'Casetas de policías seguridad' — puntos de control de acceso." data-src="Correo Erik Maquiz, 12-jun-2025">Casetas de seguridad</span></td><td><span class="chip h24">24 H</span></td><td>Guardia</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es APOYO porque controla accesos, protege vehículos y permite operar con seguridad, pero no genera una orden ni una venta directamente. Debe ser suficiente y compacta." data-src="Clasificación URBOP sobre la solicitud de seguridad">APOYO</span></td><td>Instalaciones</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Almacén central de piezas (meses de permanencia, rotación bajísima). La Propuesta 2 de GRUBORJA la exporta a bodega perimetral + 'búnker' de Plaza del Sol. El análisis llegó a la misma conclusión por la regla de estadía — convergencia independiente." data-src="Cuadro Propuesta 2 y comentarios GRUBORJA; matriz del análisis">Bodega central de repuestos</span></b></td><td><span class="chip meses">MESES</span></td><td>Interno</td><td class="num">2</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera en este edificio porque guarda inventario durante meses y obliga a disponer bodega, carga, descarga y rampa de tráiler en una placa escasa. El despacho diario sí permanece como ESENCIAL." data-src="Clasificación del análisis y Propuesta 2 de GRUBORJA">SE RESUELVE AFUERA</span></td><td>N1 · Propuesta 1 · 183 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Cabina de pintado + preparación con rejillas + iluminación especial, dibujadas en N3. Colisión abierta: los parámetros la sacan (complejidad 5, el carro vive 7–15 días), pero Erik la pidió explícita. Se decide valorizando su cascada, no por decreto." data-src="Correo Erik Maquiz 12-jun-2025 + plantas N3 GRUBORJA + advertencia del modelo auditado">Enderezado y pintura</span></b></td><td><span class="chip dias">7–15 D/VEH</span></td><td>Técnico</td><td class="num">5</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera (con colisión) porque ocupa el carro 7–15 días y arrastra cabina, extracción, rejillas, iluminación, compresores y residuos. Sin embargo, fue solicitado y está dibujado: solo sale si una evaluación económica y ambiental demuestra que conviene externalizarlo." data-src="Clasificación URBOP; solicitud de Erik y planta N3">SE RESUELVE AFUERA*</span></td><td>N3 · ~190 m² <span class="tt" tabindex="0" data-tipo="sup" data-que="Área estimada por lectura de la planta N3 (cabina + preparación + iluminación especial). No hay cifra desglosada en cuadros." data-src="Lectura URBOP de planta N3 — Por confirmar">(est.)</span></td><td><span class="badge pc">VALORIZAR</span></td></tr>
+        <tr data-v="afuera"><td>Inventario de nuevos <span class="tt" tabindex="0" data-tipo="sup" data-que="Consumo espacio-tiempo ≈960 m²·día por venta (60 días × 16 m²). Ilustra por qué el inventario no merece este m²; se recalcula con datos reales del cliente." data-src="Supuesto URBOP: permanencia × huella, jornada 10 h">≈960 m²·día/venta</span></td><td><span class="chip meses">30–90 D</span></td><td>Piloto</td><td class="num">1–2</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera porque cada vehículo permanece 30–90 días y consume área sin producir órdenes de servicio. El showroom conserva solo las unidades necesarias para exhibición; el inventario masivo debe vivir en otra ubicación." data-src="Clasificación URBOP por permanencia y huella">SE RESUELVE AFUERA</span></td><td>Sin inventario masivo dibujado; conteo de exhibición no documentado</td><td><span class="badge pc">CONTEO FALTANTE</span></td></tr>
+        <tr data-v="afuera"><td>Inventario de usados <span class="tt" tabindex="0" data-tipo="sup" data-que="≈1,440 m²·día por venta (90 días × 16 m²) — el espacio-tiempo de unas 450 órdenes exprés. Supuesto ilustrativo URBOP, ajustable." data-src="Supuesto URBOP: permanencia × huella">≈1,440 m²·día/venta</span></td><td><span class="chip meses">60–120 D</span></td><td>Piloto</td><td class="num">1</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera porque su permanencia estimada de 60–120 días produce el mayor consumo de espacio-tiempo y no requiere la infraestructura vertical del taller. Los planos correctamente no le asignan área." data-src="Clasificación URBOP por permanencia y huella">SE RESUELVE AFUERA</span></td><td>No está</td><td><span class="badge ok">COHERENTE</span></td></tr>
+        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Pedido textual de Diego: 'Resto de 5to y 6to nivel apartamentos efficiency (concepto Muni sin parqueos)' — apartamentos pequeños acogidos a incentivos municipales. En los cuadros de mar-2026 NO aparecen: la línea 'área de apartamentos' está vacía. ¿La idea murió o quedó diferida? Nadie lo ha dicho por escrito." data-src="Correo Diego Cuestas 10-jun-2025 vs. cuadros GRUBORJA mar-2026">Apartamentos efficiency 5º/6º</span></b></td><td><span class="chip h24">24 H</span></td><td>Residencial</td><td class="num">3–4</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera (con colisión) porque introduce un usuario residencial de 24 horas sobre talleres y exige accesos, seguridad, evacuación, instalaciones y regulación propias. Solo merece volver al programa si el incentivo y la rentabilidad compensan toda esa cascada." data-src="Clasificación URBOP; solicitud de Diego ausente en cuadros 2026">SE RESUELVE AFUERA*</span></td><td>Línea vacía en cuadros</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
+        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="'Casetas de policías seguridad' — puntos de control de acceso." data-src="Correo Erik Maquiz, 12-jun-2025">Casetas de seguridad</span></td><td><span class="chip h24">24 H</span></td><td>Guardia</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque controla accesos, protege vehículos y permite operar con seguridad, pero no genera una orden ni una venta directamente. Debe ser suficiente y compacta." data-src="Clasificación URBOP sobre la solicitud de seguridad">NICE TO HAVE</span></td><td>Instalaciones</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
         <tr data-v="cond"><td><span class="tt" tabindex="0" data-tipo="nor" data-que="Área exterior separada para vehículos con batería de litio dañada o en alerta térmica (riesgo de thermal runaway). No puede estar en sótano. Riesgo menor con flota china a gasolina; crece si el taller recibe EVs." data-src="OSHA 4480 (riesgos de baterías) + HSE UK; previsión URBOP — no está en planos">Cuarentena de baterías de litio</span></td><td><span class="chip h24">EVENTUAL</span></td><td>Técnico</td><td class="num">5</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque puede convertirse en requisito de seguridad si el taller recibe vehículos eléctricos o baterías dañadas. Su necesidad y dimensión dependen de la flota futura y de la validación normativa; hoy no aparece en planos." data-src="Clasificación URBOP; previsión normativa pendiente">CONDICIONAL</span></td><td>No está — prever</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:14px">* RUIDO con colisión: los parámetros lo sacan, un pedido explícito del cliente lo mete. Se resuelve valorizando la cascada de servidumbres.</p>
+    <p class="note" style="margin-top:14px">* SE RESUELVE AFUERA con colisión: los parámetros del edificio recomiendan reubicarlo, un pedido explícito del cliente lo pide adentro. La decisión se toma valorizando la cascada de servidumbres, no por adjetivo.</p>
 
     <div class="block" style="margin-top:34px">
       <h3 style="font-size:17px;margin-bottom:12px">Servidumbres — heredan la clasificación del uso que sirven</h3>
       <div class="grid2">
-        <div class="card"><h3 style="color:#2c4d16">Heredan SEÑAL (se quedan)</h3><ul style="font-size:13.5px;margin:10px 0 0 18px;line-height:1.85"><li>Rampa sótanos → N2 (313 + 117 + 229 m²) — la frecuencia alta la exige</li><li>2 elevadores vehiculares (61 m²/nivel)</li><li><span class="tt" tabindex="0" data-tipo="nor" data-que="Cisterna dimensionada por el lavado; planta de tratamiento con separador de hidrocarburos antes de descargar — obligatorio por el reglamento de descargas de aguas residuales." data-src="MARN AG 236-2006; cuadros GRUBORJA ('equipos' 60 m² en sótanos)">Cisterna + PTAR + separador</span></li><li>Compresores + 110/220V + desechos de taller (pedidos por Erik)</li></ul></div>
-        <div class="card"><h3 style="color:var(--oxblood)">Heredan RUIDO (mueren con su uso)</h3><ul style="font-size:13.5px;margin:10px 0 0 18px;line-height:1.85"><li>Rampas N2→N5: 2,526 m² brutos liberados en <b>Propuesta 1 · Elevadores</b> o 2,530 m² en <b>Propuesta 2 · Elevadores + bodega externa</b></li><li>Rampa de tráiler 53' + andén (104 m²) — muere con la bodega</li><li>Ducto de extracción a cubierta + trincheras N3 — existen solo por la pintura</li><li><span class="tt" tabindex="0" data-tipo="doc" data-que="Dos conexiones dibujadas: (1) por el parqueo de Plaza del Sol hacia 12 calle Montúfar — solicitada por Cromwell Cuestas; (2) el cruce con la agencia Volvo Liberación, que motiva el 'espejo invertido' completo porque la Muni podría volver la 13 calle una sola vía. Tienen padrino y motivo vial: se matan o se salvan con número." data-src="Planos GRUBORJA ('Conexión con agencia', 'solicitada por Cromwell Cuestas') + comentarios Propuesta 1">Conexiones PdS→Montúfar y agencia Volvo</span></li></ul></div>
+        <div class="card"><h3 style="color:#2c4d16">Sirven a un uso ESENCIAL (se quedan)</h3><ul style="font-size:13.5px;margin:10px 0 0 18px;line-height:1.85"><li>Rampa sótanos → N2 (313 + 117 + 229 m²) — la frecuencia alta la exige</li><li>2 elevadores vehiculares (61 m²/nivel)</li><li><span class="tt" tabindex="0" data-tipo="nor" data-que="Cisterna dimensionada por el lavado; planta de tratamiento con separador de hidrocarburos antes de descargar — obligatorio por el reglamento de descargas de aguas residuales." data-src="MARN AG 236-2006; cuadros GRUBORJA ('equipos' 60 m² en sótanos)">Cisterna + PTAR + separador</span></li><li>Compresores + 110/220V + desechos de taller</li></ul></div>
+        <div class="card"><h3 style="color:var(--oxblood)">Sirven a un uso que se resuelve afuera (recuperan área)</h3><p style="font-size:12.5px;color:#5f6762;margin-bottom:8px;font-style:italic">Cada línea es una relación causa-efecto: si el uso se reubica en otro terreno de la propiedad, el edificio recupera la infraestructura que existía solo para servirlo.</p><ul style="font-size:13.5px;margin:10px 0 0 18px;line-height:1.85"><li>Rampas N2→N5: 2,526 m² brutos liberados en <b>1E</b> o 2,530 m² en <b>2E</b></li><li>Rampa de tráiler 53' + andén (104 m²) — depende de la bodega central</li><li>Ducto de extracción a cubierta + trincheras N3 — existen solo por la pintura</li><li><span class="tt" tabindex="0" data-tipo="doc" data-que="Dos conexiones dibujadas: (1) por el parqueo de Plaza del Sol hacia 12 calle Montúfar; (2) el cruce con la agencia Volvo Liberación, que motiva el 'espejo invertido' completo porque la Muni podría volver la 13 calle una sola vía. Tienen motivo vial: se sostienen o se retiran con número, no con adjetivo." data-src="Planos GRUBORJA + comentarios Propuesta 1">Conexiones PdS→Montúfar y agencia Volvo</span></li></ul></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 RITMOS DEL EDIFICIO (contenido en Fase 2b) ============ -->
+<!-- ============ 04 RITMOS DEL EDIFICIO ============ -->
 <section class="tab" id="tRitmos">
   <div class="wrap" style="padding-top:48px">
-    <div class="eyebrow">04 &middot; Los ritmos del edificio</div>
-    <h2 class="sec">Qu&eacute; implican los tiempos de permanencia para circulaci&oacute;n y tr&aacute;fico</h2>
-    <p class="secsub">Secci&oacute;n nueva. La redacci&oacute;n se completa en la Fase 2b: re&uacute;ne en una lectura corta lo que hoy aparece disperso &mdash; c&oacute;mo un piso de minutos late distinto a uno de meses, y por qu&eacute; el tr&aacute;fico no se modela con flechas sino con permanencias.</p>
+    <div class="eyebrow">04 · Los ritmos del edificio</div>
+    <h2 class="sec">El tráfico no se modela con flechas: se deduce de las permanencias</h2>
+    <p class="secsub">Cada uso de la matriz tiene un tiempo de permanencia. Ese tiempo, no una flecha de flujo, es lo que define el ritmo con el que la placa se ocupa y se libera. Un piso de minutos late distinto a uno de meses.</p>
+
+    <div class="grid3" style="margin:24px 0 30px">
+      <div class="kpi"><div class="v">Minutos</div><div class="l">Rampa · frecuencia alta</div><div class="how">Recepción, exprés, despacho de repuestos, entrega, visitas. Cada posición se ocupa y libera varias veces al día. El costo por m² se amortiza en horas.</div></div>
+      <div class="kpi"><div class="v">Horas · días</div><div class="l">Elevador · frecuencia media</div><div class="how">Mecánica, pintura, WIP. La misma posición atiende 1–5 carros por semana. El costo por m² se amortiza en jornadas.</div></div>
+      <div class="kpi warn"><div class="v">Semanas · meses</div><div class="l">Afuera · frecuencia baja</div><div class="how">Bodega central, inventario nuevos y usados. La posición se ocupa por 30–120 días. El costo por m² no se amortiza dentro de este edificio.</div></div>
+    </div>
+
+    <div class="block">
+      <h3 style="font-size:16px;margin-bottom:10px">Tres consecuencias operativas</h3>
+      <div class="grid2">
+        <div class="card"><h3 style="font-size:14px">1 · La circulación se dimensiona por rotación, no por conteo de carros.</h3><p style="font-size:13.5px">Una recepción con 200 carros/día necesita más pista que una bodega con 200 carros parqueados un mes. Los conteos brutos engañan; los conteos por hora no.</p></div>
+        <div class="card"><h3 style="font-size:14px">2 · El pico del edificio no coincide con el promedio.</h3><p style="font-size:13.5px">El turno de entrada de empleados carga los sótanos en 45 minutos y no se repite en el día. Un pico corto de alta densidad puede tomarse con rampa; uno sostenido, no.</p></div>
+        <div class="card"><h3 style="font-size:14px">3 · Un elevador vehicular impone su propio ritmo.</h3><p style="font-size:13.5px">El ciclo típico es de 2.5–3.5 minutos por carro. Con dos ductos y demanda plana, mueve unos 30 carros por hora. Si el uso lo exige más que eso, hace cola en la placa cara.</p></div>
+        <div class="card"><h3 style="font-size:14px">4 · La tolerancia es asimétrica.</h3><p style="font-size:13.5px">Corregir un tiempo dentro del mismo orden de magnitud (horas ↔ horas, incluso horas → días) no cambia las conclusiones. Cruzar de escala (días → semanas → meses) sí obliga a recalcular la asignación de ese uso.</p></div>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:22px">Los tiempos que aparecen en la matriz son <b>supuestos de investigación</b> — no datos confirmados del cliente. El cliente puede ajustarlos dentro de su orden de magnitud sin que las recomendaciones cambien; si un uso migra de escala, se debe recalcular su asignación.</div>
   </div>
 </section>
 
@@ -676,18 +718,19 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <p class="note" style="margin:-10px 0 18px">Áreas, capacidades y programas: transcripción de cuadros y plantas GRUBORJA. Porcentajes y promedios: cálculo sobre la placa documentada. Los esquemas explican relaciones y no sustituyen las plantas.</p>
 
     <div class="block" style="margin-top:0">
-      <h3 style="font-size:17px;margin-bottom:12px">Auditoría de origen — no todo el informe es GRUBORJA</h3>
+      <h3 style="font-size:17px;margin-bottom:12px">Trazabilidad de los datos — de dónde sale cada cifra</h3>
+      <p style="font-size:14px;color:#3a423d;margin-bottom:14px">Cada capa del informe queda nombrada para que el lector distinga qué está dibujado, qué es una solicitud del cliente y qué es cálculo o hipótesis de URBOP.</p>
       <div class="grid2">
         <div class="card"><h3>GRUBORJA · dibujado</h3><p style="font-size:13px">Placa de 2,061.11 m², áreas por uso, rampas, ductos, capacidades, programas por nivel y retícula visible. Los DWG identifican a Daniel Borja como autor y AutoCAD 2025; para mover columnas se deben confirmar las cotas en el archivo CAD.</p></div>
         <div class="card"><h3>Cliente · solicitado</h3><p style="font-size:13px">Correos y el documento de solicitudes: motos en espina de pescado, conexiones, pintura, apartamentos, mezzanine y requerimientos operativos. Una solicitud no equivale a una solución ya dibujada.</p></div>
         <div class="card"><h3>URBOP · calculado</h3><p style="font-size:13px">Porcentajes, m² por carro/puente, densidades, áreas liberadas y comparación de eficiencia. Son operaciones aritméticas reproducibles sobre los números de GRUBORJA.</p></div>
-        <div class="card"><h3>URBOP · por probar</h3><p style="font-size:13px">Vanos 7.80 / 8.10 / 8.40 m y organizaciones C–D. Son hipótesis de diseño; no aparecen en los planos y no deben atribuirse a GRUBORJA.</p></div>
+        <div class="card"><h3>URBOP · por probar</h3><p style="font-size:13px">Vanos 7.80 / 8.10 / 8.40 m y organizaciones alternativas. Son hipótesis de diseño; no aparecen en los planos y no se atribuyen a GRUBORJA.</p></div>
       </div>
-      <p class="note" style="margin-top:12px"><b>Resultado de la validación:</b> el plan base sí viene de GRUBORJA, pero el informe mezcla además requisitos del cliente, referencias externas y análisis URBOP. Desde esta versión cada capa queda nombrada. También se corrigen cuatro lecturas: S2 tiene 61 carros; S1 tiene 40 motos; el showroom no trae conteo verificable; y la Opción 2 no asigna área a lavado en N2.</p>
+      <p class="note" style="margin-top:12px"><b>Precisiones sobre las cifras:</b> S2 tiene 61 carros; S1 tiene 40 motos; el showroom no trae conteo verificable; y la propuesta 2E no asigna área a lavado en N2.</p>
     </div>
 
     <div class="case">
-      <div class="head"><h3>Propuesta 1 · Rampas</h3><span class="tag">(GRUBORJA: “OPCIÓN 1 ESPEJO INVERTIDO CON RAMPAS”)</span></div>
+      <div class="head"><h3>1R</h3><span class="tag">(GRUBORJA: “OPCIÓN 1 ESPEJO INVERTIDO CON RAMPAS”)</span></div>
       <div class="body">
         <p class="case-intro">Es la alternativa más directa de operar: el carro no depende de un elevador para llegar a los talleres. El costo aparece en las plantas N2–N4, donde la rampa ocupa entre 38% y 42% del piso y parte la zona productiva.</p>
         <div class="case-metrics">
@@ -742,13 +785,13 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="case">
-      <div class="head"><h3>Propuesta 1 · Elevadores</h3><span class="tag">(GRUBORJA: “OPCIÓN 1 ESPEJO INVERTIDO CON ELEVADORES NIVELES 2-3-4-5”)</span></div>
+      <div class="head"><h3>1E</h3><span class="tag">(GRUBORJA: “OPCIÓN 1 ESPEJO INVERTIDO CON ELEVADORES NIVELES 2-3-4-5”)</span></div>
       <div class="body">
         <p class="case-intro">Mantiene la bodega central y el programa del Nivel 1, pero corta la rampa después de N2. Desde allí, dos ductos de elevador vehicular de 61 m² por planta sirven N2–N5. El área recuperada se convierte en más puentes y parqueo.</p>
         <div class="case-metrics">
           <div class="case-metric"><div class="v">473 m²</div><div class="l">Circulación vertical N2–N5: rampa 229 + elevadores 61×4.</div></div>
           <div class="case-metric"><div class="v">5.7%</div><div class="l">Promedio de circulación vertical sobre las cuatro placas.</div></div>
-          <div class="case-metric"><div class="v">49 puentes</div><div class="l">+20 frente a Propuesta 1 · Rampas; N5 aumenta de 45 a 52 carros.</div></div>
+          <div class="case-metric"><div class="v">49 puentes</div><div class="l">+20 frente a 1R; N5 aumenta de 45 a 52 carros.</div></div>
         </div>
         <div class="front-card">
           <div class="scheme-title"><b>Gráfica de consumo por nivel</b><span>ROJO RAMPA · AZUL ELEVADORES</span></div>
@@ -797,9 +840,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="case">
-      <div class="head"><h3>Propuesta 2 · Elevadores + bodega externa</h3><span class="tag">(GRUBORJA: “OPCIÓN 2 SIN BODEGA DE REPUESTOS + ELEVADORES NIVELES 2-3-4-5”)</span></div>
+      <div class="head"><h3>2E</h3><span class="tag">(GRUBORJA: “OPCIÓN 2 SIN BODEGA DE REPUESTOS + ELEVADORES NIVELES 2-3-4-5”)</span></div>
       <div class="body">
-        <p class="case-intro">Usa el mismo principio vertical de la <b>Propuesta 1 · Elevadores</b>, pero retira del edificio el inventario central de repuestos y la rampa de tráiler asociada. El cambio importante ocurre en N1: el área existente se reasigna a venta y taller exprés; no se agrega construcción.</p>
+        <p class="case-intro">Usa el mismo principio vertical de la <b>1E</b>, pero retira del edificio el inventario central de repuestos y la rampa de tráiler asociada. El cambio importante ocurre en N1: el área existente se reasigna a venta y taller exprés; no se agrega construcción.</p>
         <div class="case-metrics">
           <div class="case-metric"><div class="v">469 m²</div><div class="l">Circulación vertical N2–N5: rampa 225 + elevadores 61×4.</div></div>
           <div class="case-metric"><div class="v">5.7%</div><div class="l">Promedio de circulación vertical sobre cuatro placas.</div></div>
@@ -860,22 +903,28 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <div class="card"><h3>4 · Más puentes no garantiza eficiencia operativa</h3><p style="font-size:13.5px">La retícula puede hacer caber 49, pero todavía faltan demanda, WIP, técnicos, repuestos y ciclo de elevadores para saber cuántos pueden trabajar simultáneamente.</p></div>
       </div>
     </div>
+
+    <div class="block" style="margin-top:28px">
+      <div class="card" style="border-left:5px solid var(--forest);background:#fbfaf6;padding:20px 24px">
+        <p style="font-size:14.5px;line-height:1.65;margin:0"><b>Las tres propuestas responden correctamente al programa que se les entregó.</b> Este análisis no revisa el diseño: revisa el programa. La pregunta no es si el edificio está bien resuelto, sino si el conjunto de usos que debe albergar es el que produce mayor eficiencia — y esa decisión le corresponde a Grupo Los 3, no al proyectista.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ 05 RUIDO ============ -->
+<!-- ============ 06 ESENCIAL Y SE RESUELVE AFUERA ============ -->
 <section class="tab" id="t5">
   <div class="wrap" style="padding-top:48px">
     <div class="eyebrow">06 · Esencial y lo que puede vivir afuera</div>
     <h2 class="sec">Ruido en el plan y sus cascadas</h2>
-    <p class="secsub">El test: es señal lo que, si falta un día, detiene la línea ese mismo día. Todo lo demás compite por el m² contra lo que sí produce — y arrastra servidumbres al salir.</p>
+    <p class="secsub">El test: es esencial lo que, si falta un día, detiene la línea ese mismo día. Todo lo demás compite por el m² contra lo que sí produce — y arrastra servidumbres al salir.</p>
 
     <div class="case"><div class="head"><h3>1 · Bodega central de repuestos</h3><span class="badge ok">RESUELTO EN PROPUESTA 2</span></div><div class="body">
-      <p style="font-size:14px">Permanencia de meses, rotación bajísima. La <b>Propuesta 2 · Elevadores + bodega externa</b> la exporta a bodega perimetral + <span class="tt" tabindex="0" data-tipo="doc" data-que="'Búnker': el sótano 2 de Plaza del Sol, que no tiene comunicación con el sótano de Plaza del Sol pero sí se conectaría con el sótano 1 del nuevo edificio. Propuesta del propio GRUBORJA para absorber bodega." data-src="Comentarios de GRUBORJA sobre la Propuesta 2, cuadro Requerimientos N1">búnker de Plaza del Sol</span>. <b>Cascada capturada:</b> +143 sala, +164 exprés, −104 rampa de tráiler, −183 bodega N1. Dos análisis independientes llegaron a lo mismo. Falta un número: costo mensual de la bodega afuera.</p>
+      <p style="font-size:14px">Permanencia de meses, rotación bajísima. La <b>2E</b> la exporta a bodega perimetral + <span class="tt" tabindex="0" data-tipo="doc" data-que="'Búnker': el sótano 2 de Plaza del Sol, que no tiene comunicación con el sótano de Plaza del Sol pero sí se conectaría con el sótano 1 del nuevo edificio. Propuesta del propio GRUBORJA para absorber bodega." data-src="Comentarios de GRUBORJA sobre la Propuesta 2, cuadro Requerimientos N1">búnker de Plaza del Sol</span>. <b>Cascada capturada:</b> +143 sala, +164 exprés, −104 rampa de tráiler, −183 bodega N1. Dos análisis independientes llegaron a lo mismo. Falta un número: costo mensual de la bodega afuera.</p>
     </div></div>
 
     <div class="case"><div class="head"><h3>2 · Enderezado y pintura en N3</h3><span class="badge pc">COLISIÓN ABIERTA — VALORIZAR</span></div><div class="body">
-      <p style="font-size:14px">Los parámetros la sacan (complejidad 5, el carro vive 7–15 días); <b>Erik Maquiz la pidió adentro</b> con rejillas e iluminación especial, y está dibujada en ambas opciones. El modelo auditado agrega presión: <span class="tt" tabindex="0" data-tipo="cal" data-que="Conclusión del modelo: un paquete serio de carrocería (8 posiciones + cabina + preparación + mezcla) pide 650–800 m². Metido junto a 19–22 bahías en una placa de 2,061 con núcleo y circulación, 'está al borde o fuera de la viabilidad'. Es cálculo del estudio con sus módulos, no medición de la planta GRUBORJA." data-src="Investigacion_Taller_Automotriz_Vertical.pdf, sección 8.3 (Calculado)">"al borde o fuera de la viabilidad" junto a 19 puentes</span>. Cascada si sale: mueren el ducto de extracción a cubierta (OSHA exige descarga al exterior — cruza N4–N5), las trincheras de losa, el secado fino de compresores y los desechos peligrosos con su trámite MARN — <b>la línea que nadie ha costeado.</b></p>
+      <p style="font-size:14px">Los parámetros la ubicarían afuera (complejidad 5, el carro vive 7–15 días); el cliente la pidió adentro con rejillas e iluminación especial, y está dibujada en ambas opciones. El modelo auditado agrega presión: <span class="tt" tabindex="0" data-tipo="cal" data-que="Conclusión del modelo: un paquete serio de carrocería (8 posiciones + cabina + preparación + mezcla) pide 650–800 m². Metido junto a 19–22 bahías en una placa de 2,061 con núcleo y circulación, 'está al borde o fuera de la viabilidad'. Es cálculo del estudio con sus módulos, no medición de la planta GRUBORJA." data-src="Investigacion_Taller_Automotriz_Vertical.pdf, sección 8.3 (Calculado)">"al borde o fuera de la viabilidad" junto a 19 puentes</span>. Cascada si se reubica: el ducto de extracción a cubierta (OSHA exige descarga al exterior — cruza N4–N5), las trincheras de losa, el secado fino de compresores y los desechos peligrosos con su trámite MARN dejarían de ser necesarios — <b>la línea que nadie ha costeado todavía.</b></p>
     </div></div>
 
     <div class="case"><div class="head"><h3>3 · Inventarios de nuevos y usados</h3><span class="badge ok">FUERA — COHERENTE</span></div><div class="body">
@@ -883,11 +932,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div></div>
 
     <div class="case"><div class="head"><h3>4 · Apartamentos efficiency 5º/6º</h3><span class="badge pc">¿VIVO O MUERTO?</span></div><div class="body">
-      <p style="font-size:14px"><span class="tt" tabindex="0" data-tipo="cli" data-que="Origen exacto: apunte de Diego Cuestas tras la reunión de revisión de planos — 'Resto de 5to y 6to nivel apartamnetos efficency (concepto Muni sin parqueos)'. Es el único lugar donde aparecen." data-src="Correo Diego Cuestas, 10-jun-2025, docx de solicitudes">Pedidos por Diego Cuestas (jun-2025, "concepto Muni")</span>; ausentes en los cuadros de mar-2026 — la línea "área de apartamentos" está vacía. Huésped de 24 horas sobre talleres: usuario incompatible, núcleo propio, normativa habitacional. Su único argumento es el incentivo municipal — se decide comparando incentivo vs. cascada. <b>Confirmar con el cliente.</b></p>
+      <p style="font-size:14px"><span class="tt" tabindex="0" data-tipo="cli" data-que="Origen exacto: apunte del cliente tras la reunión de revisión de planos — 'Resto de 5to y 6to nivel apartamentos efficiency (concepto Muni sin parqueos)'. Es el único lugar donde aparecen." data-src="Correo del cliente, 10-jun-2025, docx de solicitudes">Pedidos por el cliente en jun-2025 bajo "concepto Muni"</span>; ausentes en los cuadros de mar-2026 — la línea "área de apartamentos" está vacía. Huésped de 24 horas sobre talleres: usuario incompatible, núcleo propio, normativa habitacional. Su único argumento es el incentivo municipal — se decide comparando incentivo vs. cascada. <b>Confirmar con el cliente.</b></p>
     </div></div>
 
     <div class="case"><div class="head"><h3>5 · Las dos conexiones</h3><span class="badge pc">SE DECIDEN POR NÚMERO — TIENEN PADRINO</span></div><div class="body">
-      <p style="font-size:14px"><b>PdS → 12 calle Montúfar</b> (38–76 m² en N1): <span class="tt" tabindex="0" data-tipo="doc" data-que="El plano de la conexión lleva la nota: 'esta información fue solicitada por Cromwell Cuestas'. No es idea del arquitecto ni de URBOP." data-src="Plano 'Sección Plaza del Sol / pantalla pilotes', GRUBORJA">solicitada por Cromwell Cuestas</span>. <b>Cruce con la agencia Volvo Liberación:</b> <span class="tt" tabindex="0" data-tipo="doc" data-que="Motivo del 'espejo invertido': 'debido a la posibilidad de que la 13 calle la municipalidad la convierta en una sola vía hacia el Boulevard Liberación… el espejo permite un cruce directo sobre la 13 calle hacia este nuevo edificio'." data-src="Comentarios sobre Opción 1, cuadro Requerimientos N1, GRUBORJA">motiva el espejo invertido completo</span>. No son caprichos: mitigan un riesgo vial real y tienen apellido del cliente. Sostenerlas como ruido exige costear el m² que consumen contra el riesgo que cubren.</p>
+      <p style="font-size:14px"><b>PdS → 12 calle Montúfar</b> (38–76 m² en N1) y <b>cruce con la agencia Volvo Liberación:</b> <span class="tt" tabindex="0" data-tipo="doc" data-que="Motivo del 'espejo invertido': 'debido a la posibilidad de que la 13 calle la municipalidad la convierta en una sola vía hacia el Boulevard Liberación… el espejo permite un cruce directo sobre la 13 calle hacia este nuevo edificio'." data-src="Comentarios sobre Opción 1, cuadro Requerimientos N1, GRUBORJA">este último motiva el espejo invertido completo</span>. Ambas conexiones mitigan un riesgo vial real. La decisión sobre sostenerlas o retirarlas exige costear el m² que consumen contra el riesgo que cubren — es una decisión económica del cliente, no una lectura urbanística.</p>
     </div></div>
 
     <div class="case"><div class="head"><h3>6 · El hueco de señal: parqueo de empleados</h3><span class="badge fal">SIN CASA</span></div><div class="body">
@@ -945,7 +994,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <div class="org-grid">
         <div class="org-card">
           <h3>Organización A · Rampa hasta N5 <span class="badge ok">DIBUJADA</span></h3>
-          <p>Equivale a la <b>Propuesta 1 · Rampas</b> (GRUBORJA: “OPCIÓN 1 ESPEJO INVERTIDO CON RAMPAS”). Máxima continuidad vehicular; mínima libertad para repetir módulos de taller.</p>
+          <p>Equivale a la <b>1R</b> (GRUBORJA: “OPCIÓN 1 ESPEJO INVERTIDO CON RAMPAS”). Máxima continuidad vehicular; mínima libertad para repetir módulos de taller.</p>
           <div class="org-stack">
             <div class="org-floor"><b>AZ</b><span>Parqueo mecánico futuro</span><em>conceptual</em></div>
             <div class="org-floor routed"><b>N5</b><span>Parqueo + personal</span><em>RAMPA</em></div>
@@ -961,7 +1010,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
         <div class="org-card">
           <h3>Organización B · Híbrido corto <span class="badge ok">DIBUJADA</span></h3>
-          <p>Rampa hasta N2 y elevadores hacia N3–N5. Es la organización dibujada en la <b>Propuesta 1 · Elevadores</b> y la <b>Propuesta 2 · Elevadores + bodega externa</b>; es la única con capacidad conocida de 49 puentes.</p>
+          <p>Rampa hasta N2 y elevadores hacia N3–N5. Es la organización dibujada en la <b>1E</b> y la <b>2E</b>; es la única con capacidad conocida de 49 puentes.</p>
           <div class="org-stack">
             <div class="org-floor"><b>AZ</b><span>Parqueo mecánico futuro</span><em>conceptual</em></div>
             <div class="org-floor lifted"><b>N5</b><span>Parqueo + personal · 52</span><em>ELEVADOR</em></div>
@@ -1134,14 +1183,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <div class="eyebrow">08 · Lo que falta comprobar</div>
     <h2 class="sec">Datos pendientes, discrepancias y trazabilidad</h2>
     <p class="secsub">Esta sección separa lo comprobado de lo que todavía puede cambiar la decisión. Sirve como lista de control antes de aprobar una propuesta: muestra qué dato falta, por qué importa y qué parte del análisis debe actualizarse cuando llegue.</p>
-    <div class="block">
-      <h3 style="font-size:17px;margin-bottom:12px">Tres datos comerciales mínimos para evaluar la recomendación</h3>
-      <div class="grid3">
-        <div class="kpi warn"><div class="v">1</div><div class="l"><b>Órdenes de servicio/mes</b> por tipo (exprés / mecánica / larga) — decide si 49 puentes son crecimiento o capacidad ociosa</div></div>
-        <div class="kpi warn"><div class="v">2</div><div class="l"><b>Ticket promedio de mano de obra</b> (Q/orden) — convierte puentes en quetzales y da el payback de los elevadores</div></div>
-        <div class="kpi warn"><div class="v">3</div><div class="l"><b>Costo de bodega afuera</b> (renta + logística + habilitar búnker) — cierra la viabilidad de la Propuesta 2 · Elevadores + bodega externa</div></div>
-      </div>
-    </div>
+    <p class="note" style="margin-bottom:22px">Los <b>tres datos comerciales mínimos</b> (órdenes/mes, ticket promedio, costo de bodega afuera) están al inicio de la síntesis. Debajo se detallan las demás confirmaciones abiertas.</p>
     <div class="block">
       <h3 style="font-size:17px;margin-bottom:12px">Confirmaciones y discrepancias abiertas</h3>
       <table>
@@ -1168,12 +1210,22 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <div class="block">
       <h3 style="font-size:17px;margin-bottom:12px">Trazabilidad de fuentes</h3>
       <div class="card" style="font-size:13px;line-height:2">
-        <b>Del proyecto:</b> Cuadros "Requerimientos de base" y planos GRUBORJA (mar–may 2026) · Sección S2 · Correos Diego Cuestas / Rudy Ceballos / Erik Maquiz (jun-2025) · Correo GRUBORJA→URBOP (9-jun-2026).<br>
+        <b>Del proyecto:</b> Cuadros "Requerimientos de base" y planos GRUBORJA (mar–may 2026) · Sección S2 · Correos del cliente (jun-2025) · Correo GRUBORJA→URBOP (9-jun-2026).<br>
         <b>Benchmark auditado (28-jul-2026):</b> ONG&amp;ONG · ArchDaily · Sgcarmart (Audi) · IMechE HK · Link REIT · EMSD (Mercedes) · Carros Centre · Lödige (spot-check directo URBOP) · NADA 2026 · RE-6 · AGIES NSE 2-2024 · OSHA 1910.107 · EPA · MARN AG 236-2006.<br>
         <b>Descartado:</b> benchmark de primera pasada (35 bahías Audi, 3.5 m/s, 600 personas, 100–130 autos/día — todo refutado).<br>
-        <b>Herramientas:</b> TGLT_matriz_valorizacion.xlsx · TGLT_proceso_1pagina.xlsx · Modelo_Viabilidad_Taller_Vertical.xlsx (88 fórmulas vivas, verificado por URBOP).
+        <b>Herramientas:</b> <span class="tt" tabindex="0" data-tipo="sup" data-que="TGLT · Taller Grupo Los Tres. Nombre corto usado internamente para los archivos de análisis del proyecto: TGLT_matriz_valorizacion.xlsx, TGLT_proceso_1pagina.xlsx." data-src="Nomenclatura interna URBOP para este encargo">TGLT</span>_matriz_valorizacion.xlsx · TGLT_proceso_1pagina.xlsx · Modelo_Viabilidad_Taller_Vertical.xlsx (88 fórmulas vivas, verificado por URBOP).
       </div>
     </div>
+
+    <!-- ============ CIERRE DEL INFORME ============ -->
+    <div class="block" style="margin-top:36px">
+      <h3 style="font-size:17px;margin-bottom:12px;color:var(--forest)">Cierre — qué se decide, con qué datos y por quién</h3>
+      <div class="card" style="border-left:5px solid var(--forest);background:#fbfaf6;padding:22px 26px">
+        <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">Retirar las rampas altas convierte <b>2,282 m² de tránsito en producción</b> y lleva el edificio de <b>29 a 49 puentes</b>. Trasladar la bodega central a otro terreno de la propiedad libera <b>307 m² adicionales en N1</b>. Ambos movimientos responden a la misma lógica: la placa de 13 calle es cara — cerca de <b>USD $1.38 M por planta</b> — y su valor lo definen los usos de alta rotación. Lo que permanece semanas o meses puede resolverse fuera del edificio sin perder capacidad.</p>
+        <p style="font-size:14.5px;line-height:1.7;margin:0">Ninguna de estas decisiones puede aprobarse sin tres datos que el cliente aún no ha entregado: <b>órdenes de servicio por mes</b> (por tipo), <b>ticket promedio de mano de obra</b> y <b>costo de bodega afuera</b> (renta + logística + habilitar búnker). El diseño está resuelto; la decisión pendiente es sobre el programa, y le corresponde a Grupo Los 3.</p>
+      </div>
+    </div>
+    <!-- ============ FIN CIERRE ============ -->
   </div>
 </section>
 
@@ -1198,7 +1250,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="block">
-      <h3 style="font-size:17px;margin-bottom:6px">1 · Elegí el punto de partida</h3>
+      <h3 style="font-size:17px;margin-bottom:6px">1 · Elija el punto de partida</h3>
       <p class="secsub" style="margin-bottom:8px">Las dos rutas llegan al mismo ejercicio. Sin Excel se usan los números documentados por GRUBORJA. Con Excel se revisa el libro completo, aunque no tenga una tabla ordenada.</p>
       <div class="play-source-choice">
         <label class="play-choice active" id="playChoiceGruborja">
@@ -1207,7 +1259,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         </label>
         <label class="play-choice" id="playChoiceExcel">
           <input type="radio" name="playSource" value="excel">
-          <span><b>CON EXCEL · leer archivo local</b><span>La herramienta busca etiquetas y números en todas las hojas; después vos confirmás qué usar.</span></span>
+          <span><b>CON EXCEL · leer archivo local</b><span>La herramienta busca etiquetas y números en todas las hojas; después confirme qué usar.</span></span>
         </label>
       </div>
       <div class="play-context">
@@ -1215,9 +1267,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <div class="play-field">
             <label for="playProposal">Propuesta de partida</label>
             <select id="playProposal">
-              <option value="p1r">Propuesta 1 · Rampas</option>
-              <option value="p1e">Propuesta 1 · Elevadores</option>
-              <option value="p2e" selected>Propuesta 2 · Elevadores + bodega externa</option>
+              <option value="p1r">1R</option>
+              <option value="p1e">1E</option>
+              <option value="p2e" selected>2E</option>
             </select>
           </div>
           <div class="play-field">
@@ -1247,7 +1299,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <label for="playExcel">Cargar .xlsx, .xls o .csv</label>
           <input id="playExcel" type="file" accept=".xlsx,.xls,.csv">
         </div>
-        <div class="play-excel-status" id="playExcelStatus">Elegí un archivo. No hace falta que tenga encabezados perfectos ni una sola tabla.</div>
+        <div class="play-excel-status" id="playExcelStatus">Elija un archivo. No hace falta que tenga encabezados perfectos ni una sola tabla.</div>
       </div>
     </div>
 
@@ -1255,7 +1307,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <div class="play-current-head">
         <div>
           <h3 style="font-size:17px;margin-bottom:5px">2 · Así estamos</h3>
-          <p class="secsub" id="playCurrentSourceText">Base documentada GRUBORJA. Elegí propuesta y nivel para revisar sus números.</p>
+          <p class="secsub" id="playCurrentSourceText">Base documentada GRUBORJA. Elija propuesta y nivel para revisar sus números.</p>
         </div>
         <button type="button" class="play-btn play-hidden" id="playExcelClear">QUITAR EXCEL</button>
       </div>
@@ -1274,7 +1326,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       </div>
       <div id="playFactsBlock" class="play-hidden">
         <div class="play-excel-status" id="playExcelSummary"></div>
-        <p class="play-help"><b>Confirmá la lectura antes de usarla.</b> Cada selector muestra el dato, la hoja y la celda de donde salió. El área y la cantidad se guardan en el <b>nivel activo</b>; “No usar” mantiene el valor GRUBORJA.</p>
+        <p class="play-help"><b>Confirme la lectura antes de usarla.</b> Cada selector muestra el dato, la hoja y la celda de donde salió. El área y la cantidad se guardan en el <b>nivel activo</b>; “No usar” mantiene el valor GRUBORJA.</p>
         <div class="play-fact-fields">
           <div class="play-field"><label for="playFactArea">Área productiva</label><select id="playFactArea"><option value="">No usar</option></select></div>
           <div class="play-field"><label for="playFactCount">Carros / puentes / posiciones</label><select id="playFactCount"><option value="">No usar</option></select></div>
@@ -1295,7 +1347,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
     <div class="block">
       <h3 style="font-size:17px;margin-bottom:6px">3 · Jugar con la base</h3>
-      <p class="secsub" style="margin-bottom:12px">En el estudio por nivel definís un módulo absoluto. En el estudio general reducís, por familia, el módulo actual de cada piso: así la base conserva sus diferencias reales y no obliga a que recepción, taller y parqueo funcionen con el mismo m²/unidad. El vano y la columna son comunes entre N1 y N5.</p>
+      <p class="secsub" style="margin-bottom:12px">En el estudio por nivel define un módulo absoluto. En el estudio general reduce, por familia, el módulo actual de cada piso: así la base conserva sus diferencias reales y no obliga a que recepción, taller y parqueo funcionen con el mismo m²/unidad. El vano y la columna son comunes entre N1 y N5.</p>
       <div class="play-fields">
         <div class="play-field play-hidden" id="playLevelModuleField"><label for="playModuleArea">Módulo objetivo del nivel (m²/unidad)</label><input id="playModuleArea" type="number" min="10" max="150" step=".1" value="42.5"></div>
         <div class="play-field"><label for="playSpan">Vano entre ejes común N1–N5 (m)</label><input id="playSpan" type="number" min="5" max="15" step=".01" value="7.65" list="playSpanList"><datalist id="playSpanList"><option value="7.65"><option value="7.80"><option value="8.10"><option value="8.40"></datalist></div>
@@ -1319,9 +1371,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         </div>
       </details>
       <h3 style="font-size:15px;margin:20px 0 6px">Matriz de usos</h3>
-      <p class="secsub" style="margin-bottom:12px">Activá o desactivá piezas del programa. Si existe un área documentada, el cálculo la recupera o descuenta; si no existe, registra la decisión sin inventar m². Quitar una <span class="ver senal">SEÑAL</span> genera una advertencia aunque aumente la capacidad.</p>
+      <p class="secsub" style="margin-bottom:12px">Active o desactive piezas del programa. Si existe un área documentada, el cálculo la recupera o descuenta; si no existe, registra la decisión sin inventar m². Quitar una <span class="ver senal">ESENCIAL</span> genera una advertencia aunque aumente la capacidad.</p>
       <div class="play-use-grid" id="playUseGrid" aria-label="Selección de usos de la matriz"></div>
-      <div class="play-legend"><span><i class="p"></i>señal / apoyo seleccionado</span><span><i class="f"></i>área sin dato = decisión cualitativa</span><span><i class="c"></i>ruido o condicional activo = revisar</span></div>
+      <div class="play-legend"><span><i class="p"></i>esencial / nice to have seleccionado</span><span><i class="f"></i>área sin dato = decisión cualitativa</span><span><i class="c"></i>se resuelve afuera o condicional activo = revisar</span></div>
     </div>
 
     <div class="block">
@@ -1426,7 +1478,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       --k-ramp: #E6BEBE;
       --k-vertical: #B8CCC5;
       --k-tecnica: #EEEFB8;
-      --v-senal: #8DC63F; --v-apoyo: #6f8fb4; --v-cond: #B07C1E; --v-ruido: #6B1F1F;
+      --v-senal: #8DC63F; --v-apoyo: #6f8fb4; --v-cond: #B07C1E; --v-afuera: #6B1F1F;
       font-family: inherit; color: var(--lab-fg); background: var(--lab-bg);
       padding: 24px; border-radius: 14px;
     }
@@ -1655,7 +1707,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     #gl3Lab2 .b-senal { background: var(--v-senal); color: #1c2a08; }
     #gl3Lab2 .b-apoyo { background: var(--v-apoyo); }
     #gl3Lab2 .b-cond { background: var(--v-cond); }
-    #gl3Lab2 .b-ruido { background: var(--v-ruido); }
+    #gl3Lab2 .b-afuera { background: var(--v-afuera); }
     #gl3Lab2 .chip-est { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 600; border: 1px solid transparent; }
     #gl3Lab2 .e-min { background: #e6f4d5; color: #3f6212; }
     #gl3Lab2 .e-hrs { background: #d9ead3; color: #2e5522; }
@@ -1711,17 +1763,17 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   <header class="lab-header">
     <div class="eyebrow">Sección 08 · Laboratorio 2</div>
     <h2>Planificador de plantas GRUBORJA</h2>
-    <p>Plantas conceptuales sobre la retícula estructural real A–G × 1–5, para buscar eficiencia contra la base documentada. Cada ícono <span class="info-demo">i</span> explica qué hace su sección: pasá el cursor (o tocá) para leerlo.</p>
+    <p>Plantas conceptuales sobre la retícula estructural real A–G × 1–5, para buscar eficiencia contra la base documentada. Cada ícono <span class="info-demo">i</span> explica qué hace su sección: pase el cursor (o seleccione) para leerlo.</p>
   </header>
 
   <details class="guide" id="labGuide">
     <summary>Guía rápida · cómo usar el planificador</summary>
     <ol>
-      <li><b>Elegí propuesta y nivel.</b> Cada nivel arranca con el layout documentado de GRUBORJA sobre la retícula real del terreno.</li>
-      <li><b>Mové los bloques</b> arrastrándolos. Si soltás sobre otros, se reacomodan solos; el que no logre su área queda con ＊ indicando cuánto alberga. La esquina inferior derecha redimensiona, y en el panel podés dar ancho × fondo en metros.</li>
-      <li><b>Sacá módulos</b> soltándolos fuera del plano: caen a la bandeja y dejan de contar. Creá módulos nuevos con «+ Nuevo módulo» o jalalos desde la Matriz de usos.</li>
-      <li><b>Replicá verticales</b> (núcleos, elevadores, rampas) en los niveles que quieras desde el panel: se mueven sincronizados, y donde choquen queda un fantasma «Aplicar aquí» para decidir. Las rampas generan su calle de maniobra.</li>
-      <li><b>Analizá abajo</b>: tabla comparativa live vs GRUBORJA, matriz de los 21 usos con faltantes, y el edificio completo apilado con hover por piso. El botón «Recorrido» te deja dibujar flechas de circulación. Todo se guarda solo; exportá JSON como respaldo.</li>
+      <li><b>Elija propuesta y nivel.</b> Cada nivel arranca con el layout documentado de GRUBORJA sobre la retícula real del terreno.</li>
+      <li><b>Mueva los bloques</b> arrastrándolos. Si suelta sobre otros, se reacomodan solos; el que no logre su área queda con ＊ indicando cuánto alberga. La esquina inferior derecha redimensiona, y en el panel puede dar ancho × fondo en metros.</li>
+      <li><b>Retire módulos</b> soltándolos fuera del plano: caen a la bandeja y dejan de contar. Cree módulos nuevos con «+ Nuevo módulo» o jalalos desde la Matriz de usos.</li>
+      <li><b>Replique verticales</b> (núcleos, elevadores, rampas) en los niveles que quieras desde el panel: se mueven sincronizados, y donde choquen queda un fantasma «Aplicar aquí» para decidir. Las rampas generan su calle de maniobra.</li>
+      <li><b>Analice abajo</b>: tabla comparativa live vs GRUBORJA, matriz de los 21 usos con faltantes, y el edificio completo apilado con hover por piso. El botón «Recorrido» te deja dibujar flechas de circulación. Todo se guarda solo; exporte JSON como respaldo.</li>
     </ol>
   </details>
 
@@ -1743,7 +1795,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <label class="field"><span class="lbl">Ejes verticales<button type="button" class="info" data-tip="Sólo cambia el overlay visual del eje vertical del plano: 4 muestra la retícula documentada GRUBORJA (bays 1–4); 5 explora una repetición más densa (bays 1–5). Los módulos ya colocados NO cambian de tamaño ni de posición — mantienen sus m² tal como los tenías.">i</button></span>
         <select id="labVertBays"><option value="4">4</option><option value="5">5</option></select>
       </label>
-      <div class="field"><span class="lbl">Vista<button type="button" class="info" data-tip="«Editor» es tu escenario editable. «Plano GRUBORJA» muestra la lámina original de esta propuesta y nivel, para contrastar directo.">i</button></span>
+      <div class="field"><span class="lbl">Vista<button type="button" class="info" data-tip="«Editor» es su escenario editable. «Plano GRUBORJA» muestra la lámina original de esta propuesta y nivel, para contrastar directo.">i</button></span>
         <div class="view-switch" aria-label="Vista">
           <button type="button" id="viewEditor" aria-pressed="true">Editor</button>
           <button type="button" id="viewReference" aria-pressed="false">Plano GRUBORJA</button>
@@ -1753,8 +1805,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <div class="spacer"></div>
     <div class="tb-group">
       <span class="save-status" id="saveStatus" title="Todo cambio se guarda solo en este navegador"></span>
-      <button type="button" id="newModuleBtn" class="primary">+ Nuevo módulo</button><button type="button" class="info" data-tip="Creá un módulo propio: nombre, tipo y m². Nace en la bandeja o directo al plano, y después lo afinás en el panel derecho.">i</button>
-      <button type="button" id="resetLevelBtn">Restaurar nivel</button><button type="button" class="info" data-tip="Devuelve este nivel (de esta propuesta) al layout documentado de GRUBORJA. Confirmás con un segundo clic en el mismo botón.">i</button>
+      <button type="button" id="newModuleBtn" class="primary">+ Nuevo módulo</button><button type="button" class="info" data-tip="Cree un módulo propio: nombre, tipo y m². Nace en la bandeja o directo al plano, y después lo afina en el panel derecho.">i</button>
+      <button type="button" id="resetLevelBtn">Restaurar nivel</button><button type="button" class="info" data-tip="Devuelve este nivel (de esta propuesta) al layout documentado de GRUBORJA. Confirma con un segundo clic en el mismo botón.">i</button>
       <button type="button" id="exportBtn">Exportar</button>
       <button type="button" id="importBtn">Importar</button><button type="button" class="info" data-pos="right" data-tip="Exportar descarga todos tus escenarios como JSON (respaldo o para compartir). Importar carga un JSON exportado antes y reemplaza lo actual.">i</button>
       <input type="file" id="importFile" class="hiddenfile" accept="application/json" />
@@ -1766,7 +1818,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <div class="editor-view">
         <div class="plan-head">
           <h3 id="planTitle"></h3>
-          <button type="button" class="info" data-tip="Arrastrá un bloque para moverlo: si cae sobre otros, éstos se reacomodan solos y el que no logre su área queda con ＊. La esquina inferior derecha redimensiona. Soltá fuera del plano para mandar a la bandeja. Teclado: flechas mueven fino, Supr saca.">i</button>
+          <button type="button" class="info" data-tip="Arrastre un bloque para moverlo: si cae sobre otros, éstos se reacomodan solos y el que no logre su área queda con ＊. La esquina inferior derecha redimensiona. Suelte fuera del plano para mandar a la bandeja. Teclado: flechas mueven fino, Supr saca.">i</button>
           <div class="route-ctl" id="routeCtl">
             <button type="button" id="routeBtn" aria-pressed="false">✏ Recorrido</button>
             <span id="routeTools" hidden>
@@ -1781,7 +1833,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <div id="planCanvas" class="plan-canvas" aria-label="Plano modular editable"></div>
         </div>
         <div class="tray" id="tray">
-          <div class="tray-head"><span class="lbl">Fuera del plano<button type="button" class="info" data-tip="Módulos sacados del plano: no cuentan en el nivel pero no se pierden. Arrastralos de vuelta al plano, o tocá «Colocar» y el sistema les busca espacio libre solo. «×» los elimina definitivo.">i</button></span><span id="trayCount"></span></div>
+          <div class="tray-head"><span class="lbl">Fuera del plano<button type="button" class="info" data-tip="Módulos sacados del plano: no cuentan en el nivel pero no se pierden. Arrastralos de vuelta al plano, o seleccione «Colocar» y el sistema les busca espacio libre solo. «×» los elimina definitivo.">i</button></span><span id="trayCount"></span></div>
           <div class="tray-list" id="trayList"></div>
         </div>
         <div class="legend" aria-label="Leyenda de tipos de área">
@@ -1804,7 +1856,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
     <aside class="side-panel">
       <section class="card" id="newCard" hidden>
-        <h3 class="lbl">Nuevo módulo<button type="button" class="info" data-pos="right" data-tip="Definí nombre, tipo y área. «Crear y colocar» lo pone en el plano buscando espacio libre; «Crear en bandeja» lo deja listo para arrastrarlo cuando quieras.">i</button></h3>
+        <h3 class="lbl">Nuevo módulo<button type="button" class="info" data-pos="right" data-tip="Defina nombre, tipo y área. «Crear y colocar» lo pone en el plano buscando espacio libre; «Crear en bandeja» lo deja listo para arrastrarlo cuando quieras.">i</button></h3>
         <div class="form-grid">
           <label class="field wide">Nombre
             <input id="nmName" type="text" placeholder="Ej. Bodega de llantas" />
@@ -1831,8 +1883,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       </section>
 
       <section class="card" aria-labelledby="selectedTitle">
-        <h3 id="selectedTitle" class="lbl">Módulo seleccionado<button type="button" class="info" data-pos="right" data-tip="Tocá un bloque para editarlo acá: nombre, tipo, m² requeridos (ajusta la huella), ancho × fondo en metros, capacidad y unidad. «Rotar» gira 90°, «Duplicar» copia, «Sacar del plano» lo manda a la bandeja, «Eliminar» borra definitivo (doble clic).">i</button></h3>
-        <div id="noSelection" class="empty">Tocá un bloque del plano o de la bandeja para editarlo.</div>
+        <h3 id="selectedTitle" class="lbl">Módulo seleccionado<button type="button" class="info" data-pos="right" data-tip="Seleccione un bloque para editarlo acá: nombre, tipo, m² requeridos (ajusta la huella), ancho × fondo en metros, capacidad y unidad. «Rotar» gira 90°, «Duplicar» copia, «Sacar del plano» lo manda a la bandeja, «Eliminar» borra definitivo (doble clic).">i</button></h3>
+        <div id="noSelection" class="empty">Seleccione un bloque del plano o de la bandeja para editarlo.</div>
         <div id="selectionForm" class="form-grid" hidden>
           <label class="field wide">Nombre
             <input id="mLabel" type="text" />
@@ -1865,7 +1917,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <div class="wide fact" id="mFact"></div>
           <div class="wide fact warn" id="mDef" hidden></div>
           <div class="wide">
-            <span class="lbl" style="font-size:12px;color:var(--lab-muted-fg)">Replicar en niveles<button type="button" class="info" data-pos="right" data-tip="Para núcleos, elevadores y rampas: marcá los niveles donde este módulo se repite. Queda vinculado: moverlo o redimensionarlo en un nivel lo actualiza en todos. Donde choque con otros módulos aparece un fantasma punteado con «Aplicar aquí» para que decidas; al aplicar, los módulos de ese nivel se reacomodan.">i</button></span>
+            <span class="lbl" style="font-size:12px;color:var(--lab-muted-fg)">Replicar en niveles<button type="button" class="info" data-pos="right" data-tip="Para núcleos, elevadores y rampas: marque los niveles donde este módulo se repite. Queda vinculado: moverlo o redimensionarlo en un nivel lo actualiza en todos. Donde choque con otros módulos aparece un fantasma punteado con «Aplicar aquí» para que decidas; al aplicar, los módulos de ese nivel se reacomodan.">i</button></span>
             <div id="replBoxes" class="repl-boxes" style="margin-top:6px"></div>
           </div>
           <div class="wide actions">
@@ -1880,7 +1932,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       </section>
 
       <section class="card" aria-labelledby="summaryTitle">
-        <h3 id="summaryTitle" class="lbl">Nivel vs GRUBORJA<button type="button" class="info" data-pos="right" data-tip="Compara tu escenario contra la placa base de 2,061.11 m² por nivel: colocado, libre y lo que quedó en bandeja. La barra muestra la mezcla por tipo, y el desplegable resume los 7 niveles de la propuesta activa.">i</button></h3>
+        <h3 id="summaryTitle" class="lbl">Nivel vs GRUBORJA<button type="button" class="info" data-pos="right" data-tip="Compara su escenario contra la placa base de 2,061.11 m² por nivel: colocado, libre y lo que quedó en bandeja. La barra muestra la mezcla por tipo, y el desplegable resume los 7 niveles de la propuesta activa.">i</button></h3>
         <div class="sum-rows" id="sumRows"></div>
         <div class="kindbar" id="kindBar" title="Distribución por tipo"></div>
         <details class="cmp">
@@ -1896,7 +1948,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <button type="button" class="tab on" data-atab="cmp">Comparativo del nivel</button>
       <button type="button" class="tab" data-atab="uses">Matriz de usos</button>
       <button type="button" class="tab" data-atab="bldg">Edificio completo</button>
-      <button type="button" class="info" data-tip="El análisis vive acá y se actualiza en vivo con cada movimiento. «Comparativo del nivel»: tu escenario vs GRUBORJA, uso por uso. «Matriz de usos»: los 21 usos del programa, qué está y qué falta, con botón para jalarlos al plano. «Edificio completo»: los 7 pisos apilados con eficiencia y continuidad vertical.">i</button>
+      <button type="button" class="info" data-tip="El análisis vive acá y se actualiza en vivo con cada movimiento. «Comparativo del nivel»: su escenario vs GRUBORJA, uso por uso. «Matriz de usos»: los 21 usos del programa, qué está y qué falta, con botón para jalarlos al plano. «Edificio completo»: los 7 pisos apilados con eficiencia y continuidad vertical.">i</button>
       <div class="spacer"></div>
       <span class="fact" id="anCtx"></span>
     </div>
@@ -1916,8 +1968,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
             <th>Uso / módulo</th>
             <th>Usuario · estadía</th>
             <th title="Área documentada por GRUBORJA para este uso en el nivel">Base GRUBORJA<br><small>m²</small></th>
-            <th title="Área actual en tu edición del plano">Tu escenario<br><small>m²</small></th>
-            <th title="Diferencia entre tu escenario y GRUBORJA. + = tenés más área que la base, − = menos.">Δ<br><small>m²</small></th>
+            <th title="Área actual en su edición del plano">Su escenario<br><small>m²</small></th>
+            <th title="Diferencia entre su escenario y GRUBORJA. + = tiene más área que la base, − = menos.">Δ<br><small>m²</small></th>
             <th title="Cantidad de bloques del mismo tipo en el plano">#<br><small>bloques</small></th>
             <th title="Capacidad documentada por GRUBORJA (puentes, carros, elevadores)">Cap.<br><small>doc</small></th>
             <th title="Capacidad calculada según el módulo rector y la orientación óptima">Cap.<br><small>calc</small></th>
@@ -1930,7 +1982,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     </div>
 
     <div class="an-panel" id="anUses" hidden>
-      <p class="fact" style="margin-bottom:10px">Los 21 usos del programa (Sección 03) contra tu escenario de la propuesta activa. «Jalar» crea el módulo del uso en el nivel actual y le busca espacio.<button type="button" class="info" data-tip="EN PLANO: el uso ya tiene módulos colocados (se listan niveles y m²). EN BANDEJA: existe pero está fuera del plano. FALTA: no está en el escenario — jalalo para crearlo. Veredictos: SEÑAL produce el propósito, APOYO lo habilita, CONDICIONAL depende de dato abierto, RUIDO consume más de lo que aporta.">i</button></p>
+      <p class="fact" style="margin-bottom:10px">Los 21 usos del programa (Sección 03) contra su escenario de la propuesta activa. «Jalar» crea el módulo del uso en el nivel actual y le busca espacio.<button type="button" class="info" data-tip="EN PLANO: el uso ya tiene módulos colocados (se listan niveles y m²). EN BANDEJA: existe pero está fuera del plano. FALTA: no está en el escenario — asígnelo para crearlo. Veredictos: ESENCIAL sostiene el propósito, NICE TO HAVE lo habilita, CONDICIONAL depende de dato abierto, SE RESUELVE AFUERA se reubica en otros terrenos de la propiedad.">i</button></p>
       <div class="tbl-wrap">
         <table class="an-t" id="usesTable">
           <thead><tr>
@@ -1947,7 +1999,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <div class="stk-pop" id="stkPop"></div>
       </div>
       <div class="cont-warn" id="contWarn"></div>
-      <p class="fact" style="margin-top:10px">Pasá el cursor por un piso para ver su plano escenario junto al de GRUBORJA; clic para saltar a ese nivel.<button type="button" class="info" data-tip="Cada barra es un piso (N5 arriba, S2 abajo) con su mezcla por tipo de área y eficiencia productiva vs base. Los íconos marcan rampa (⤢), núcleo (▣) y elevadores (⇕). Abajo se valida la continuidad vertical: una rampa o elevador que no continúa entre pisos aparece como advertencia.">i</button></p>
+      <p class="fact" style="margin-top:10px">Pase el cursor por un piso para ver su plano escenario junto al de GRUBORJA; clic para saltar a ese nivel.<button type="button" class="info" data-tip="Cada barra es un piso (N5 arriba, S2 abajo) con su mezcla por tipo de área y eficiencia productiva vs base. Los íconos marcan rampa (⤢), núcleo (▣) y elevadores (⇕). Abajo se valida la continuidad vertical: una rampa o elevador que no continúa entre pisos aparece como advertencia.">i</button></p>
     </div>
   </section>
 
@@ -2060,45 +2112,45 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       return { n: n, uso: uso, usr: usr, est: est, chip: chip, cx: cx, ver: ver, area: area, estado: estado, spec: spec, det: det };
     }
     var USES = [
-      U(1, "Recepción de vehículos (pico 7:00–9:30)", "Cliente", "10–20 MIN", "min", "3", "SEÑAL", "N2 · 195–278 m²", "CONFIRMADO",
+      U(1, "Recepción de vehículos (pico 7:00–9:30)", "Cliente", "10–20 MIN", "min", "3", "ESENCIAL", "N2 · 195–278 m²", "CONFIRMADO",
         { k: "recep", kind: "productiva", m2: 200, cap: 0, unit: "", label: "Recepción de vehículos" }, { k: "recep" }),
-      U(2, "Taller exprés", "Técnico", "45M–1.5H", "hrs", "4", "SEÑAL", "N1–N2", "CONFIRMADO",
+      U(2, "Taller exprés", "Técnico", "45M–1.5H", "hrs", "4", "ESENCIAL", "N1–N2", "CONFIRMADO",
         { k: "work", kind: "productiva", m2: 240, cap: 6, unit: "puentes", label: "Puentes taller express" }, { k: "work", lbl: /expr/i }),
-      U(3, "Taller mecánica", "Técnico", "4H–3D", "dias", "4", "SEÑAL", "N3–N4 · 935 m² c/u", "CONFIRMADO",
+      U(3, "Taller mecánica", "Técnico", "4H–3D", "dias", "4", "ESENCIAL", "N3–N4 · 935 m² c/u", "CONFIRMADO",
         { k: "work", kind: "productiva", m2: 500, cap: 10, unit: "puentes", label: "Puentes de taller" }, { k: "work", notlbl: /expr/i }),
-      U(4, "Lavado (cierra línea, dimensiona cisterna)", "Operario", "20–35 MIN", "min", "3", "SEÑAL", "N2 · 60 m²", "CONFIRMADO",
+      U(4, "Lavado (cierra línea, dimensiona cisterna)", "Operario", "20–35 MIN", "min", "3", "ESENCIAL", "N2 · 60 m²", "CONFIRMADO",
         { k: "wash", kind: "productiva", m2: 60, cap: 2, unit: "puestos", label: "Lavado" }, { k: "wash" }),
-      U(5, "Entrega + preparación/inspección", "Cliente", "30–60 MIN", "min", "2–3", "SEÑAL", "N1–N2", "CONFIRMADO",
+      U(5, "Entrega + preparación/inspección", "Cliente", "30–60 MIN", "min", "2–3", "ESENCIAL", "N1–N2", "CONFIRMADO",
         { k: "custom", kind: "productiva", m2: 120, cap: 0, unit: "", label: "Entrega e inspección" }, { lbl: /entrega|inspecci/i }),
-      U(6, "Despacho de repuestos", "Técnico + público", "10–15 MIN", "min", "2", "SEÑAL", "S1 frente Wichos", "CONFIRMADO",
+      U(6, "Despacho de repuestos", "Técnico + público", "10–15 MIN", "min", "2", "ESENCIAL", "S1 frente Wichos", "CONFIRMADO",
         { k: "parts", kind: "productiva", m2: 69, cap: 0, unit: "", label: "Venta de repuestos" }, { k: "parts" }),
-      U(7, "Parqueo de visitas", "Cliente", "45M–2H", "hrs", "2", "SEÑAL", "S1–S2 · 105 carros totales", "USO POR ASIGNAR",
+      U(7, "Parqueo de visitas", "Cliente", "45M–2H", "hrs", "2", "ESENCIAL", "S1–S2 · 105 carros totales", "USO POR ASIGNAR",
         { k: "park", kind: "operativa", m2: 300, cap: 12, unit: "carros", label: "Parqueo de visitas" }, { k: "park", notlbl: /moto|emplead|invent|WIP/i }),
-      U(8, "Parqueo empleados (carros) — huérfano", "Empleado", "9–10 H", "hrs", "1–2", "APOYO", "SIN ASIGNAR", "POR CONFIRMAR",
+      U(8, "Parqueo empleados (carros) — huérfano", "Empleado", "9–10 H", "hrs", "1–2", "NICE TO HAVE", "SIN ASIGNAR", "POR CONFIRMAR",
         { k: "park", kind: "operativa", m2: 200, cap: 8, unit: "carros", label: "Parqueo empleados" }, { lbl: /emplead/i, k: "park" }),
-      U(9, "Motos empleados/mensajeros", "Empleado", "9–10 H", "hrs", "1", "APOYO", "S1 · 40 motos", "CONFIRMADO",
+      U(9, "Motos empleados/mensajeros", "Empleado", "9–10 H", "hrs", "1", "NICE TO HAVE", "S1 · 40 motos", "CONFIRMADO",
         { k: "park", kind: "operativa", m2: 100, cap: 40, unit: "motos", label: "Motos (40)" }, { lbl: /moto/i }),
-      U(10, "Showroom Jetour", "Cliente", "30–90 D", "dias", "3", "SEÑAL", "N1 · 550→693 m²", "CONFIRMADO",
+      U(10, "Showroom Jetour", "Cliente", "30–90 D", "dias", "3", "ESENCIAL", "N1 · 550→693 m²", "CONFIRMADO",
         { k: "sales", kind: "productiva", m2: 550, cap: 0, unit: "carros exp.", label: "Sala de exhibición" }, { k: "sales" }),
-      U(11, "Oficinas operativas (jefes taller/asesores)", "Empleado", "9 H", "hrs", "2", "APOYO", "N2–N3", "CONFIRMADO",
+      U(11, "Oficinas operativas (jefes taller/asesores)", "Empleado", "9 H", "hrs", "2", "NICE TO HAVE", "N2–N3", "CONFIRMADO",
         { k: "office", kind: "apoyo", m2: 80, cap: 0, unit: "", label: "Oficinas operativas" }, { k: "office" }),
-      U(12, "Bodegas de materiales por taller", "Técnico", "SEMANAS", "meses", "1", "APOYO", "N2–N4", "CONFIRMADO",
+      U(12, "Bodegas de materiales por taller", "Técnico", "SEMANAS", "meses", "1", "NICE TO HAVE", "N2–N4", "CONFIRMADO",
         { k: "bstore", kind: "apoyo", m2: 40, cap: 0, unit: "", label: "Bodega de materiales" }, { k: "bstore" }),
       U(13, "Gym / comedor / duchas", "Empleado", "1–9 H", "hrs", "2–3", "CONDICIONAL", "N5 · ~220 m²", "CONFIRMADO",
         { k: "gym", kind: "apoyo", m2: 220, cap: 0, unit: "", label: "Gym / comedor / duchas" }, { ks: ["gym", "dining", "wc"] }),
       U(14, "Mecánica larga / espera (WIP)", "Piloto interno", "3–15 D", "dias", "1", "CONDICIONAL", "N3–N5", "ESCENARIO",
         { k: "custom", kind: "operativa", m2: 180, cap: 8, unit: "carros", label: "WIP · espera de taller" }, { lbl: /WIP|espera/i }),
-      U(15, "Bodega central de repuestos", "Interno", "MESES", "meses", "2", "RUIDO", "N1 · Propuesta 1 · 183 m²", "CONFIRMADO",
+      U(15, "Bodega central de repuestos", "Interno", "MESES", "meses", "2", "SE RESUELVE AFUERA", "N1 · Propuesta 1 · 183 m²", "CONFIRMADO",
         { k: "store", kind: "apoyo", m2: 183, cap: 0, unit: "", label: "Bodega de repuestos" }, { k: "store" }),
-      U(16, "Enderezado y pintura", "Técnico", "7–15 D/veh", "dias", "5", "RUIDO*", "N3 · ~190 m² (est.)", "VALORIZAR",
+      U(16, "Enderezado y pintura", "Técnico", "7–15 D/veh", "dias", "5", "SE RESUELVE AFUERA*", "N3 · ~190 m² (est.)", "VALORIZAR",
         { k: "custom", kind: "productiva", m2: 190, cap: 0, unit: "", label: "Enderezado y pintura" }, { lbl: /pint|enderez|prepar/i }),
-      U(17, "Inventario de nuevos (~960 m²·día/venta)", "Piloto", "30–90 D", "dias", "1–2", "RUIDO", "Sin inventario masivo", "CONTEO FALTANTE",
+      U(17, "Inventario de nuevos (~960 m²·día/venta)", "Piloto", "30–90 D", "dias", "1–2", "SE RESUELVE AFUERA", "Sin inventario masivo", "CONTEO FALTANTE",
         { k: "custom", kind: "operativa", m2: 300, cap: 12, unit: "carros", label: "Inventario nuevos" }, { lbl: /inventario nuevos/i }),
-      U(18, "Inventario de usados (~1,440 m²·día/venta)", "Piloto", "60–120 D", "dias", "1", "RUIDO", "No está", "COHERENTE",
+      U(18, "Inventario de usados (~1,440 m²·día/venta)", "Piloto", "60–120 D", "dias", "1", "SE RESUELVE AFUERA", "No está", "COHERENTE",
         { k: "custom", kind: "operativa", m2: 300, cap: 12, unit: "carros", label: "Inventario usados" }, { lbl: /usados/i }),
-      U(19, "Apartamentos efficiency 5º/6º", "Residencial", "24 H", "h24", "3–4", "RUIDO*", "Línea vacía en cuadros", "POR CONFIRMAR",
+      U(19, "Apartamentos efficiency 5º/6º", "Residencial", "24 H", "h24", "3–4", "SE RESUELVE AFUERA*", "Línea vacía en cuadros", "POR CONFIRMAR",
         { k: "custom", kind: "apoyo", m2: 250, cap: 0, unit: "aptos", label: "Apartamentos efficiency" }, { lbl: /apartament/i }),
-      U(20, "Casetas de seguridad", "Guardia", "24 H", "h24", "1", "APOYO", "Instalaciones", "CONFIRMADO",
+      U(20, "Casetas de seguridad", "Guardia", "24 H", "h24", "1", "NICE TO HAVE", "Instalaciones", "CONFIRMADO",
         { k: "custom", kind: "apoyo", m2: 12, cap: 0, unit: "", label: "Caseta de seguridad" }, { lbl: /caseta/i }),
       U(21, "Cuarentena de baterías de litio", "Técnico", "EVENTUAL", "neutro", "5", "CONDICIONAL", "No está — prever", "POR CONFIRMAR",
         { k: "custom", kind: "tecnica", m2: 30, cap: 0, unit: "", label: "Cuarentena baterías litio" }, { lbl: /cuarentena|bater/i })
@@ -2197,7 +2249,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           localStorage.setItem(LS_KEY, JSON.stringify(st));
           var d = new Date();
           saveEl.textContent = "Guardado " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
-        } catch (e) { saveEl.textContent = "Sin guardado local — exportá JSON"; }
+        } catch (e) { saveEl.textContent = "Sin guardado local — exporte JSON"; }
       }, 250);
     }
 
@@ -2398,7 +2450,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       var wrap = canvas.parentElement;
       wrap.querySelectorAll(".axis").forEach(function (n) { n.remove(); });
       if (!cur.lvl) {
-        canvas.innerHTML = "<div class='no-level'>Elegí un nivel en el selector, o hacé clic en un piso del edificio apilado abajo.<br><small>Al hacer clic dos veces sobre el mismo piso, lo deseleccionás.</small></div>";
+        canvas.innerHTML = "<div class='no-level'>Elija un nivel en el selector, o hacé clic en un piso del edificio apilado abajo.<br><small>Al hacer clic dos veces sobre el mismo piso, lo deselecciona.</small></div>";
         return;
       }
       var mods = levelMods(cur.prop, cur.lvl);
@@ -2518,12 +2570,12 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     /* ---------- tray / panel / summary ---------- */
     function renderTray() {
       trayList.innerHTML = "";
-      if (!cur.lvl) { trayCount.textContent = ""; var e0 = document.createElement("span"); e0.className = "tray-empty"; e0.textContent = "Elegí un nivel para ver su bandeja."; trayList.appendChild(e0); return; }
+      if (!cur.lvl) { trayCount.textContent = ""; var e0 = document.createElement("span"); e0.className = "tray-empty"; e0.textContent = "Elija un nivel para ver su bandeja."; trayList.appendChild(e0); return; }
       var mods = levelMods(cur.prop, cur.lvl).filter(function (m) { return m.out; });
       trayCount.textContent = mods.length ? (mods.length + " módulo" + (mods.length > 1 ? "s" : "") + " · " + fmt(mods.reduce(function (s, m) { return s + areaOf(m); }, 0)) + " m²") : "";
       if (!mods.length) {
         var e = document.createElement("span"); e.className = "tray-empty";
-        e.textContent = "Arrastrá un bloque hasta acá para sacarlo del plano.";
+        e.textContent = "Arrastre un bloque hasta acá para sacarlo del plano.";
         trayList.appendChild(e); return;
       }
       mods.forEach(function (m) {
@@ -2656,7 +2708,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     }
     function renderCompare() {
       if (!cur.lvl) {
-        if ($("cmpIntro")) $("cmpIntro").innerHTML = "<div class='cmp-intro-inner muted'>Elegí un nivel arriba para ver la comparativa. La pestaña «Edificio completo» funciona con todos los niveles a la vez.</div>";
+        if ($("cmpIntro")) $("cmpIntro").innerHTML = "<div class='cmp-intro-inner muted'>Elija un nivel arriba para ver la comparativa. La pestaña «Edificio completo» funciona con todos los niveles a la vez.</div>";
         $("cmpKpis").innerHTML = "";
         if ($("cmpTbody")) $("cmpTbody").innerHTML = "";
         if ($("defNote")) $("defNote").hidden = true;
@@ -2666,11 +2718,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       if ($("cmpIntro")) {
         $("cmpIntro").innerHTML =
           "<div class='cmp-intro-inner'>" +
-          "<b>Tu escenario editable</b> <span class='vs'>vs</span> " +
+          "<b>Su escenario editable</b> <span class='vs'>vs</span> " +
           "<b>plano original GRUBORJA</b> · " +
           "<span class='prop-tag'>" + (PROP_LABEL[cur.prop] || cur.prop) + "</span> · " +
           "<span class='lvl-tag'>Nivel " + cur.lvl + "</span>" +
-          "<div class='cmp-hint'>Cada fila muestra un uso del programa: cuánto m² tenía en el plano de GRUBORJA, cuánto tiene ahora en tu edición, y la diferencia. Los usos con <b>＊</b> están comprimidos: el bloque no alcanza a albergar los m² documentados. Cambiá de propuesta o nivel arriba para actualizar la comparativa.</div>" +
+          "<div class='cmp-hint'>Cada fila muestra un uso del programa: cuánto m² tenía en el plano de GRUBORJA, cuánto tiene ahora en su edición, y la diferencia. Los usos con <b>＊</b> están comprimidos: el bloque no alcanza a albergar los m² documentados. Cambie de propuesta o nivel arriba para actualizar la comparativa.</div>" +
           "</div>";
       }
       var sk = scopeKey(cur.prop, cur.lvl);
@@ -2756,7 +2808,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       });
       return { placed: placed, tray: tray, lvls: Object.keys(lvls) };
     }
-    var VERCLS = { "SEÑAL": "b-senal", "APOYO": "b-apoyo", "CONDICIONAL": "b-cond", "RUIDO": "b-ruido", "RUIDO*": "b-ruido" };
+    var VERCLS = { "ESENCIAL": "b-senal", "NICE TO HAVE": "b-apoyo", "CONDICIONAL": "b-cond", "SE RESUELVE AFUERA": "b-afuera", "SE RESUELVE AFUERA*": "b-afuera" };
     function renderUses() {
       var html = "";
       USES.forEach(function (u) {
@@ -2990,7 +3042,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         var nw = clamp(nearestIdx(fr, CX, NX) - g.m.x, 1, NX - g.m.x);
         var nh = clamp(nearestIdx(fb, CY, NY) - g.m.y, 1, NY - g.m.y);
         if (collides(mods, g.m, g.m.x, g.m.y, nw, nh)) {
-          flashInvalid(g.m.uid); toast("Choca con otro módulo: movelos primero o usá el auto-acomodo arrastrando");
+          flashInvalid(g.m.uid); toast("Choca con otro módulo: movelos primero o utilice el auto-acomodo arrastrando");
         } else {
           g.m.w = nw; g.m.h = nh;
           g.m.prog = Math.max(g.m.prog || 0, 0);
@@ -3335,7 +3387,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       canvas.scrollIntoView({ behavior: "smooth", block: "center" });
     });
     $("resetLevelBtn").addEventListener("click", function () {
-      if (!cur.lvl) { toast("Elegí un nivel antes de restaurar"); return; }
+      if (!cur.lvl) { toast("Elija un nivel antes de restaurar"); return; }
       armConfirm($("resetLevelBtn"), "¿Confirmar restaurar?", function () {
         st.data[scopeKey(cur.prop, cur.lvl)] = buildDefault(scopeKey(cur.prop, cur.lvl));
         cur.selUid = null;
@@ -3886,17 +3938,17 @@ document.querySelectorAll('#tusos tbody tr').forEach((tr,i)=>{
 /* -------- laboratorio 08 -------- */
 const PLAY_PLATE=2061.11;
 const PLAY_BASE={
-  p1r:{name:'Propuesta 1 · Rampas',floors:{
+  p1r:{name:'1R',floors:{
     n1:{zone:198,count:9,kind:'posición',vertical:746},n2:{zone:237,count:6,kind:'puente',vertical:873},
     n3:{zone:552,count:10,kind:'puente',vertical:790},n4:{zone:552,count:13,kind:'puente',vertical:790},
     n5:{zone:745,count:45,kind:'carro',vertical:302},s1:{zone:1174,count:44,kind:'carro',vertical:313},s2:{zone:1174,count:61,kind:'carro',vertical:117}
   }},
-  p1e:{name:'Propuesta 1 · Elevadores',floors:{
+  p1e:{name:'1E',floors:{
     n1:{zone:198,count:9,kind:'posición',vertical:746},n2:{zone:365,count:8,kind:'puente',vertical:290},
     n3:{zone:935,count:19,kind:'puente',vertical:61},n4:{zone:935,count:22,kind:'puente',vertical:61},
     n5:{zone:831,count:52,kind:'carro',vertical:61},s1:{zone:1174,count:44,kind:'carro',vertical:313},s2:{zone:1174,count:61,kind:'carro',vertical:117}
   }},
-  p2e:{name:'Propuesta 2 · Elevadores + bodega externa',floors:{
+  p2e:{name:'2E',floors:{
     n1:{zone:362,count:12,kind:'posición',vertical:524},n2:{zone:436,count:8,kind:'puente',vertical:286},
     n3:{zone:935,count:19,kind:'puente',vertical:61},n4:{zone:935,count:22,kind:'puente',vertical:61},
     n5:{zone:831,count:52,kind:'carro',vertical:61},s1:{zone:1174,count:44,kind:'carro',vertical:313},s2:{zone:1174,count:61,kind:'carro',vertical:117}
@@ -3917,11 +3969,11 @@ const PLAY_USES=[
   {id:'bodegas-locales',name:'Bodegas por taller',v:'apoyo',on:true,areas:{n2:{p1r:28,p1e:68,p2e:28},n3:{p1r:57,p1e:34,p2e:34},n4:{p1r:57,p1e:34,p2e:34}}},
   {id:'personal',name:'Gym / comedor / duchas',v:'cond',on:true,areas:{n5:{p1r:220,p1e:220,p2e:220}}},
   {id:'wip',name:'Mecánica larga / WIP',v:'cond',on:false},
-  {id:'bodega-central',name:'Bodega central + rampa tráiler',v:'ruido',on:{p1r:true,p1e:true,p2e:false},areas:{n1:{p1r:287,p1e:287,p2e:287}}},
-  {id:'pintura',name:'Enderezado y pintura',v:'ruido',on:true,areas:{n3:{p1r:190,p1e:190,p2e:190}}},
-  {id:'inventario-nuevo',name:'Inventario de nuevos',v:'ruido',on:false},
-  {id:'inventario-usado',name:'Inventario de usados',v:'ruido',on:false},
-  {id:'apartamentos',name:'Apartamentos efficiency',v:'ruido',on:false},
+  {id:'bodega-central',name:'Bodega central + rampa tráiler',v:'afuera',on:{p1r:true,p1e:true,p2e:false},areas:{n1:{p1r:287,p1e:287,p2e:287}}},
+  {id:'pintura',name:'Enderezado y pintura',v:'afuera',on:true,areas:{n3:{p1r:190,p1e:190,p2e:190}}},
+  {id:'inventario-nuevo',name:'Inventario de nuevos',v:'afuera',on:false},
+  {id:'inventario-usado',name:'Inventario de usados',v:'afuera',on:false},
+  {id:'apartamentos',name:'Apartamentos efficiency',v:'afuera',on:false},
   {id:'seguridad',name:'Casetas de seguridad',v:'apoyo',on:true},
   {id:'baterias',name:'Cuarentena baterías litio',v:'cond',on:false}
 ];
@@ -4010,7 +4062,7 @@ function playProgramDelta(proposal,level){
   let delta=0;
   const missing=[];
   const signalsOff=[];
-  const noiseOn=[];
+  const afueraOn=[];
   document.querySelectorAll('#playUseGrid input[data-use]').forEach(input=>{
     const use=PLAY_USES.find(u=>u.id===input.dataset.use);
     const initial=playDefault(use,proposal);
@@ -4020,9 +4072,9 @@ function playProgramDelta(proposal,level){
       else missing.push(use.name);
     }
     if(use.v==='senal'&&!input.checked)signalsOff.push(use.name);
-    if(use.v==='ruido'&&input.checked)noiseOn.push(use.name);
+    if(use.v==='afuera'&&input.checked)afueraOn.push(use.name);
   });
-  return {delta,missing,signalsOff,noiseOn};
+  return {delta,missing,signalsOff,afueraOn};
 }
 function playResultRow(label,baseValue,scenarioValue,diff){
   const tr=document.createElement('tr');
@@ -4054,13 +4106,13 @@ function playGeneralCalculate(proposal,officialOnly=false){
     workshop:{baseZone:0,baseCount:0,zone:0,count:0,reduction:officialOnly?0:playReduction('n2')},
     parking:{baseZone:0,baseCount:0,zone:0,count:0,reduction:officialOnly?0:playReduction('n5')}
   };
-  const warnings={signalsOff:new Set(),noiseOn:new Set(),missing:new Set()};
+  const warnings={signalsOff:new Set(),afueraOn:new Set(),missing:new Set()};
   PLAY_LEVELS.forEach(level=>{
     const official=PLAY_BASE[proposal].floors[level];
     const override=officialOnly?null:playCurrentOverride(level);
     const baseZone=override?.zone>0?override.zone:official.zone;
     const baseCount=override?.count>0?override.count:official.count;
-    const program=officialOnly?{delta:0,missing:[],signalsOff:[],noiseOn:[]}:playProgramDelta(proposal,level);
+    const program=officialOnly?{delta:0,missing:[],signalsOff:[],afueraOn:[]}:playProgramDelta(proposal,level);
     const zone=Math.max(0,Math.min(PLAY_PLATE,baseZone+program.delta));
     const family=playFamily(level);
     const reduction=officialOnly?0:families[family].reduction;
@@ -4080,7 +4132,7 @@ function playGeneralCalculate(proposal,officialOnly=false){
     families[family].zone+=zone;
     families[family].count+=capacity;
     program.signalsOff.forEach(v=>warnings.signalsOff.add(v));
-    program.noiseOn.forEach(v=>warnings.noiseOn.add(v));
+    program.afueraOn.forEach(v=>warnings.afueraOn.add(v));
     program.missing.forEach(v=>warnings.missing.add(v));
   });
   Object.values(families).forEach(f=>{
@@ -4201,13 +4253,13 @@ function playRenderGeneralComparison(result){
   ];
   const poor=result.floors.filter(f=>f.superstructure&&f.cellsPerSpan<2);
   messages.push({warn:poor.length>0,text:poor.length?`La retícula común falla el mínimo conceptual de dos celdas por vano en: ${poor.map(f=>f.level.toUpperCase()).join(', ')}.`:`La retícula común contiene al menos dos celdas conceptuales por vano en N1–N5; todavía debe comprobarse con columnas y equipos reales.`});
-  if(result.warnings.signalsOff.size)messages.push({warn:true,text:`El resultado mejora retirando usos SEÑAL: ${[...result.warnings.signalsOff].join(', ')}. No debe considerarse viable hasta demostrar que la operación sigue funcionando.`});
+  if(result.warnings.signalsOff.size)messages.push({warn:true,text:`El resultado mejora retirando usos ESENCIAL: ${[...result.warnings.signalsOff].join(', ')}. No debe considerarse viable hasta demostrar que la operación sigue funcionando.`});
   messages.forEach(m=>{const div=document.createElement('div');div.className=m.warn?'warn':'';div.textContent=m.text;verdict.appendChild(div);});
 }
 function playRenderGeneralAlerts(result){
   const box=playEl('playGeneralAlerts');box.replaceChildren();
   const messages=[];
-  if(result.warnings.noiseOn.size)messages.push(`Ruido activo: ${[...result.warnings.noiseOn].join(', ')}.`);
+  if(result.warnings.afueraOn.size)messages.push(`Ruido activo: ${[...result.warnings.afueraOn].join(', ')}.`);
   if(result.warnings.missing.size)messages.push(`Cambios sin m² cuantificados: ${[...result.warnings.missing].join(', ')}. Se registran, pero no alteran capacidad.`);
   const reduced=Object.values(result.families).some(f=>f.reduction>0);
   if(reduced)messages.push('La reducción de módulo es un objetivo matemático. Debe validarse contra vehículo, puente, puertas, seguridad, maniobra y columnas.');
@@ -4323,10 +4375,10 @@ function playUpdate(){
   );
   const alerts=playEl('playAlerts');alerts.replaceChildren();
   const messages=[];
-  if(program.signalsOff.length)messages.push({danger:true,text:`Se eliminaron usos SEÑAL: ${program.signalsOff.join(', ')}. La capacidad sube, pero el programa puede dejar de operar.`});
-  if(program.noiseOn.length)messages.push({text:`Ruido todavía activo: ${program.noiseOn.join(', ')}. Debe justificar su permanencia con valor, demanda o costo evitado.`});
+  if(program.signalsOff.length)messages.push({danger:true,text:`Se retiraron usos ESENCIAL: ${program.signalsOff.join(', ')}. La capacidad sube, pero el programa puede dejar de operar.`});
+  if(program.afueraOn.length)messages.push({text:`Ruido todavía activo: ${program.afueraOn.join(', ')}. Debe justificar su permanencia con valor, demanda o costo evitado.`});
   if(program.missing.length)messages.push({text:`Cambios sin área cuantificada: ${program.missing.join(', ')}. Se registran cualitativamente y no alteran el cálculo.`});
-  if(cellsPerSpan<2)messages.push({danger:true,text:'El vano no contiene dos unidades netas después de descontar la columna. Revisá ancho de unidad, columna o vano.'});
+  if(cellsPerSpan<2)messages.push({danger:true,text:'El vano no contiene dos unidades netas después de descontar la columna. Revise ancho de unidad, columna o vano.'});
   if(capacity>structuralPotential)messages.push({danger:true,text:`La estimación por área pide ${capacity} unidades, pero la retícula rectangular conceptual solo sugiere ${structuralPotential}. Hace falta redibujar la geometría.`});
   if(override)messages.push({text:`El ejercicio usa los datos del Excel confirmados para ${level.toUpperCase()}. La comparación conserva GRUBORJA como referencia fija.`});
   messages.forEach(m=>{const div=document.createElement('div');div.className='play-alert'+(m.danger?' danger':'');div.textContent=m.text;alerts.appendChild(div);});
@@ -4353,9 +4405,9 @@ function playUpdate(){
     if(override){
       playEl('playCurrentSourceText').textContent=`Base de ${level.toUpperCase()} confirmada desde “${PLAY.excelMeta?.fileName||'Excel local'}”. Los campos no encontrados siguen usando GRUBORJA.`;
     }else if(PLAY.source==='excel'&&PLAY.workbook){
-      playEl('playCurrentSourceText').textContent=`El Excel fue leído, pero ${level.toUpperCase()} todavía conserva GRUBORJA. Revisá y confirmá los datos encontrados.`;
+      playEl('playCurrentSourceText').textContent=`El Excel fue leído, pero ${level.toUpperCase()} todavía conserva GRUBORJA. Revise y confirme los datos encontrados.`;
     }else if(PLAY.source==='excel'){
-      playEl('playCurrentSourceText').textContent='Esperando un Excel. Mientras no confirmés una lectura, el ejercicio conserva la base GRUBORJA.';
+      playEl('playCurrentSourceText').textContent='Esperando un Excel. Mientras no confirme una lectura, el ejercicio conserva la base GRUBORJA.';
     }else{
       playEl('playCurrentSourceText').textContent=`Base GRUBORJA · ${PLAY_BASE[proposal].name} · ${level.toUpperCase()}.`;
     }
@@ -4457,7 +4509,7 @@ function playRenderFacts(){
   const facts=PLAY.excelFacts;
   playEl('playFactsBlock').classList.remove('play-hidden');
   playEl('playExcelClear').classList.remove('play-hidden');
-  playEl('playExcelSummary').textContent=`${PLAY.excelMeta.fileName}: se revisaron ${PLAY.excelMeta.sheets} hojas y ${PLAY.excelMeta.cells.toLocaleString('es-GT')} celdas con contenido. Se encontraron ${facts.length} posibles datos útiles. La lectura es una ayuda: no se aplica hasta que la confirmés.`;
+  playEl('playExcelSummary').textContent=`${PLAY.excelMeta.fileName}: se revisaron ${PLAY.excelMeta.sheets} hojas y ${PLAY.excelMeta.cells.toLocaleString('es-GT')} celdas con contenido. Se encontraron ${facts.length} posibles datos útiles. La lectura es una ayuda: no se aplica hasta que la confirme.`;
   playFillFactSelect('playFactArea','area');
   playFillFactSelect('playFactCount','capacity');
   playFillFactSelect('playFactModule','module');
@@ -4476,7 +4528,7 @@ function playRenderFacts(){
     td.textContent='No se reconocieron etiquetas útiles. El archivo sí fue leído, pero el ejercicio seguirá con GRUBORJA hasta que exista un mapeo manual.';
     tr.appendChild(td);body.appendChild(tr);
   }
-  playEl('playExcelStatus').textContent=`${PLAY.excelMeta.fileName} leído completo. Ahora revisá la sección “Así estamos”.`;
+  playEl('playExcelStatus').textContent=`${PLAY.excelMeta.fileName} leído completo. Ahora revise la sección “Así estamos”.`;
   playUpdate();
 }
 function playSelectedFact(id){
@@ -4538,7 +4590,7 @@ function playClearExcel(){
   playEl('playFactsBlock').classList.add('play-hidden');
   playEl('playExcelClear').classList.add('play-hidden');
   playEl('playFactsBody').replaceChildren();
-  playEl('playExcelStatus').textContent='Elegí un archivo. No hace falta que tenga encabezados perfectos ni una sola tabla.';
+  playEl('playExcelStatus').textContent='Elija un archivo. No hace falta que tenga encabezados perfectos ni una sola tabla.';
   playUpdate();
 }
 function playDownload(){
@@ -4582,7 +4634,7 @@ if(playEl('playProposal')){
   playEl('playExcelClear').addEventListener('click',playClearExcel);
   playEl('playExcel').addEventListener('change',e=>{
     const file=e.target.files&&e.target.files[0];if(!file)return;
-    if(typeof XLSX==='undefined'){playEl('playExcelStatus').textContent='No se pudo cargar el lector de Excel. Verificá la conexión o instalá la librería local en el repositorio.';return;}
+    if(typeof XLSX==='undefined'){playEl('playExcelStatus').textContent='No se pudo cargar el lector de Excel. Verifique la conexión o instale la librería local en el repositorio.';return;}
     const reader=new FileReader();
     reader.onload=event=>{
       try{
@@ -4590,7 +4642,7 @@ if(playEl('playProposal')){
         PLAY.excelOverrides={};
         playScanWorkbook(PLAY.workbook,file.name);
       }catch(error){
-        playEl('playExcelStatus').textContent='No se pudo leer el archivo. Probá guardarlo como .xlsx o .csv sin contraseña.';
+        playEl('playExcelStatus').textContent='No se pudo leer el archivo. Pruebe guardarlo como .xlsx o .csv sin contraseña.';
       }
     };
     reader.readAsArrayBuffer(file);
