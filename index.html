@@ -1276,6 +1276,9 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     .lp-vchip.nice{background:var(--lp-nice);color:#fff}
     .lp-vchip.cond{background:var(--lp-cond);color:#fff}
     .lp-vchip.afuera{background:var(--lp-afuera);color:#25332e}
+    #labPri .lp-diverge{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.06em;padding:1.5px 6px;border-radius:2px;margin-left:6px;cursor:help}
+    #labPri .lp-diverge.in{background:#fff4e0;color:#8a5a00;border:1px solid #d9bd85}
+    #labPri .lp-diverge.out{background:#eef2f7;color:#3a4b6d;border:1px solid #b8c4d8}
     .lp-meta{display:flex;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--lp-muted);flex-wrap:wrap}
     .lp-meta span{white-space:nowrap}
     .lp-meta .tiempo{cursor:pointer;text-decoration:underline dotted;text-decoration-color:#c1c5c0;padding:1px 3px;border-radius:2px}
@@ -1630,7 +1633,24 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
       const body=document.createElement('div'); body.className='lp-body';
       const name=document.createElement('div'); name.className='lp-name';
-      const vc=document.createElement('span'); vc.className='lp-vchip '+u.v; vc.textContent=V_LABELS[u.v]; name.appendChild(vc);
+      const vc=document.createElement('span'); vc.className='lp-vchip '+u.v;
+      vc.textContent=V_LABELS[u.v];
+      vc.title='Hipótesis del veredicto (definida en la matriz sec 03). La posición en esta cola es SU decisión.';
+      name.appendChild(vc);
+      // Indicador de divergencia hipótesis ↔ decisión
+      const hipDentro = (u.v==='esencial' || u.v==='nice');
+      const hipAfuera = (u.v==='afuera');
+      if(adentro && hipAfuera){
+        const div=document.createElement('span'); div.className='lp-diverge in';
+        div.textContent='◆ hipótesis dice afuera';
+        div.title='La hipótesis de la matriz sugiere resolver este uso afuera, pero usted lo mantiene adentro. No es error — es una decisión distinta que puede justificarse con dato.';
+        name.appendChild(div);
+      } else if(!adentro && hipDentro){
+        const div=document.createElement('span'); div.className='lp-diverge out';
+        div.textContent='◆ hipótesis dice adentro';
+        div.title='La hipótesis de la matriz sugiere mantener este uso adentro, pero usted lo retiró. Verifique si la operación puede sostenerse sin él.';
+        name.appendChild(div);
+      }
       name.appendChild(document.createTextNode(' '+u.name));
       body.appendChild(name);
       const meta=document.createElement('div'); meta.className='lp-meta';
@@ -1645,11 +1665,25 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       meta.appendChild(m2span);
       // Cliente
       const cli=document.createElement('span'); cli.textContent='· '+CLI_LABELS[u.cli]; meta.appendChild(cli);
-      // Tiempo (editable)
+      // Tiempo (editable · muestra valor editado si aplica)
       const tspan=document.createElement('span');
       tspan.className='tiempo'; tspan.setAttribute('data-id',u.id);
-      tspan.textContent='· '+u.tStr+(u.id in LP.tOverrides?' *':'');
-      tspan.title='Clic para editar tiempo (en días)';
+      // Si hay override, mostrar el valor con su unidad
+      if(u.id in LP.tOverrides){
+        const dOv = LP.tOverrides[u.id];
+        // Elegir unidad legible según magnitud
+        let label, val;
+        if(dOv < 1/24){ label='min'; val=(dOv*60*24).toFixed(0); }
+        else if(dOv < 1){ label='h'; val=(dOv*24).toFixed(1).replace(/\.0$/,''); }
+        else if(dOv < 14){ label='d'; val=dOv.toFixed(1).replace(/\.0$/,''); }
+        else if(dOv < 60){ label='sem'; val=(dOv/7).toFixed(1).replace(/\.0$/,''); }
+        else{ label='mes'; val=(dOv/30).toFixed(1).replace(/\.0$/,''); }
+        tspan.innerHTML='· <b style="color:var(--lp-cond)">'+val+' '+label+'</b> <span style="color:var(--lp-cond);font-weight:700">*</span>';
+        tspan.title='Editado. Valor documentado: '+u.tStr+'. Clic para editar de nuevo.';
+      } else {
+        tspan.textContent='· '+u.tStr;
+        tspan.title='Clic para editar el tiempo de permanencia';
+      }
       meta.appendChild(tspan);
       body.appendChild(meta);
       // Servidumbres visibles solo si está adentro
@@ -1804,7 +1838,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     // Escala log
     const logCosto=c=>c>0?Math.log10(c+1):0;
     const maxLog=Math.log10(maxCosto+1);
-    rows.sort((a,b)=>b.costo-a.costo).forEach((it,i)=>{
+    rows.sort((a,b)=>{
+      // Supuestos siempre al final
+      if(a.supuesto !== b.supuesto) return a.supuesto ? 1 : -1;
+      return b.costo - a.costo;
+    }).forEach((it,i)=>{
       const {u,costo,supuesto}=it;
       const esAfuera=LP.estado[u.id]==='afuera';
       const w=maxLog>0?logCosto(costo)/maxLog*100:0;
@@ -1892,45 +1930,79 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       });
       inp.addEventListener('click',e=>e.stopPropagation());
     });
-    // Tiempo editable inline (sin prompt del navegador)
+    // Tiempo editable inline · unit-aware + label actualizada + revert
+    // Mapa escala → { unidad visible, factor a días, step }
+    const UNIT_MAP = {
+      minutos:  {label:'min', toDias:v=>v/(60*24), fromDias:d=>d*60*24,     step:'1'},
+      horas:    {label:'h',   toDias:v=>v/24,      fromDias:d=>d*24,        step:'0.5'},
+      dias:     {label:'d',   toDias:v=>v,         fromDias:d=>d,            step:'0.5'},
+      semanas:  {label:'sem', toDias:v=>v*7,       fromDias:d=>d/7,          step:'0.5'},
+      meses:    {label:'mes', toDias:v=>v*30,      fromDias:d=>d/30,         step:'0.5'},
+      eventual: {label:'d',   toDias:v=>v,         fromDias:d=>d,            step:'1'}
+    };
     document.querySelectorAll('#lpList .tiempo').forEach(el=>{
       el.addEventListener('click',e=>{
         e.stopPropagation();
-        if(el.querySelector('input')) return;  // ya en modo edición
+        if(el.querySelector('input')) return;
         const id=el.dataset.id; const u=use(id);
-        const actual=usoTDias(u);
-        const original=el.textContent;
+        const actualDias=usoTDias(u);
+        const escalaActual = escalaDe(actualDias) || u.escala || 'dias';
+        const unitConf = UNIT_MAP[escalaActual] || UNIT_MAP.dias;
+        const displayVal = unitConf.fromDias(actualDias);
+        // Mostrar valor sin decimales redundantes
+        const displayStr = (displayVal >= 10) ? displayVal.toFixed(0) : displayVal.toFixed(2).replace(/\.?0+$/,'');
         el.innerHTML='';
         const inp=document.createElement('input');
-        inp.type='number'; inp.step='0.001'; inp.min='0.001';
-        inp.value=actual.toFixed(4).replace(/\.?0+$/,'');
+        inp.type='number'; inp.step=unitConf.step; inp.min='0';
+        inp.value=displayStr;
         inp.className='lp-input-tiempo';
-        inp.style.width='90px';
-        inp.title='Días (0.5 = 12 h · 30 = 1 mes). Enter para confirmar, Esc para cancelar.';
-        const unit=document.createElement('span');
-        unit.textContent=' d';
-        unit.style.marginLeft='4px'; unit.style.fontSize='9.5px'; unit.style.color='var(--lp-muted)';
-        el.appendChild(inp); el.appendChild(unit);
+        inp.style.width='60px';
+        inp.title='Enter para confirmar · Esc para cancelar';
+        // Selector de unidad
+        const sel=document.createElement('select');
+        sel.className='lp-input-tiempo';
+        sel.style.marginLeft='3px'; sel.style.width='auto'; sel.style.padding='2px 4px';
+        Object.entries(UNIT_MAP).forEach(([k,v])=>{
+          if(k==='eventual') return;  // no lo mostramos en selector
+          const opt=document.createElement('option');
+          opt.value=k; opt.textContent=v.label;
+          if(k===escalaActual) opt.selected=true;
+          sel.appendChild(opt);
+        });
+        // Botón revert si hay override
+        const wrap=document.createElement('span');
+        wrap.appendChild(inp); wrap.appendChild(sel);
+        if(id in LP.tOverrides){
+          const revert=document.createElement('button');
+          revert.type='button'; revert.className='lp-revert';
+          revert.textContent='↺'; revert.title='Revertir al valor documentado ('+u.tStr+')';
+          revert.style.cssText='margin-left:4px;background:none;border:1px solid var(--lp-line);border-radius:3px;padding:1px 6px;cursor:pointer;font-size:11px;color:var(--lp-muted)';
+          revert.addEventListener('mousedown',ev=>{ ev.preventDefault(); ev.stopPropagation(); delete LP.tOverrides[id]; delete LP.tWarnings[id]; render(); });
+          wrap.appendChild(revert);
+        }
+        el.appendChild(wrap);
         inp.focus(); inp.select();
         const commit=()=>{
           const v=parseFloat(inp.value);
           if(isNaN(v)||v<=0){ render(); return; }
-          LP.tOverrides[id]=v;
+          const selectedUnit = UNIT_MAP[sel.value] || unitConf;
+          const newDias = selectedUnit.toDias(v);
+          LP.tOverrides[id]=newDias;
           const oldEscala=escalaDe(u.tDias);
-          const newEscala=escalaDe(v);
+          const newEscala=escalaDe(newDias);
           if(oldEscala!==newEscala){
-            const factor=v/u.tDias;
-            LP.tWarnings[id]=`Cruzó de escala (${oldEscala} → ${newEscala}). El costo de permanencia cambió ×${factor.toFixed(1)}. Debe recalcular la asignación de este uso.`;
+            const factor=newDias/u.tDias;
+            LP.tWarnings[id]=`Cruzó de escala (${oldEscala} → ${newEscala}). El costo de permanencia cambió ×${factor.toFixed(1)}.`;
           }else{
             delete LP.tWarnings[id];
           }
           render();
         };
-        const cancel=()=>{ el.textContent=original; };
         inp.addEventListener('blur',commit);
+        sel.addEventListener('change',()=>inp.focus());  // no commit on unit change alone
         inp.addEventListener('keydown',ev=>{
           if(ev.key==='Enter'){ ev.preventDefault(); inp.blur(); }
-          else if(ev.key==='Escape'){ ev.preventDefault(); inp.removeEventListener('blur',commit); cancel(); }
+          else if(ev.key==='Escape'){ ev.preventDefault(); inp.removeEventListener('blur',commit); render(); }
         });
       });
     });
