@@ -756,7 +756,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 <!-- ============ 04 PLAN ============ -->
 <section class="tab" id="t4">
   <div class="wrap" style="padding-top:48px">
-    <div class="eyebrow">05 · Cuadros y planos GRUBORJA · marzo 2026</div>
+    <div class="eyebrow">05 · Lo que dibujó GRUBORJA · cuadros y planos marzo 2026</div>
     <h2 class="sec">Lo que dibujó GRUBORJA: las tres propuestas lado a lado</h2>
     <div class="note" style="margin-bottom:14px"><b>Área de uso activo</b> = niveles donde un cliente o un vehículo genera actividad de servicio o de venta (N1 a N4). Excluye N5, S1 y S2, que corresponden a almacenamiento de larga permanencia.</div>
     <p class="secsub">Las tres opciones comparadas conservan una placa de 2,061.11 m² por nivel. Lo que cambia es <b>cuánto piso se usa para mover carros, cuántos puestos productivos caben y qué programa ocupa el Nivel 1</b>. Cada gráfica usa la misma escala: 0–50% de una placa.</p>
@@ -1240,7 +1240,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       --lp-cli-externo:#9CC2B4;--lp-cli-tecnico:#7A9A96;--lp-cli-empleado:#8B9BB1;--lp-cli-interno:#59615C;
       font-family:var(--font-body);color:var(--lp-ink)}
     #labPri *{box-sizing:border-box}
-    .lp-topbar{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:12px;margin-bottom:18px;align-items:end}
+    .lp-topbar{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:10px;margin-bottom:18px;align-items:end}
     .lp-kpi{background:var(--lp-card);border:1px solid var(--lp-line);border-left:4px solid var(--forest);border-radius:8px;padding:12px 14px}
     .lp-kpi .v{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--forest);line-height:1.15}
     .lp-kpi .l{font-size:11.5px;color:var(--lp-muted);margin-top:3px;letter-spacing:.02em}
@@ -1352,6 +1352,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     <div class="lp-kpi"><div class="v" id="lpKpiCap">—</div><div class="l">capacidad · puentes + posiciones + carros</div><div class="how" id="lpKpiCapHow">—</div></div>
     <div class="lp-kpi"><div class="v" id="lpKpiCosto">—</div><div class="l">costo de permanencia del edificio (m²·día)</div><div class="how" id="lpKpiCostoHow">—</div></div>
     <div class="lp-kpi"><div class="v" id="lpKpiUsdUnit">—</div><div class="l">costo espacial anual por unidad de capacidad · USD/año<span class="tt" tabindex="0" data-tipo="cal" data-que="Fórmula: m² consumidos × USD $670/m²/año ÷ capacidad total (puentes + posiciones + carros). El USD $670/m² es un supuesto editable del anclaje económico de la síntesis. La capacidad total es la suma reactiva de lo que cada uso adentro aporta." data-src="Definición URBOP; USD $670 marcado como supuesto en sec 01">&nbsp;ⓘ</span></div><div class="how" id="lpKpiUsdUnitHow">—</div></div>
+    <div class="lp-kpi"><div class="v" id="lpKpiUsdCarro">—</div><div class="l">costo espacial por carro atendido · USD/carro<span class="tt" tabindex="0" data-tipo="cal" data-que="Fórmula: (m² consumidos × USD $670/m²/año) ÷ (puentes × 4 OS/día × 300 días operativos/año). El supuesto de 4 órdenes por día por puente es referencia de industria (NADA); el cliente aún no confirmó órdenes reales. Solo se calcula si hay puentes adentro." data-src="URBOP · supuesto 4 OS/día/puente (industria) hasta que el cliente confirme órdenes reales">&nbsp;ⓘ</span></div><div class="how" id="lpKpiUsdCarroHow">—</div></div>
     <div class="lp-basebox">
       <label for="lpBase">Base</label>
       <select id="lpBase">
@@ -1523,15 +1524,22 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     const carros = adentro.reduce((s,u)=>s+usoAporta(u,'carros',base), 0);
     const capTotal = puentes + posiciones + carros;
     const permProm = m2>0 ? costoM2Dia/m2 : 0;
-    // Costo espacial anual por unidad de capacidad
+    // Costo espacial anual por unidad de capacidad instalada
     // = m² consumidos × USD 670 ÷ capacidad total
     const costoUsdPorUnidad = capTotal>0 ? (m2 * LP_COST_M2_YEAR) / capTotal : 0;
+    // Costo espacial anual por carro atendido
+    // = m² × USD 670 ÷ (puentes × 4 OS/día × 300 días op/año)
+    // Supuesto: 4 OS/puente/día (industria); solo cuenta puentes (talleres) — posiciones y carros parqueados no "atienden"
+    const OS_DIA_PUENTE = 4;
+    const DIAS_OP_ANIO = 300;
+    const carrosAtendidosAnio = puentes * OS_DIA_PUENTE * DIAS_OP_ANIO;
+    const costoUsdPorCarro = carrosAtendidosAnio>0 ? (m2 * LP_COST_M2_YEAR) / carrosAtendidosAnio : 0;
     // Costo por cliente (para mix)
     const costoPorCli = {externo:0, tecnico:0, empleado:0, interno:0};
     adentro.forEach(u => { costoPorCli[u.cli] += m2Of(u) * tOf(u); });
     const mix = {};
     Object.keys(costoPorCli).forEach(c => { mix[c] = costoM2Dia>0 ? costoPorCli[c]/costoM2Dia*100 : 0; });
-    return {adentro, afuera, m2, m2Active, servM2, costoM2Dia, puentes, posiciones, carros, capTotal, permProm, costoUsdPorUnidad, costoPorCli, mix};
+    return {adentro, afuera, m2, m2Active, servM2, costoM2Dia, puentes, posiciones, carros, capTotal, permProm, costoUsdPorUnidad, costoUsdPorCarro, carrosAtendidosAnio, costoPorCli, mix};
   }
 
   function baselineFor(base){
@@ -1603,6 +1611,14 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     // KPI 4 · Costo espacial anual por unidad de capacidad
     $('lpKpiUsdUnit').textContent = 'USD $' + fmt(r.costoUsdPorUnidad, 0);
     $('lpKpiUsdUnitHow').textContent = `${fmtDelta(r.costoUsdPorUnidad-b.costoUsdPorUnidad,'',0)}`;
+    // KPI 5 · Costo espacial por carro atendido (supuesto 4 OS/puente/día · 300 días/año)
+    if(r.puentes > 0){
+      $('lpKpiUsdCarro').textContent = 'USD $' + fmt(r.costoUsdPorCarro, 0);
+      $('lpKpiUsdCarroHow').textContent = `${fmt(r.carrosAtendidosAnio, 0)} OS/año estimadas · ${fmtDelta(r.costoUsdPorCarro-b.costoUsdPorCarro,'',0)}`;
+    } else {
+      $('lpKpiUsdCarro').textContent = '—';
+      $('lpKpiUsdCarroHow').textContent = 'sin puentes adentro · no aplica';
+    }
   }
 
   function renderList(r){
