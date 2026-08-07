@@ -96,6 +96,11 @@ section.tab.on{display:block;animation:fade .35s ease}
 .chip.dias{background:#dcebe6;color:#1B4D3E;border:1px solid #9cc2b4}
 .chip.meses{background:#f4e3e3;color:var(--oxblood);border:1px solid #d3a3a3}
 .chip.h24{background:#f3e8d2;color:#7a5510;border:1px solid #d9bd85}
+.esc-chip{display:inline-block;font-family:var(--font-mono);font-size:9.5px;font-weight:700;letter-spacing:.05em;padding:2.5px 7px;border-radius:3px;text-transform:uppercase;white-space:nowrap;color:#fff}
+.esc-chip.esc-minutos{background:#8DC63F;color:#1e3a0f}
+.esc-chip.esc-horas{background:#6f8fb4}
+.esc-chip.esc-dias{background:#B07C1E}
+.esc-chip.esc-semanasmeses{background:#8FAFA3;color:#25332e}
 .badge{display:inline-block;font-family:'JetBrains Mono';font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:2.5px 9px;border-radius:20px}
 .badge.ok{background:var(--forest);color:#fff}
 .badge.pc{background:var(--ochre);color:#fff}
@@ -508,13 +513,6 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <p style="font-size:14.5px;line-height:1.6;color:#3a423d;font-style:italic;margin:0">Un hotel no se evalúa por el número de habitaciones, sino por quién las ocupa y cuánto tiempo permanece. Este edificio se comporta igual.</p>
       </div>
 
-      <h3 style="font-size:15px;color:var(--forest);margin:26px 0 10px;letter-spacing:.02em">Anclaje económico</h3>
-      <div class="grid3">
-        <div class="kpi"><div class="v">USD $1.38 M</div><div class="l">Costo aproximado por planta</div><div class="how">2,061.11 m² × <span class="tt" tabindex="0" data-tipo="sup" data-que="Supuesto vigente USD $670 por metro cuadrado construido. Editable en la conversación con el cliente cuando se defina la calidad final." data-src="Supuesto URBOP 2026, por confirmar">USD $670/m²</span> — supuesto marcado</div></div>
-        <div class="kpi"><div class="v">USD $9.6 M</div><div class="l">Costo aproximado de placa construida en los siete niveles</div><div class="how">1.38 × 7. Es la cifra que hace que la pregunta de usos importe: cada metro que se desperdicia en un uso equivocado tiene precio.</div></div>
-        <div class="kpi warn"><div class="v">3</div><div class="l">Datos que el cliente aún no ha entregado</div><div class="how">Sin ellos ninguna recomendación de esta síntesis puede aprobarse.</div></div>
-      </div>
-
       <h3 style="font-size:15px;color:var(--forest);margin:26px 0 10px;letter-spacing:.02em">Datos que faltan para tomar la decisión</h3>
       <div class="grid3">
         <div class="kpi warn"><div class="v">1</div><div class="l"><b>Órdenes de servicio por mes</b> por tipo (exprés · mecánica · larga)</div><div class="how">Decide si 49 puentes son crecimiento programado o capacidad ociosa cara.</div></div>
@@ -689,29 +687,29 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       <button data-f="afuera">SE RESUELVE AFUERA</button>
     </div>
     <table id="tusos">
-      <thead><tr><th><span class="tt" tabindex="0" data-tipo="sup" data-que="ESENCIAL: sostiene el propósito del edificio y su ausencia detiene la línea productiva ese día. CONDICIONAL: aporta pero no detiene; su necesidad depende de un dato aún abierto. SE RESUELVE AFUERA: existe y se reubica en otros terrenos de la propiedad porque su permanencia consume placa cara. NICE TO HAVE: habilita a lo esencial sin generar servicio o venta directa." data-src="Test de clasificación acordado con jefatura">Uso</span></th><th>Usuario</th><th>Tipo de estadía</th><th><span class="tt" tabindex="0" data-tipo="met" data-que="Escala 0–5 de exigencia física: 0 = sin instalación fija; 1 = losa/marca/luz; 2 = instalaciones estándar; 3 = agua, drenaje o ambiente controlado; 4 = equipo y cargas de taller; 5 = extracción, tratamiento o riesgo regulado." data-src="Escala de complejidad del análisis, jul-2026">Complejidad</span></th><th>Veredicto · Hipótesis URBOP</th><th>Área por nivel y propuesta</th><th>Estado</th></tr></thead>
+      <thead><tr><th><span class="tt" tabindex="0" data-tipo="sup" data-que="ESENCIAL: sostiene el propósito del edificio y su ausencia detiene la línea productiva ese día. CONDICIONAL: aporta pero no detiene; su necesidad depende de un dato aún abierto. SE RESUELVE AFUERA: existe y se reubica en otros terrenos de la propiedad porque su permanencia consume placa cara. NICE TO HAVE: habilita a lo esencial sin generar servicio o venta directa." data-src="Test de clasificación acordado con jefatura">Uso</span></th><th>Usuario</th><th>Tipo de estadía</th><th><span class="tt" tabindex="0" data-tipo="met" data-que="Escala agregada de permanencia (agrupa el rango declarado en 4 categorías). Es el dato que gobierna la clasificación por circulación: minutos → rampa; horas → rampa o transferencia; días → elevador; semanas-meses → se resuelve afuera del edificio." data-src="Marco URBOP · escalas de permanencia">Escala</span></th><th><span class="tt" tabindex="0" data-tipo="met" data-que="Escala 0–5 de exigencia física: 0 = sin instalación fija; 1 = losa/marca/luz; 2 = instalaciones estándar; 3 = agua, drenaje o ambiente controlado; 4 = equipo y cargas de taller; 5 = extracción, tratamiento o riesgo regulado." data-src="Escala de complejidad del análisis, jul-2026">Complejidad</span></th><th>Veredicto · Hipótesis URBOP</th><th>Área por nivel y propuesta</th><th>Estado</th></tr></thead>
       <tbody>
-                <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Mostrador de venta de repuestos con stock de 24–48 h. Diego pidió habilitar el frente al local 'Wichos' en S1 para este mostrador. El despacho es esencial; la BODEGA central no." data-src="Correo Diego Cuestas, 10-jun-2025">Despacho de repuestos</span></b></td><td><span class="chip min">10–15 MIN</span></td><td>Técnico + público</td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque abastece la reparación inmediata y atiende la venta de mostrador. Se clasifica el despacho de alta rotación, no la bodega central de inventario lento." data-src="Clasificación URBOP; solicitud de mostrador de repuestos">ESENCIAL</span></td><td>S1 · 69 m² documentado</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Carril donde el cliente entrega su carro y el asesor abre la orden. Diego pidió eliminarla como 'sala de exposición 2º nivel' y convertirla en recepción con circulación + espera de clientes." data-src="Correo Diego Cuestas (Gerente General), 10-jun-2025">Recepción de vehículos</span></b> · pico 7:00–9:30</td><td><span class="chip min">10–20 MIN</span></td><td>Cliente</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque aquí comienza el servicio: se recibe el carro, se identifica al cliente y se abre la orden. Sin recepción no existe un ingreso controlado al proceso." data-src="Clasificación URBOP sobre el flujo solicitado por Diego Cuestas">ESENCIAL</span></td><td>N2 · 195–278 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b>Lavado</b> · cierra la línea; dimensiona la cisterna</td><td><span class="chip min">20–35 MIN</span></td><td>Operario</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque forma parte del cierre del servicio y de la preparación del vehículo para entrega. Sin capacidad de lavado se acumula producto terminado y se bloquea la salida." data-src="Clasificación URBOP sobre la secuencia recepción–servicio–entrega">ESENCIAL</span></td><td>N2 · 60 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Preparación e inspección antes de devolver el carro al cliente. Pedida explícita en la lista de puntos de talleres." data-src="Correo Erik Maquiz, 12-jun-2025">Entrega + preparación/inspección</span></b></td><td><span class="chip min">30–60 MIN</span></td><td>Cliente</td><td class="num">2–3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque verifica la calidad y devuelve el carro al cliente. Sin inspección y entrega formal, la orden no se completa ni se libera correctamente." data-src="Clasificación URBOP sobre la solicitud de preparación e inspección">ESENCIAL</span></td><td>N1 · 252 m² documentado</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Servicios rápidos (aceite, filtros, revisión): el carro entra y sale el mismo turno. Es el m² que más produce por hora en todo el edificio." data-src="Cuadros GRUBORJA (N1 'taller express autos chinos'); rotación 4–6 OS/día/puente = supuesto de industria, editable">Taller exprés</span></b></td><td><span class="chip min">45M–1.5H</span></td><td>Técnico</td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque ejecuta órdenes cobrables de alta rotación. Produce servicio directamente y convierte el área en ingresos varias veces durante la jornada." data-src="Clasificación URBOP sobre el programa GRUBORJA">ESENCIAL</span></td><td>N1 · 198 m² (1R/1E) · 362 m² (2E)</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b>Parqueo de visitas</b></td><td><span class="chip min">45M–2H</span></td><td>Cliente</td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL para la experiencia comercial: permite que clientes de ventas y servicio accedan y permanezcan durante su atención. La cantidad dedicada exclusivamente a visitas todavía debe asignarse." data-src="Clasificación URBOP sobre el uso confirmado en S1–S2">ESENCIAL</span></td><td>S1–S2 · <span class="tt" tabindex="0" data-tipo="doc" data-que="Cada sótano tiene 1,174 m² de parqueo tipo &quot;usuarios varios&quot; documentado en cuadros GRUBORJA. Los 105 carros totales (44 en S1 + 61 en S2) suman visitas y empleados; la asignación separada por tipo de usuario no está documentada." data-src="Cuadros y plantas S1-S2, GRUBORJA">1,174 m² por sótano · 105 carros</span></td><td><span class="badge pc">USO POR ASIGNAR</span></td></tr>
-        <tr data-v="cond"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Comedor, gimnasio y lockers/baños/duchas para operarios. Pedido textual: 'Diseñar área de comedor, de gimnasio y de lockers/baños/duchas en 4to ó 5to nivel'. No produce directo, pero retiene técnicos — el activo escaso del taller." data-src="Correo Diego Cuestas, 10-jun-2025 → ejecutado en N5 por GRUBORJA (gym 81 + comedor 79 + sanitarios 60)">Gym / comedor / duchas</span></td><td><span class="chip min">1–9 H</span></td><td>Empleado</td><td class="num">2–3</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque mejora bienestar y retención del personal, pero su tamaño y mezcla —gym, comedor, duchas— deben justificarse con la plantilla y el valor de esos 220 m² frente a otros usos." data-src="Clasificación URBOP sobre la solicitud ejecutada en N5">CONDICIONAL</span></td><td>N5 · ~220 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="apoyo"><td>Oficinas operativas (jefes de taller, asesores)</td><td><span class="chip min">9 H</span></td><td>Empleado</td><td class="num">2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque coordina técnicos, asesores, órdenes y clientes, pero no constituye una bahía productiva. Debe permanecer cerca de la operación y dimensionarse por plantilla." data-src="Clasificación URBOP sobre oficinas N2–N3">NICE TO HAVE</span></td><td>N2–N3</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="apoyo"><td><b>Parqueo de empleados (carros)</b></td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td class="num">1–2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque permite el acceso del personal, pero no repara ni vende carros directamente. Debe dimensionarse con la plantilla y los modos reales de llegada." data-src="Clasificación URBOP; revisión de S1–S2">NICE TO HAVE</span></td><td><span class="tt" tabindex="0" data-tipo="doc" data-que="Los sótanos S1 y S2 están rotulados 'parqueo de vehículos de clientes y usuarios varios' — los empleados están incluidos dentro de esos 105 carros. Lo pendiente es el conteo separado por tipo de usuario, no la asignación de espacio." data-src="Plantas S1-S2 GRUBORJA">S1–S2 · dentro de 105 carros</span></td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Diego pidió estudiar parqueo de motos en S1 ó S2 'como espina de pescado entrando por el lado sur y saliendo por el norte' — plazas a 45° en fila." data-src="Correo Diego Cuestas, 10-jun-2025">Motos empleados/mensajeros</span></td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque facilita la llegada de empleados y mensajeros con menor consumo de área que el automóvil. Habilita la operación sin ser una posición productiva." data-src="Clasificación URBOP sobre la solicitud y las 40 motos dibujadas">NICE TO HAVE</span></td><td>S1 · 40 motos</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="'Casetas de policías seguridad' — puntos de control de acceso." data-src="Correo Erik Maquiz, 12-jun-2025">Casetas de seguridad</span></td><td><span class="chip h24">24 H</span></td><td>Guardia</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque controla accesos, protege vehículos y permite operar con seguridad, pero no genera una orden ni una venta directamente. Debe ser suficiente y compacta." data-src="Clasificación URBOP sobre la solicitud de seguridad">NICE TO HAVE</span></td><td>Instalaciones</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Pedido textual de Diego: 'Resto de 5to y 6to nivel apartamentos efficiency (concepto Muni sin parqueos)' — apartamentos pequeños acogidos a incentivos municipales. En los cuadros de mar-2026 NO aparecen: la línea 'área de apartamentos' está vacía. ¿La idea murió o quedó diferida? Nadie lo ha dicho por escrito." data-src="Correo Diego Cuestas 10-jun-2025 vs. cuadros GRUBORJA mar-2026">Apartamentos efficiency 5º/6º</span></b></td><td><span class="chip h24">24 H</span></td><td>Residencial</td><td class="num">3–4</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera (con colisión) porque introduce un usuario residencial de 24 horas sobre talleres y exige accesos, seguridad, evacuación, instalaciones y regulación propias. Solo merece volver al programa si el incentivo y la rentabilidad compensan toda esa cascada." data-src="Clasificación URBOP; solicitud de Diego ausente en cuadros 2026">SE RESUELVE AFUERA*</span></td><td>Línea vacía en cuadros</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
-        <tr data-v="senal"><td><b>Taller mecánica</b></td><td><span class="chip dias">4H–3D</span></td><td>Técnico</td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque constituye la línea productiva principal del taller: diagnóstico, reparación y horas facturables. Quitarla elimina la razón operativa de N3–N4." data-src="Clasificación URBOP sobre los puentes dibujados por GRUBORJA">ESENCIAL</span></td><td>N3–N4 · 935 m² c/u</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="cond"><td><b><span class="tt" tabindex="0" data-tipo="sup" data-que="WIP (work in process): carros dentro del edificio que no están en una bahía — esperan repuesto, turno o entrega. El escenario de 72 veh/día produciría ~84 vehículos en sistema y 36 fuera de bahías, pero demanda y permanencias todavía no son datos confirmados del cliente." data-src="Modelo de viabilidad, escenario editable; GRUBORJA lo tiene difuso como 'vehículos en espera' N3–N5">Mecánica larga / espera (WIP)</span></b></td><td><span class="chip dias">3–15 D</span></td><td>Piloto interno</td><td class="num">1</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque sí se necesitará staging si existe WIP, pero su cantidad depende de órdenes diarias y permanencia real. Sin esos datos, asignar 36 o 48 plazas sería convertir un escenario en programa." data-src="Clasificación URBOP; Ley de Little con entradas pendientes">CONDICIONAL</span></td><td>N3–N5</td><td><span class="badge pc">ESCENARIO</span></td></tr>
-        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Cabina de pintado + preparación con rejillas + iluminación especial, dibujadas en N3. Colisión abierta: los parámetros la sacan (complejidad 5, el carro vive 7–15 días), pero Erik la pidió explícita. Se decide valorizando su cascada, no por decreto." data-src="Correo Erik Maquiz 12-jun-2025 + plantas N3 GRUBORJA + advertencia del modelo auditado">Enderezado y pintura</span></b></td><td><span class="chip dias">7–15 D/VEH</span></td><td>Técnico</td><td class="num">5</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera (con colisión) porque ocupa el carro 7–15 días y arrastra cabina, extracción, rejillas, iluminación, compresores y residuos. Sin embargo, fue solicitado y está dibujado: solo sale si una evaluación económica y ambiental demuestra que conviene externalizarlo." data-src="Clasificación URBOP; solicitud de Erik y planta N3">SE RESUELVE AFUERA*</span></td><td>N3 · ~190 m² <span class="tt" tabindex="0" data-tipo="sup" data-que="Área estimada por lectura de la planta N3 (cabina + preparación + iluminación especial). No hay cifra desglosada en cuadros." data-src="Lectura URBOP de planta N3 — Por confirmar">(est.)</span></td><td><span class="badge pc">VALORIZAR</span></td></tr>
-        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Bodega de materiales y de herramienta EN CADA TALLER (compartibles entre sí) — distintas de la bodega central de repuestos." data-src="Correo Erik Maquiz, 12-jun-2025">Bodegas de materiales por taller</span></td><td><span class="chip meses">SEMANAS</span></td><td>Técnico</td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque mantiene herramientas y consumibles junto a los técnicos, reduciendo recorridos y tiempos muertos. Debe ser una bodega local compacta, no inventario central de meses." data-src="Clasificación URBOP; solicitud de Erik Maquiz">NICE TO HAVE</span></td><td>N2–N4</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Sala de ventas de autos chinos con fachada Jetour. Diego eligió el 'ejercicio 2': SOLO la sala resaltada tipo Jetour y el resto del edificio en otro color/textura, rotulable aparte." data-src="Correo Diego Cuestas, 11-jun-2025 ('creo esto sería lo mejor')">Showroom Jetour</span></b></td><td><span class="chip dias">30–90 D</span></td><td>Cliente</td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL para la función comercial del proyecto: exhibe y vende los vehículos de la marca. Su inventario de exposición debe mantenerse limitado para no convertir la sala en almacenamiento." data-src="Clasificación URBOP sobre el programa comercial confirmado">ESENCIAL</span></td><td>N1 · 550→693 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="afuera"><td>Inventario de nuevos <span class="tt" tabindex="0" data-tipo="sup" data-que="Consumo espacio-tiempo ≈960 m²·día por venta (60 días × 16 m²). Ilustra por qué el inventario no merece este m²; se recalcula con datos reales del cliente." data-src="Supuesto URBOP: permanencia × huella, jornada 10 h">≈960 m²·día/venta</span></td><td><span class="chip meses">30–90 D</span></td><td>Piloto</td><td class="num">1–2</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera porque cada vehículo permanece 30–90 días y consume área sin producir órdenes de servicio. El showroom conserva solo las unidades necesarias para exhibición; el inventario masivo debe vivir en otra ubicación." data-src="Clasificación URBOP por permanencia y huella">SE RESUELVE AFUERA</span></td><td>Sin inventario masivo dibujado; conteo de exhibición no documentado</td><td><span class="badge pc">CONTEO FALTANTE</span></td></tr>
-        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Almacén central de piezas (meses de permanencia, rotación bajísima). La Propuesta 2 de GRUBORJA la exporta a bodega perimetral + 'búnker' de Plaza del Sol. El análisis llegó a la misma conclusión por la regla de estadía — convergencia independiente." data-src="Cuadro Propuesta 2 y comentarios GRUBORJA; matriz del análisis">Bodega central de repuestos</span></b></td><td><span class="chip meses">MESES</span></td><td>Interno</td><td class="num">2</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera en este edificio porque guarda inventario durante meses y obliga a disponer bodega, carga, descarga y rampa de tráiler en una placa escasa. El despacho diario sí permanece como ESENCIAL." data-src="Clasificación del análisis y Propuesta 2 de GRUBORJA">SE RESUELVE AFUERA</span></td><td>N1 · 1R · 183 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
-        <tr data-v="afuera"><td>Inventario de usados <span class="tt" tabindex="0" data-tipo="sup" data-que="≈1,440 m²·día por venta (90 días × 16 m²) — el espacio-tiempo de unas 450 órdenes exprés. Supuesto ilustrativo URBOP, ajustable." data-src="Supuesto URBOP: permanencia × huella">≈1,440 m²·día/venta</span></td><td><span class="chip meses">60–120 D</span></td><td>Piloto</td><td class="num">1</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera porque su permanencia estimada de 60–120 días produce el mayor consumo de espacio-tiempo y no requiere la infraestructura vertical del taller. Los planos correctamente no le asignan área." data-src="Clasificación URBOP por permanencia y huella">SE RESUELVE AFUERA</span></td><td>No está</td><td><span class="badge ok">COHERENTE</span></td></tr>
-        <tr data-v="cond"><td><span class="tt" tabindex="0" data-tipo="nor" data-que="Área exterior separada para vehículos con batería de litio dañada o en alerta térmica (riesgo de thermal runaway). No puede estar en sótano. Riesgo menor con flota china a gasolina; crece si el taller recibe EVs." data-src="OSHA 4480 (riesgos de baterías) + HSE UK; previsión URBOP — no está en planos">Cuarentena de baterías de litio</span></td><td><span class="chip h24">EVENTUAL</span></td><td>Técnico</td><td class="num">5</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque puede convertirse en requisito de seguridad si el taller recibe vehículos eléctricos o baterías dañadas. Su necesidad y dimensión dependen de la flota futura y de la validación normativa; hoy no aparece en planos." data-src="Clasificación URBOP; previsión normativa pendiente">CONDICIONAL</span></td><td>No está — prever</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
+                <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Mostrador de venta de repuestos con stock de 24–48 h. Diego pidió habilitar el frente al local 'Wichos' en S1 para este mostrador. El despacho es esencial; la BODEGA central no." data-src="Correo Diego Cuestas, 10-jun-2025">Despacho de repuestos</span></b></td><td><span class="chip min">10–15 MIN</span></td><td>Técnico + público</td><td><span class="esc-chip esc-minutos">Minutos</span></td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque abastece la reparación inmediata y atiende la venta de mostrador. Se clasifica el despacho de alta rotación, no la bodega central de inventario lento." data-src="Clasificación URBOP; solicitud de mostrador de repuestos">ESENCIAL</span></td><td>S1 · 69 m² documentado</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Carril donde el cliente entrega su carro y el asesor abre la orden. Diego pidió eliminarla como 'sala de exposición 2º nivel' y convertirla en recepción con circulación + espera de clientes." data-src="Correo Diego Cuestas (Gerente General), 10-jun-2025">Recepción de vehículos</span></b> · pico 7:00–9:30</td><td><span class="chip min">10–20 MIN</span></td><td>Cliente</td><td><span class="esc-chip esc-minutos">Minutos</span></td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque aquí comienza el servicio: se recibe el carro, se identifica al cliente y se abre la orden. Sin recepción no existe un ingreso controlado al proceso." data-src="Clasificación URBOP sobre el flujo solicitado por Diego Cuestas">ESENCIAL</span></td><td>N2 · 195–278 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b>Lavado</b> · cierra la línea; dimensiona la cisterna</td><td><span class="chip min">20–35 MIN</span></td><td>Operario</td><td><span class="esc-chip esc-minutos">Minutos</span></td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque forma parte del cierre del servicio y de la preparación del vehículo para entrega. Sin capacidad de lavado se acumula producto terminado y se bloquea la salida." data-src="Clasificación URBOP sobre la secuencia recepción–servicio–entrega">ESENCIAL</span></td><td>N2 · 60 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Preparación e inspección antes de devolver el carro al cliente. Pedida explícita en la lista de puntos de talleres." data-src="Correo Erik Maquiz, 12-jun-2025">Entrega + preparación/inspección</span></b></td><td><span class="chip min">30–60 MIN</span></td><td>Cliente</td><td><span class="esc-chip esc-minutos">Minutos</span></td><td class="num">2–3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque verifica la calidad y devuelve el carro al cliente. Sin inspección y entrega formal, la orden no se completa ni se libera correctamente." data-src="Clasificación URBOP sobre la solicitud de preparación e inspección">ESENCIAL</span></td><td>N1 · 252 m² documentado</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Servicios rápidos (aceite, filtros, revisión): el carro entra y sale el mismo turno. Es el m² que más produce por hora en todo el edificio." data-src="Cuadros GRUBORJA (N1 'taller express autos chinos'); rotación 4–6 OS/día/puente = supuesto de industria, editable">Taller exprés</span></b></td><td><span class="chip min">45M–1.5H</span></td><td>Técnico</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque ejecuta órdenes cobrables de alta rotación. Produce servicio directamente y convierte el área en ingresos varias veces durante la jornada." data-src="Clasificación URBOP sobre el programa GRUBORJA">ESENCIAL</span></td><td>N1 · 198 m² (1R/1E) · 362 m² (2E)</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b>Parqueo de visitas</b></td><td><span class="chip min">45M–2H</span></td><td>Cliente</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">2</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL para la experiencia comercial: permite que clientes de ventas y servicio accedan y permanezcan durante su atención. La cantidad dedicada exclusivamente a visitas todavía debe asignarse." data-src="Clasificación URBOP sobre el uso confirmado en S1–S2">ESENCIAL</span></td><td>S1–S2 · <span class="tt" tabindex="0" data-tipo="doc" data-que="Cada sótano tiene 1,174 m² de parqueo tipo &quot;usuarios varios&quot; documentado en cuadros GRUBORJA. Los 105 carros totales (44 en S1 + 61 en S2) suman visitas y empleados; la asignación separada por tipo de usuario no está documentada." data-src="Cuadros y plantas S1-S2, GRUBORJA">1,174 m² por sótano · 105 carros</span></td><td><span class="badge pc">USO POR ASIGNAR</span></td></tr>
+        <tr data-v="cond"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Comedor, gimnasio y lockers/baños/duchas para operarios. Pedido textual: 'Diseñar área de comedor, de gimnasio y de lockers/baños/duchas en 4to ó 5to nivel'. No produce directo, pero retiene técnicos — el activo escaso del taller." data-src="Correo Diego Cuestas, 10-jun-2025 → ejecutado en N5 por GRUBORJA (gym 81 + comedor 79 + sanitarios 60)">Gym / comedor / duchas</span></td><td><span class="chip min">1–9 H</span></td><td>Empleado</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">2–3</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque mejora bienestar y retención del personal, pero su tamaño y mezcla —gym, comedor, duchas— deben justificarse con la plantilla y el valor de esos 220 m² frente a otros usos." data-src="Clasificación URBOP sobre la solicitud ejecutada en N5">CONDICIONAL</span></td><td>N5 · ~220 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="apoyo"><td>Oficinas operativas (jefes de taller, asesores)</td><td><span class="chip min">9 H</span></td><td>Empleado</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque coordina técnicos, asesores, órdenes y clientes, pero no constituye una bahía productiva. Debe permanecer cerca de la operación y dimensionarse por plantilla." data-src="Clasificación URBOP sobre oficinas N2–N3">NICE TO HAVE</span></td><td>N2–N3</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="apoyo"><td><b>Parqueo de empleados (carros)</b></td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">1–2</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque permite el acceso del personal, pero no repara ni vende carros directamente. Debe dimensionarse con la plantilla y los modos reales de llegada." data-src="Clasificación URBOP; revisión de S1–S2">NICE TO HAVE</span></td><td><span class="tt" tabindex="0" data-tipo="doc" data-que="Los sótanos S1 y S2 están rotulados 'parqueo de vehículos de clientes y usuarios varios' — los empleados están incluidos dentro de esos 105 carros. Lo pendiente es el conteo separado por tipo de usuario, no la asignación de espacio." data-src="Plantas S1-S2 GRUBORJA">S1–S2 · dentro de 105 carros</span></td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Diego pidió estudiar parqueo de motos en S1 ó S2 'como espina de pescado entrando por el lado sur y saliendo por el norte' — plazas a 45° en fila." data-src="Correo Diego Cuestas, 10-jun-2025">Motos empleados/mensajeros</span></td><td><span class="chip min">9–10 H</span></td><td>Empleado</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque facilita la llegada de empleados y mensajeros con menor consumo de área que el automóvil. Habilita la operación sin ser una posición productiva." data-src="Clasificación URBOP sobre la solicitud y las 40 motos dibujadas">NICE TO HAVE</span></td><td>S1 · 40 motos</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="'Casetas de policías seguridad' — puntos de control de acceso." data-src="Correo Erik Maquiz, 12-jun-2025">Casetas de seguridad</span></td><td><span class="chip h24">24 H</span></td><td>Guardia</td><td><span class="esc-chip esc-horas">Horas</span></td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque controla accesos, protege vehículos y permite operar con seguridad, pero no genera una orden ni una venta directamente. Debe ser suficiente y compacta." data-src="Clasificación URBOP sobre la solicitud de seguridad">NICE TO HAVE</span></td><td>Instalaciones</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Pedido textual de Diego: 'Resto de 5to y 6to nivel apartamentos efficiency (concepto Muni sin parqueos)' — apartamentos pequeños acogidos a incentivos municipales. En los cuadros de mar-2026 NO aparecen: la línea 'área de apartamentos' está vacía. ¿La idea murió o quedó diferida? Nadie lo ha dicho por escrito." data-src="Correo Diego Cuestas 10-jun-2025 vs. cuadros GRUBORJA mar-2026">Apartamentos efficiency 5º/6º</span></b></td><td><span class="chip h24">24 H</span></td><td>Residencial</td><td><span class="esc-chip esc-semanasmeses">Semanas-meses</span></td><td class="num">3–4</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera (con colisión) porque introduce un usuario residencial de 24 horas sobre talleres y exige accesos, seguridad, evacuación, instalaciones y regulación propias. Solo merece volver al programa si el incentivo y la rentabilidad compensan toda esa cascada." data-src="Clasificación URBOP; solicitud de Diego ausente en cuadros 2026">SE RESUELVE AFUERA*</span></td><td>Línea vacía en cuadros</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
+        <tr data-v="senal"><td><b>Taller mecánica</b></td><td><span class="chip dias">4H–3D</span></td><td>Técnico</td><td><span class="esc-chip esc-días">Días</span></td><td class="num">4</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL porque constituye la línea productiva principal del taller: diagnóstico, reparación y horas facturables. Quitarla elimina la razón operativa de N3–N4." data-src="Clasificación URBOP sobre los puentes dibujados por GRUBORJA">ESENCIAL</span></td><td>N3–N4 · 935 m² c/u</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="cond"><td><b><span class="tt" tabindex="0" data-tipo="sup" data-que="WIP (work in process): carros dentro del edificio que no están en una bahía — esperan repuesto, turno o entrega. El escenario de 72 veh/día produciría ~84 vehículos en sistema y 36 fuera de bahías, pero demanda y permanencias todavía no son datos confirmados del cliente." data-src="Modelo de viabilidad, escenario editable; GRUBORJA lo tiene difuso como 'vehículos en espera' N3–N5">Mecánica larga / espera (WIP)</span></b></td><td><span class="chip dias">3–15 D</span></td><td>Piloto interno</td><td><span class="esc-chip esc-días">Días</span></td><td class="num">1</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque sí se necesitará staging si existe WIP, pero su cantidad depende de órdenes diarias y permanencia real. Sin esos datos, asignar 36 o 48 plazas sería convertir un escenario en programa." data-src="Clasificación URBOP; Ley de Little con entradas pendientes">CONDICIONAL</span></td><td>N3–N5</td><td><span class="badge pc">ESCENARIO</span></td></tr>
+        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Cabina de pintado + preparación con rejillas + iluminación especial, dibujadas en N3. Colisión abierta: los parámetros la sacan (complejidad 5, el carro vive 7–15 días), pero Erik la pidió explícita. Se decide valorizando su cascada, no por decreto." data-src="Correo Erik Maquiz 12-jun-2025 + plantas N3 GRUBORJA + advertencia del modelo auditado">Enderezado y pintura</span></b></td><td><span class="chip dias">7–15 D/VEH</span></td><td>Técnico</td><td><span class="esc-chip esc-días">Días</span></td><td class="num">5</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera (con colisión) porque ocupa el carro 7–15 días y arrastra cabina, extracción, rejillas, iluminación, compresores y residuos. Sin embargo, fue solicitado y está dibujado: solo sale si una evaluación económica y ambiental demuestra que conviene externalizarlo." data-src="Clasificación URBOP; solicitud de Erik y planta N3">SE RESUELVE AFUERA*</span></td><td>N3 · ~190 m² <span class="tt" tabindex="0" data-tipo="sup" data-que="Área estimada por lectura de la planta N3 (cabina + preparación + iluminación especial). No hay cifra desglosada en cuadros." data-src="Lectura URBOP de planta N3 — Por confirmar">(est.)</span></td><td><span class="badge pc">VALORIZAR</span></td></tr>
+        <tr data-v="apoyo"><td><span class="tt" tabindex="0" data-tipo="cli" data-que="Bodega de materiales y de herramienta EN CADA TALLER (compartibles entre sí) — distintas de la bodega central de repuestos." data-src="Correo Erik Maquiz, 12-jun-2025">Bodegas de materiales por taller</span></td><td><span class="chip meses">SEMANAS</span></td><td>Técnico</td><td><span class="esc-chip esc-semanasmeses">Semanas-meses</span></td><td class="num">1</td><td><span class="ver apoyo tt" tabindex="0" data-tipo="sup" data-que="Es NICE TO HAVE porque mantiene herramientas y consumibles junto a los técnicos, reduciendo recorridos y tiempos muertos. Debe ser una bodega local compacta, no inventario central de meses." data-src="Clasificación URBOP; solicitud de Erik Maquiz">NICE TO HAVE</span></td><td>N2–N4</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="senal"><td><b><span class="tt" tabindex="0" data-tipo="cli" data-que="Sala de ventas de autos chinos con fachada Jetour. Diego eligió el 'ejercicio 2': SOLO la sala resaltada tipo Jetour y el resto del edificio en otro color/textura, rotulable aparte." data-src="Correo Diego Cuestas, 11-jun-2025 ('creo esto sería lo mejor')">Showroom Jetour</span></b></td><td><span class="chip dias">30–90 D</span></td><td>Cliente</td><td><span class="esc-chip esc-semanasmeses">Semanas-meses</span></td><td class="num">3</td><td><span class="ver senal tt" tabindex="0" data-tipo="sup" data-que="Es ESENCIAL para la función comercial del proyecto: exhibe y vende los vehículos de la marca. Su inventario de exposición debe mantenerse limitado para no convertir la sala en almacenamiento." data-src="Clasificación URBOP sobre el programa comercial confirmado">ESENCIAL</span></td><td>N1 · 550→693 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="afuera"><td>Inventario de nuevos <span class="tt" tabindex="0" data-tipo="sup" data-que="Consumo espacio-tiempo ≈960 m²·día por venta (60 días × 16 m²). Ilustra por qué el inventario no merece este m²; se recalcula con datos reales del cliente." data-src="Supuesto URBOP: permanencia × huella, jornada 10 h">≈960 m²·día/venta</span></td><td><span class="chip meses">30–90 D</span></td><td>Piloto</td><td><span class="esc-chip esc-semanasmeses">Semanas-meses</span></td><td class="num">1–2</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera porque cada vehículo permanece 30–90 días y consume área sin producir órdenes de servicio. El showroom conserva solo las unidades necesarias para exhibición; el inventario masivo debe vivir en otra ubicación." data-src="Clasificación URBOP por permanencia y huella">SE RESUELVE AFUERA</span></td><td>Sin inventario masivo dibujado; conteo de exhibición no documentado</td><td><span class="badge pc">CONTEO FALTANTE</span></td></tr>
+        <tr data-v="afuera"><td><b><span class="tt" tabindex="0" data-tipo="doc" data-que="Almacén central de piezas (meses de permanencia, rotación bajísima). La Propuesta 2 de GRUBORJA la exporta a bodega perimetral + 'búnker' de Plaza del Sol. El análisis llegó a la misma conclusión por la regla de estadía — convergencia independiente." data-src="Cuadro Propuesta 2 y comentarios GRUBORJA; matriz del análisis">Bodega central de repuestos</span></b></td><td><span class="chip meses">MESES</span></td><td>Interno</td><td><span class="esc-chip esc-semanasmeses">Semanas-meses</span></td><td class="num">2</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera en este edificio porque guarda inventario durante meses y obliga a disponer bodega, carga, descarga y rampa de tráiler en una placa escasa. El despacho diario sí permanece como ESENCIAL." data-src="Clasificación del análisis y Propuesta 2 de GRUBORJA">SE RESUELVE AFUERA</span></td><td>N1 · 1R · 183 m²</td><td><span class="badge ok">CONFIRMADO</span></td></tr>
+        <tr data-v="afuera"><td>Inventario de usados <span class="tt" tabindex="0" data-tipo="sup" data-que="≈1,440 m²·día por venta (90 días × 16 m²) — el espacio-tiempo de unas 450 órdenes exprés. Supuesto ilustrativo URBOP, ajustable." data-src="Supuesto URBOP: permanencia × huella">≈1,440 m²·día/venta</span></td><td><span class="chip meses">60–120 D</span></td><td>Piloto</td><td><span class="esc-chip esc-semanasmeses">Semanas-meses</span></td><td class="num">1</td><td><span class="ver afuera tt" tabindex="0" data-tipo="sup" data-que="Se resuelve afuera porque su permanencia estimada de 60–120 días produce el mayor consumo de espacio-tiempo y no requiere la infraestructura vertical del taller. Los planos correctamente no le asignan área." data-src="Clasificación URBOP por permanencia y huella">SE RESUELVE AFUERA</span></td><td>No está</td><td><span class="badge ok">COHERENTE</span></td></tr>
+        <tr data-v="cond"><td><span class="tt" tabindex="0" data-tipo="nor" data-que="Área exterior separada para vehículos con batería de litio dañada o en alerta térmica (riesgo de thermal runaway). No puede estar en sótano. Riesgo menor con flota china a gasolina; crece si el taller recibe EVs." data-src="OSHA 4480 (riesgos de baterías) + HSE UK; previsión URBOP — no está en planos">Cuarentena de baterías de litio</span></td><td><span class="chip h24">EVENTUAL</span></td><td>Técnico</td><td><span class="esc-chip esc-días">Días</span></td><td class="num">5</td><td><span class="ver cond tt" tabindex="0" data-tipo="sup" data-que="Es CONDICIONAL porque puede convertirse en requisito de seguridad si el taller recibe vehículos eléctricos o baterías dañadas. Su necesidad y dimensión dependen de la flota futura y de la validación normativa; hoy no aparece en planos." data-src="Clasificación URBOP; previsión normativa pendiente">CONDICIONAL</span></td><td>No está — prever</td><td><span class="badge pc">POR CONFIRMAR</span></td></tr>
       </tbody>
     </table>
     <p class="note" style="margin-top:14px">* SE RESUELVE AFUERA con colisión: los parámetros del edificio recomiendan reubicarlo, un pedido explícito del cliente lo pide adentro. La decisión se toma valorizando la cascada de servidumbres, no por adjetivo.</p>
@@ -1211,13 +1209,14 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <b>Descartado:</b> benchmark de primera pasada (35 bahías Audi, 3.5 m/s, 600 personas, 100–130 autos/día — todo refutado).<br>
         <b>Herramientas:</b> <span class="tt" tabindex="0" data-tipo="sup" data-que="TGLT · Taller Grupo Los Tres. Nombre corto usado internamente para los archivos de análisis del proyecto: TGLT_matriz_valorizacion.xlsx, TGLT_proceso_1pagina.xlsx." data-src="Nomenclatura interna URBOP para este encargo">TGLT</span>_matriz_valorizacion.xlsx · TGLT_proceso_1pagina.xlsx · Modelo_Viabilidad_Taller_Vertical.xlsx (88 fórmulas vivas, verificado por URBOP).
       </div>
+      <p class="note" style="margin-top:12px"><b>La valoración económica no vive en este informe.</b> Este dashboard cuantifica área, capacidad y permanencia — datos que ya existen. Convertir esas cifras a USD requiere el costo de construcción confirmado y el ingreso por uso, y se resuelve en el modelo financiero, fuera de este análisis.</p>
     </div>
 
     <!-- ============ CIERRE DEL INFORME ============ -->
     <div class="block" style="margin-top:36px">
       <h3 style="font-size:17px;margin-bottom:12px;color:var(--forest)">Cierre — qué se decide, con qué datos y por quién</h3>
       <div class="card" style="border-left:5px solid var(--forest);background:#fbfaf6;padding:22px 26px">
-        <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">Retirar las rampas altas convierte <b>2,282 m² de tránsito en producción</b> y lleva el edificio de <b>29 a 49 puentes</b>. Trasladar la bodega central a otro terreno de la propiedad libera <b>307 m² adicionales en N1</b>. Ambos movimientos responden a la misma lógica: la placa de 13 calle es cara — cerca de <b>USD $1.38 M por planta</b> — y su valor lo definen los usos de alta rotación. Lo que permanece semanas o meses puede resolverse fuera del edificio sin perder capacidad.</p>
+        <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">Retirar las rampas altas convierte <b>2,282 m² de tránsito en producción</b> y lleva el edificio de <b>29 a 49 puentes</b>. Trasladar la bodega central a otro terreno de la propiedad libera <b>307 m² adicionales en N1</b>. Ambos movimientos responden a la misma lógica: la placa de 13 calle es limitada, y su valor lo definen los usos de alta rotación. Lo que permanece semanas o meses puede resolverse fuera del edificio sin perder capacidad.</p>
         <p style="font-size:14.5px;line-height:1.7;margin:0">Ninguna de estas decisiones puede aprobarse sin tres datos que el cliente aún no ha entregado: <b>órdenes de servicio por mes</b> (por tipo), <b>ticket promedio de mano de obra</b> y <b>costo de bodega afuera</b> (renta + logística + habilitar búnker). El diseño está resuelto; la decisión pendiente es sobre el programa, y le corresponde a Grupo Los 3.</p>
       </div>
     </div>
@@ -1240,7 +1239,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       --lp-cli-externo:#9CC2B4;--lp-cli-tecnico:#7A9A96;--lp-cli-empleado:#8B9BB1;--lp-cli-interno:#59615C;
       font-family:var(--font-body);color:var(--lp-ink)}
     #labPri *{box-sizing:border-box}
-    .lp-topbar{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:10px;margin-bottom:18px;align-items:end}
+    .lp-topbar{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:12px;margin-bottom:18px;align-items:end}
     .lp-kpi{background:var(--lp-card);border:1px solid var(--lp-line);border-left:4px solid var(--forest);border-radius:8px;padding:12px 14px}
     .lp-kpi .v{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--forest);line-height:1.15}
     .lp-kpi .l{font-size:11.5px;color:var(--lp-muted);margin-top:3px;letter-spacing:.02em}
@@ -1326,14 +1325,17 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     .lp-plano-seg{height:100%}
     .lp-plano-pct{text-align:right;color:var(--lp-ink)}
     /* Ranking bottom */
-    .lp-ranking{display:flex;flex-direction:column;gap:3px}
-    .lp-rank-row{display:grid;grid-template-columns:24px 1.4fr 3fr 100px;gap:8px;align-items:center;font-size:11.5px;font-family:'JetBrains Mono',monospace;padding:2px 0}
-    .lp-rank-row .rk{color:var(--lp-muted);text-align:right;font-weight:700}
+    .lp-ranking{display:flex;flex-direction:column;gap:2px}
+    .lp-rank-groupheader{display:flex;gap:10px;align-items:baseline;margin-top:12px;padding:6px 0 4px;border-bottom:1px solid var(--lp-line);font-family:var(--font-body);font-size:12.5px}
+    .lp-rank-groupheader:first-child{margin-top:0}
+    .lp-rank-groupheader b{color:var(--lp-ink);font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+    .lp-rank-groupheader .note{color:var(--lp-muted);font-size:11px;font-style:italic}
+    .lp-rank-groupheader .tot{margin-left:auto;color:var(--lp-muted);font-family:var(--font-mono);font-size:11px}
+    .lp-rank-row{display:grid;grid-template-columns:28px 1.6fr 1.2fr 90px;gap:10px;align-items:center;font-size:12px;font-family:var(--font-body);padding:3px 0}
+    .lp-rank-row .rk{color:var(--lp-muted);text-align:right;font-weight:600;font-family:var(--font-mono);font-size:11px}
     .lp-rank-row .nm{color:var(--lp-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .lp-rank-row .bar{background:#eef0ea;height:14px;border-radius:2px;overflow:hidden}
-    .lp-rank-row .bar>span{display:block;height:100%;background:var(--forest);transition:width .3s ease}
-    .lp-rank-row .bar>span.afuera{background:var(--lp-afuera)}
-    .lp-rank-row .val{color:var(--lp-ink);text-align:right;font-weight:600}
+    .lp-rank-row .rango{color:var(--lp-muted);font-family:var(--font-mono);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .lp-rank-row .val{color:var(--lp-ink);text-align:right;font-weight:600;font-family:var(--font-mono);font-size:11.5px}
     /* Export bar */
     .lp-export{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--lp-line)}
     .lp-btn{font-family:var(--font-body);font-size:14px;font-weight:600;letter-spacing:.01em;padding:12px 22px;border-radius:10px;border:1.5px solid var(--azul-corp);background:var(--white);color:var(--azul-corp);cursor:pointer;transition:all .15s ease}
@@ -1350,9 +1352,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   <div class="lp-topbar">
     <div class="lp-kpi"><div class="v" id="lpKpiArea">—</div><div class="l">m² consumidos</div><div class="how" id="lpKpiAreaHow">—</div></div>
     <div class="lp-kpi"><div class="v" id="lpKpiCap">—</div><div class="l">capacidad · puentes + posiciones + carros</div><div class="how" id="lpKpiCapHow">—</div></div>
-    <div class="lp-kpi"><div class="v" id="lpKpiCosto">—</div><div class="l">costo de permanencia del edificio (m²·día)</div><div class="how" id="lpKpiCostoHow">—</div></div>
-    <div class="lp-kpi"><div class="v" id="lpKpiUsdUnit">—</div><div class="l">costo espacial anual por unidad de capacidad · USD/año<span class="tt" tabindex="0" data-tipo="cal" data-que="Fórmula: m² consumidos × USD $670/m²/año ÷ capacidad total (puentes + posiciones + carros). El USD $670/m² es un supuesto editable del anclaje económico de la síntesis. La capacidad total es la suma reactiva de lo que cada uso adentro aporta." data-src="Definición URBOP; USD $670 marcado como supuesto en sec 01">&nbsp;ⓘ</span></div><div class="how" id="lpKpiUsdUnitHow">—</div></div>
-    <div class="lp-kpi"><div class="v" id="lpKpiUsdCarro">—</div><div class="l">costo espacial por carro atendido · USD/carro<span class="tt" tabindex="0" data-tipo="cal" data-que="Fórmula: (m² consumidos × USD $670/m²/año) ÷ (puentes × 4 OS/día × 300 días operativos/año). El supuesto de 4 órdenes por día por puente es referencia de industria (NADA); el cliente aún no confirmó órdenes reales. Solo se calcula si hay puentes adentro." data-src="URBOP · supuesto 4 OS/día/puente (industria) hasta que el cliente confirme órdenes reales">&nbsp;ⓘ</span></div><div class="how" id="lpKpiUsdCarroHow">—</div></div>
+    <div class="lp-kpi"><div class="v" id="lpKpiEscalas">—</div><div class="l">composición del edificio por escala de permanencia<span class="tt" tabindex="0" data-tipo="met" data-que="Suma de m² adentro por escala declarada en la matriz. Sin promediar, sin multiplicar por tiempo. Es dato duro: la fracción de placa ocupada por usos de alta rotación (minutos, horas) frente a los de permanencia larga (semanas, meses)." data-src="Dato duro de la matriz sec 03">&nbsp;ⓘ</span></div><div class="how" id="lpKpiEscalasHow">—</div></div>
+    <div class="lp-kpi"><div class="v" id="lpKpiPermUnit">—</div><div class="l">permanencia por unidad de capacidad · m²·día ÷ unidad<span class="tt" tabindex="0" data-tipo="cal" data-que="Fórmula: (Σ m² × días) ÷ capacidad total (puentes + posiciones + carros). Mide cuánta permanencia consume el edificio por cada unidad de servicio que ofrece. Sin USD, sin supuesto de precio — solo área y tiempo, datos que ya tenemos." data-src="Definición URBOP, sin supuestos económicos">&nbsp;ⓘ</span></div><div class="how" id="lpKpiPermUnitHow">—</div></div>
     <div class="lp-basebox">
       <label for="lpBase">Base</label>
       <select id="lpBase">
@@ -1384,7 +1385,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           <span><i class="empleado"></i>Empleado</span>
           <span><i class="interno"></i>Interno / piloto</span>
         </div>
-        <p class="lp-help" style="margin:8px 0 0;font-size:11px">Porcentajes del <b>costo de permanencia</b> del edificio (m²·día), no del m² ni del número de usos.</p>
+        <p class="lp-help" style="margin:8px 0 0;font-size:11px">Porcentajes de los <b>m² adentro</b> por tipo de cliente. Dato duro: cuánta placa ocupa cada tipo de cliente.</p>
         <p class="lp-mixtext" id="lpMixText">—</p>
         <table class="lp-cli-table" id="lpCliTable" style="margin-top:10px"></table>
       </div>
@@ -1406,8 +1407,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
   <!-- Ranking horizontal · costo de permanencia por uso -->
   <div class="lp-panel">
-    <h3>Costo de permanencia por uso · m²·día (independiente del orden actual)</h3>
-    <p class="lp-help">Escala logarítmica. Un uso de larga permanencia retiene la placa órdenes de magnitud más que uno de servicio.</p>
+    <h3>Los 21 usos por escala de permanencia</h3>
+    <p class="lp-help">Agrupados en las cuatro escalas declaradas en la matriz (minutos / horas / días / semanas y meses). Dentro de cada escala, ordenados por m² consumidos. Sin conversiones, sin interpolaciones — dato duro. La separación entre grupos es el argumento: cuánta placa está ocupada por usos de alta rotación y cuánta por permanencia larga.</p>
     <div class="lp-ranking" id="lpRanking"></div>
   </div>
 
@@ -1452,7 +1453,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     {id:'invNuevos',  name:'Inventario de nuevos',         v:'afuera',   cli:'interno',  tDias:60.0,   tStr:'30–90 d',     escala:'meses',   m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Otro terreno · playa nueva', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0},niveles:[]},
     {id:'bodegaC',    name:'Bodega central de repuestos',  v:'afuera',   cli:'interno',  tDias:60.0,   tStr:'meses',       escala:'meses',   m2:{'1R':287,'1E':287,'2E':0},   m2Doc:true,  dest:'Plaza del Sol · búnker', servAdentro:[{n:'Rampa tráiler 53′ + andén',m2:104}],aporta:{puentes:0,posiciones:0,carros:0},niveles:['n1']},
     {id:'invUsados',  name:'Inventario de usados',         v:'afuera',   cli:'interno',  tDias:90.0,   tStr:'60–120 d',    escala:'meses',   m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Otro terreno · playa usados', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0},niveles:[]},
-    {id:'baterias',   name:'Cuarentena baterías litio',    v:'cond',     cli:'tecnico',  tDias:1.0,    tStr:'eventual',    escala:'eventual',m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Área exterior separada', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0},niveles:['n5']}
+    {id:'baterias',   name:'Cuarentena baterías litio',    v:'cond',     cli:'tecnico',  tDias:1.0,    tStr:'eventual · 1 d',    escala:'dias',m2:{'1R':0,'1E':0,'2E':0},       m2Doc:false, dest:'Área exterior separada', servAdentro:[],aporta:{puentes:0,posiciones:0,carros:0},niveles:['n5']}
   ];
 
   // Capacidad ya no es hardcoded — se computa reactivamente de aporta[]
@@ -1491,9 +1492,6 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     return st;
   }
 
-  // Costo espacial: USD $670 por m² por año (supuesto vigente, marcado en el sitio)
-  const LP_COST_M2_YEAR = 670;
-
   function usoAporta(u, kind, base){
     if(!u.aporta) return 0;
     const v = u.aporta[kind];
@@ -1524,22 +1522,26 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     const carros = adentro.reduce((s,u)=>s+usoAporta(u,'carros',base), 0);
     const capTotal = puentes + posiciones + carros;
     const permProm = m2>0 ? costoM2Dia/m2 : 0;
-    // Costo espacial anual por unidad de capacidad instalada
-    // = m² consumidos × USD 670 ÷ capacidad total
-    const costoUsdPorUnidad = capTotal>0 ? (m2 * LP_COST_M2_YEAR) / capTotal : 0;
-    // Costo espacial anual por carro atendido
-    // = m² × USD 670 ÷ (puentes × 4 OS/día × 300 días op/año)
-    // Supuesto: 4 OS/puente/día (industria); solo cuenta puentes (talleres) — posiciones y carros parqueados no "atienden"
-    const OS_DIA_PUENTE = 4;
-    const DIAS_OP_ANIO = 300;
-    const carrosAtendidosAnio = puentes * OS_DIA_PUENTE * DIAS_OP_ANIO;
-    const costoUsdPorCarro = carrosAtendidosAnio>0 ? (m2 * LP_COST_M2_YEAR) / carrosAtendidosAnio : 0;
-    // Costo por cliente (para mix)
+    // Composición por escala de permanencia (m² adentro en cada escala)
+    // Escalas normalizadas: minutos, horas, dias, semanas-meses
+    const escalaOf = u => {
+      const e = u.escala || 'dias';
+      if(e==='semanas' || e==='meses') return 'semanas-meses';
+      if(e==='eventual') return 'dias';
+      return e;
+    };
+    const m2PorEscala = {minutos:0, horas:0, dias:0, 'semanas-meses':0};
+    adentro.forEach(u => { m2PorEscala[escalaOf(u)] += m2Of(u); });
+    // Indicador dual: m²·día por unidad de capacidad instalada (sin USD, sin supuesto de precio)
+    // Mide cuánta permanencia consume el edificio por cada unidad de servicio que ofrece.
+    const m2diaPorUnidad = capTotal>0 ? costoM2Dia / capTotal : 0;
+    // m² por cliente (para mix) — sobre m², no m²·día
     const costoPorCli = {externo:0, tecnico:0, empleado:0, interno:0};
-    adentro.forEach(u => { costoPorCli[u.cli] += m2Of(u) * tOf(u); });
+    adentro.forEach(u => { costoPorCli[u.cli] += m2Of(u); });  // ahora suma m², no m²·día
     const mix = {};
-    Object.keys(costoPorCli).forEach(c => { mix[c] = costoM2Dia>0 ? costoPorCli[c]/costoM2Dia*100 : 0; });
-    return {adentro, afuera, m2, m2Active, servM2, costoM2Dia, puentes, posiciones, carros, capTotal, permProm, costoUsdPorUnidad, costoUsdPorCarro, carrosAtendidosAnio, costoPorCli, mix};
+    Object.keys(costoPorCli).forEach(c => { mix[c] = m2>0 ? costoPorCli[c]/m2*100 : 0; });
+    // costoM2Dia queda internamente disponible para retro-compat pero no se expone como KPI
+    return {adentro, afuera, m2, m2Active, servM2, costoM2Dia, puentes, posiciones, carros, capTotal, permProm, m2PorEscala, m2diaPorUnidad, costoPorCli, mix};
   }
 
   function baselineFor(base){
@@ -1564,7 +1566,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       m2Consumidos:snap.m2, m2Active:snap.m2Active, m2Servidumbres:snap.servM2, costoTotal:snap.costoM2Dia,
       costoPorCli:snap.costoPorCli, mix:snap.mix, permanenciaProm:snap.permProm,
       cap:{puentes:snap.puentes, posiciones:snap.posiciones, carros:snap.carros, total:snap.capTotal},
-      costoUsdPorUnidad:snap.costoUsdPorUnidad,
+      m2PorEscala:snap.m2PorEscala,
+      m2diaPorUnidad:snap.m2diaPorUnidad,
       esencialesRetirados, ganoM2,
       baseline
     };
@@ -1590,7 +1593,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       const sign = v>0?'+':'';
       return `${sign}${fmt(v,digits)}${unit} vs base ${LP.base}`;
     };
-    // KPI 1 · m² consumidos (dos denominadores explícitos y separados)
+    // KPI 1 · m² consumidos (dos denominadores explícitos)
     const pctActive = r.m2Active>0 ? (r.m2Active / LP_ACTIVE_CAPACITY * 100) : 0;
     const pctTotal = r.m2Consumidos>0 ? (r.m2Consumidos / LP_TOTAL_CAPACITY * 100) : 0;
     $('lpKpiArea').textContent = fmt(r.m2Consumidos, 0) + ' m²';
@@ -1605,26 +1608,23 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     if(dPosic) parts.push(`${dPosic>0?'+':''}${dPosic} posiciones`);
     if(dCarros) parts.push(`${dCarros>0?'+':''}${dCarros} carros`);
     $('lpKpiCapHow').textContent = parts.length ? `${parts.join(' · ')} vs base ${LP.base}` : `sin cambio vs base ${LP.base}`;
-    // KPI 3 · Costo permanencia total
-    $('lpKpiCosto').textContent = fmt(r.costoTotal, 0);
-    $('lpKpiCostoHow').textContent = `${fmt(r.permanenciaProm,1)} días promedio · ${fmtDelta(r.costoTotal-b.costoM2Dia,' m²·día')}`;
-    // KPI 4 · Costo espacial anual por unidad de capacidad
-    $('lpKpiUsdUnit').textContent = 'USD $' + fmt(r.costoUsdPorUnidad, 0);
-    $('lpKpiUsdUnitHow').textContent = `${fmtDelta(r.costoUsdPorUnidad-b.costoUsdPorUnidad,'',0)}`;
-    // KPI 5 · Costo espacial por carro atendido (supuesto 4 OS/puente/día · 300 días/año)
-    if(r.puentes > 0){
-      $('lpKpiUsdCarro').textContent = 'USD $' + fmt(r.costoUsdPorCarro, 0);
-      $('lpKpiUsdCarroHow').textContent = `${fmt(r.carrosAtendidosAnio, 0)} OS/año estimadas · ${fmtDelta(r.costoUsdPorCarro-b.costoUsdPorCarro,'',0)}`;
-    } else {
-      $('lpKpiUsdCarro').textContent = '—';
-      $('lpKpiUsdCarroHow').textContent = 'sin puentes adentro · no aplica';
-    }
+    // KPI 3 · Composición por escala (m² por escala)
+    const esc = r.m2PorEscala;
+    const total = esc.minutos + esc.horas + esc.dias + esc['semanas-meses'];
+    const pctEsc = k => total>0 ? (esc[k]/total*100) : 0;
+    // Valor: barra visual mini + porcentajes
+    $('lpKpiEscalas').innerHTML = `<div class="lp-kpi-escbar"><span style="width:${pctEsc('minutos')}%;background:#8DC63F" title="Minutos · ${fmt(esc.minutos,0)} m²"></span><span style="width:${pctEsc('horas')}%;background:#6f8fb4" title="Horas · ${fmt(esc.horas,0)} m²"></span><span style="width:${pctEsc('dias')}%;background:#B07C1E" title="Días · ${fmt(esc.dias,0)} m²"></span><span style="width:${pctEsc('semanas-meses')}%;background:#8FAFA3" title="Semanas-meses · ${fmt(esc['semanas-meses'],0)} m²"></span></div>`;
+    $('lpKpiEscalasHow').innerHTML = `min <b>${fmt(pctEsc('minutos'),0)}%</b> · h <b>${fmt(pctEsc('horas'),0)}%</b> · d <b>${fmt(pctEsc('dias'),0)}%</b> · sem-mes <b>${fmt(pctEsc('semanas-meses'),0)}%</b>`;
+    // KPI 4 · Permanencia por unidad de capacidad (sin USD)
+    $('lpKpiPermUnit').textContent = fmt(r.m2diaPorUnidad, 1) + ' m²·día';
+    const deltaPerm = r.m2diaPorUnidad - b.m2diaPorUnidad;
+    $('lpKpiPermUnitHow').innerHTML = `por unidad de capacidad · ${fmtDelta(deltaPerm,' m²·día',1)}`;
   }
 
   function renderList(r){
     const ol=$('lpList');
     ol.innerHTML='';
-    const maxCosto=Math.max(...LP.orden.map(id=>usoCosto(use(id))));
+    const maxM2=Math.max(1, ...LP.orden.map(id=>usoM2(use(id))));
     // Renderizar en dos grupos visuales: adentro (en orden de prioridad) → divisor → afuera
     const visual=[...r.adentro.map(u=>({u,adentro:true})), {divider:true}, ...r.afuera.map(u=>({u,adentro:false}))];
     visual.forEach((item)=>{
@@ -1643,7 +1643,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       li.setAttribute('draggable','true');
       li.setAttribute('data-id',u.id);
       li.setAttribute('data-estado',adentro?'adentro':'afuera');
-      const weight=maxCosto>0?(usoCosto(u)/maxCosto)*100:0;
+      const weight=(usoM2(u)/maxM2)*100;
       li.style.setProperty('--lp-weight',`${weight}%`);
       const handle=document.createElement('div'); handle.className='lp-handle'; handle.textContent='≡'; li.appendChild(handle);
 
@@ -1710,14 +1710,17 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
       }
       li.appendChild(body);
 
-      const costo=document.createElement('div'); costo.className='lp-costo';
-      const m2v=usoM2(u); const cv=m2v*usoTDias(u);
+      // Área + chip de escala (reemplaza al costo m²·día)
+      const areaBox=document.createElement('div'); areaBox.className='lp-costo';
+      const m2v=usoM2(u);
+      const ESC_LABEL={minutos:'min',horas:'h',dias:'d',semanas:'sem',meses:'mes',eventual:'d'};
+      const escLbl = ESC_LABEL[u.escala] || u.escala;
       if(esSupuesto(u)){
-        costo.innerHTML='<span style="color:#B07C1E">supuesto</span><span class="unit">m²·día</span>';
+        areaBox.innerHTML='<span style="color:#B07C1E">supuesto</span><span class="unit">m²</span>';
       }else{
-        costo.innerHTML=fmt(cv,cv<10?2:0)+'<span class="unit">m²·día</span>';
+        areaBox.innerHTML=fmt(m2v,0)+'<span class="unit">m² · '+escLbl+'</span>';
       }
-      li.appendChild(costo);
+      li.appendChild(areaBox);
 
       ol.appendChild(li);
     });
@@ -1737,17 +1740,12 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         bar.appendChild(seg);
       }
     });
-    // Texto descriptivo neutro
-    const permProm=r.permanenciaProm;
+    // Texto neutro sobre m² por cliente
     const externo=r.mix.externo||0;
-    let escala='';
-    if(permProm<1) escala='horas';
-    else if(permProm<7) escala='días';
-    else if(permProm<30) escala='semanas';
-    else escala='meses';
-    $('lpMixText').innerHTML=`Permanencia promedio del edificio: <b>${fmt(permProm,1)} días</b> (${escala}). Clientes externos: <b>${fmt(externo,0)}%</b> del costo de permanencia.`;
-    // Tabla desglose por cliente
-    const tb=$('lpCliTable'); tb.innerHTML='<thead><tr><th>Cliente</th><th class="num">m²·día</th><th class="num">%</th></tr></thead>';
+    const interno=r.mix.interno||0;
+    $('lpMixText').innerHTML=`Cliente externo: <b>${fmt(externo,0)}%</b> de los m² adentro · interno / piloto: <b>${fmt(interno,0)}%</b>. Dato duro, sin promediar tiempos.`;
+    // Tabla desglose por cliente (m² y %)
+    const tb=$('lpCliTable'); tb.innerHTML='<thead><tr><th>Cliente</th><th class="num">m²</th><th class="num">%</th></tr></thead>';
     const body=document.createElement('tbody');
     ['externo','tecnico','empleado','interno'].forEach(c=>{
       const tr=document.createElement('tr');
@@ -1771,11 +1769,11 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
     if(servRetiradas.length){
       items.push(`<li><b>Servidumbres retiradas:</b> ${servRetiradas.join(', ')}</li>`);
     }
-    // Uso con mayor costo retirado
+    // Uso con mayor liberación de área
     if(r.afuera.length){
-      const top=[...r.afuera].sort((a,b)=>usoCosto(b)-usoCosto(a))[0];
-      const cv=usoM2(top)*usoTDias(top);
-      if(cv>0) items.push(`<li>Mayor liberación de permanencia: <b>${top.name}</b> · ${fmt(cv,0)} m²·día.</li>`);
+      const top=[...r.afuera].sort((a,b)=>usoM2(b)-usoM2(a))[0];
+      const m2v=usoM2(top);
+      if(m2v>0) items.push(`<li>Mayor liberación de área: <b>${top.name}</b> · ${fmt(m2v,0)} m².</li>`);
     }
     ul.innerHTML=items.join('');
   }
@@ -1848,23 +1846,51 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
 
   function renderRanking(){
     const cont=$('lpRanking'); cont.innerHTML='';
-    // Ordenar TODOS los usos por costo, no por prioridad
-    const rows=LP_USES.map(u=>({u,costo:usoCosto(u),supuesto:esSupuesto(u)}));
-    const maxCosto=Math.max(...rows.map(r=>r.costo),1);
-    // Escala log
-    const logCosto=c=>c>0?Math.log10(c+1):0;
-    const maxLog=Math.log10(maxCosto+1);
-    rows.sort((a,b)=>{
-      // Supuestos siempre al final
-      if(a.supuesto !== b.supuesto) return a.supuesto ? 1 : -1;
-      return b.costo - a.costo;
-    }).forEach((it,i)=>{
-      const {u,costo,supuesto}=it;
-      const esAfuera=LP.estado[u.id]==='afuera';
-      const w=maxLog>0?logCosto(costo)/maxLog*100:0;
-      const row=document.createElement('div'); row.className='lp-rank-row';
-      row.innerHTML=`<div class="rk">${i+1}.</div><div class="nm">${u.name}</div><div class="bar"><span class="${esAfuera?'afuera':''}" style="width:${w}%"></span></div><div class="val">${supuesto?'—':fmt(costo,costo<10?2:0)}</div>`;
-      cont.appendChild(row);
+    // Agrupar usos por escala. Cuatro escalas normalizadas.
+    const groups = {minutos:[], horas:[], dias:[], 'semanas-meses':[]};
+    const escNorm = u => {
+      const e = u.escala || 'dias';
+      if(e==='semanas' || e==='meses') return 'semanas-meses';
+      if(e==='eventual') return 'dias';
+      return e;
+    };
+    LP_USES.forEach(u => {
+      const g = escNorm(u);
+      if(groups[g]) groups[g].push(u);
+    });
+    // Orden dentro de cada grupo: por m² desc, supuestos al final
+    Object.keys(groups).forEach(g => {
+      groups[g].sort((a,b) => {
+        const supA = esSupuesto(a), supB = esSupuesto(b);
+        if(supA !== supB) return supA ? 1 : -1;
+        return usoM2(b) - usoM2(a);
+      });
+    });
+    // Renderizar cada grupo con separador
+    const GROUP_META = {
+      minutos:        {label:'Minutos',        note:'rampa · alta rotación'},
+      horas:          {label:'Horas',          note:'rampa o transferencia'},
+      dias:           {label:'Días',           note:'elevador · rotación media'},
+      'semanas-meses':{label:'Semanas y meses',note:'se resuelve afuera'}
+    };
+    let idx = 0;
+    ['minutos','horas','dias','semanas-meses'].forEach(g => {
+      const meta = GROUP_META[g];
+      const head = document.createElement('div');
+      head.className = 'lp-rank-groupheader';
+      const totalG = groups[g].reduce((s,u)=>s+usoM2(u),0);
+      head.innerHTML = `<b>${meta.label}</b> <span class="note">${meta.note}</span> <span class="tot">${fmt(totalG,0)} m² total</span>`;
+      cont.appendChild(head);
+      groups[g].forEach(u => {
+        idx++;
+        const m2v = usoM2(u);
+        const supuesto = esSupuesto(u);
+        const esAfuera = LP.estado[u.id]==='afuera';
+        const row = document.createElement('div');
+        row.className = 'lp-rank-row';
+        row.innerHTML = `<div class="rk">${idx}.</div><div class="nm">${u.name}${esAfuera?' <span style="color:var(--lp-muted);font-size:9px">(afuera)</span>':''}</div><div class="rango">${u.tStr}</div><div class="val">${supuesto?'—':fmt(m2v,0)+' m²'}</div>`;
+        cont.appendChild(row);
+      });
     });
   }
 
@@ -2008,7 +2034,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
           const newEscala=escalaDe(newDias);
           if(oldEscala!==newEscala){
             const factor=newDias/u.tDias;
-            LP.tWarnings[id]=`Cruzó de escala (${oldEscala} → ${newEscala}). El costo de permanencia cambió ×${factor.toFixed(1)}.`;
+            LP.tWarnings[id]=`Este uso pasó de ${oldEscala} a ${newEscala}. Cambia su clasificación y su sistema de circulación: minutos → rampa, días → elevador, semanas-meses → afuera del edificio.`;
           }else{
             delete LP.tWarnings[id];
           }
@@ -2062,14 +2088,16 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   // ---- Export ----
   function makeCsv(){
     const r=calcularTodo();
-    const hdr=['pos','id','nombre','tipo_cliente','veredicto','tiempo_dias','tiempo_str','m2','costo_permanencia_m2dia','estado','destino_si_afuera','m2_es_supuesto'];
+    const hdr=['pos','id','nombre','tipo_cliente','veredicto','rango_permanencia','escala','m2','estado','destino_si_afuera','niveles','m2_es_supuesto'];
     const rows=r.orden.map((u,i)=>{
       const adentro=LP.estado[u.id]==='adentro';
       return [
         i+1, u.id, u.name, CLI_LABELS[u.cli], V_LABELS[u.v],
-        usoTDias(u).toFixed(4), u.tStr,
-        usoM2(u), usoCosto(u).toFixed(2),
-        adentro?'ADENTRO':'AFUERA', u.dest||'', esSupuesto(u)?'SI':'NO'
+        u.tStr, (u.escala||'dias'),
+        usoM2(u),
+        adentro?'ADENTRO':'AFUERA', u.dest||'',
+        (u.niveles||[]).join('|'),
+        esSupuesto(u)?'SI':'NO'
       ];
     });
     return [hdr,...rows].map(r=>r.map(c=>{
@@ -2091,8 +2119,8 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
   $('lpExportJson').addEventListener('click',()=>{
     const r=calcularTodo();
     const payload={base:LP.base,
-      resumen:{m2_consumidos:r.m2Consumidos, m2_activo_N1_N4:r.m2Active, m2_disponibles_totales:LP_TOTAL_CAPACITY, m2_disponibles_activos:LP_ACTIVE_CAPACITY, costo_permanencia_total:r.costoTotal, permanencia_promedio_dias:r.permanenciaProm, mix_clientes_pct:r.mix, capacidad:r.cap},
-      usos:r.orden.map((u,i)=>({pos:i+1, id:u.id, name:u.name, cliente:u.cli, veredicto:u.v, tiempo_dias:usoTDias(u), tiempo_str:u.tStr, m2:usoM2(u), costo_permanencia:usoCosto(u), estado:LP.estado[u.id], destino:u.dest, m2_supuesto:esSupuesto(u)}))
+      resumen:{m2_consumidos:r.m2Consumidos, m2_activo_N1_N4:r.m2Active, m2_disponibles_totales:LP_TOTAL_CAPACITY, m2_disponibles_activos:LP_ACTIVE_CAPACITY, m2_por_escala:r.m2PorEscala, m2_por_cliente:r.costoPorCli, mix_clientes_pct:r.mix, capacidad:r.cap, m2dia_por_unidad_de_capacidad:r.m2diaPorUnidad},
+      usos:r.orden.map((u,i)=>({pos:i+1, id:u.id, name:u.name, cliente:u.cli, veredicto:u.v, rango_permanencia:u.tStr, escala:u.escala, m2:usoM2(u), estado:LP.estado[u.id], destino:u.dest, niveles:u.niveles||[], m2_supuesto:esSupuesto(u)}))
     };
     download('gl3-prioridades-'+LP.base+'.json','application/json',JSON.stringify(payload,null,2));
   });
