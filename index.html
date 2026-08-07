@@ -1324,7 +1324,7 @@ button:focus-visible,.tt:focus-visible{outline:3px solid var(--arctic);outline-o
         <h3 style="font-size:15px;margin-bottom:7px">Comparativa base de las tres propuestas</h3>
         <p class="play-help" style="margin-bottom:9px">No se mezclan carros, puentes y posiciones en un solo indicador. Cada familia se compara por separado y la última columna muestra cuánto piso consume la circulación vertical.</p>
         <table>
-          <thead><tr><th>Base GRUBORJA</th><th>Área de uso activo N1–N4</th><th>Participación de placa</th><th>Posiciones N1</th><th>Puentes N2–N4</th><th>Carros N5+S1+S2</th><th>Circulación vertical acumulada</th></tr></thead>
+          <thead><tr><th>Base GRUBORJA</th><th>Área de uso activo N1–N4</th><th>Δ vs 1R</th><th>% de la placa N1–N4</th><th>Posiciones N1</th><th>Puentes N2–N4</th><th>Carros N5+S1+S2</th><th>Circulación vertical acumulada</th></tr></thead>
           <tbody id="playProposalOverviewBody"></tbody>
         </table>
       </div>
@@ -4148,19 +4148,22 @@ function playGeneralCalculate(proposal,officialOnly=false){
   const byFamily=(family,key)=>floors.filter(f=>f.family===family).reduce((total,f)=>total+f[key],0);
   // Área de uso activo = zone sumada de N1+N2+N3+N4 (niveles donde un cliente
   // o un vehículo genera actividad de servicio o de venta). Excluye N5, S1 y S2.
+  // Denominador de % = SOLO las placas activas (4 × 2,061.11), no las 7 totales:
+  // usar 7 aquí ocultaría que hay 3 placas fuera del universo medido.
   const ACTIVE_LEVELS=['n1','n2','n3','n4'];
   const activeSum=(key)=>floors.filter(f=>ACTIVE_LEVELS.includes(f.level)).reduce((total,f)=>total+f[key],0);
   const grossArea=PLAY_PLATE*PLAY_LEVELS.length;
+  const activeGrossArea=PLAY_PLATE*ACTIVE_LEVELS.length;
   return {
     proposal,proposalName:PLAY_BASE[proposal].name,officialOnly,span,column,plateWidth,floors,families,warnings,
     baseZone:sum('baseZone'),zone:sum('zone'),grossArea,
-    baseActiveZone:activeSum('baseZone'),activeZone:activeSum('zone'),
+    baseActiveZone:activeSum('baseZone'),activeZone:activeSum('zone'),activeGrossArea,
     basePositions:byFamily('position','baseCount'),positions:byFamily('position','capacity'),
     baseBridges:byFamily('workshop','baseCount'),bridges:byFamily('workshop','capacity'),
     baseCars:byFamily('parking','baseCount'),cars:byFamily('parking','capacity'),
     vertical:PLAY_LEVELS.reduce((total,l)=>total+PLAY_BASE[proposal].floors[l].vertical,0),
     baseShare:sum('baseZone')/grossArea*100,share:sum('zone')/grossArea*100,
-    baseActiveShare:activeSum('baseZone')/grossArea*100,activeShare:activeSum('zone')/grossArea*100
+    baseActiveShare:activeSum('baseZone')/activeGrossArea*100,activeShare:activeSum('zone')/activeGrossArea*100
   };
 }
 function playOverviewCell(text,numeric=false){
@@ -4168,13 +4171,21 @@ function playOverviewCell(text,numeric=false){
 }
 function playRenderProposalOverview(){
   const body=playEl('playProposalOverviewBody');body.replaceChildren();
+  const base=playGeneralCalculate('p1r',true);  // 1R = base dibujada para el delta
   ['p1r','p1e','p2e'].forEach(proposal=>{
     const r=playGeneralCalculate(proposal,true);
     const tr=document.createElement('tr');
     if(proposal===playEl('playProposal').value)tr.style.fontWeight='700';
+    let deltaText='—';
+    if(proposal!=='p1r'){
+      const dz=r.activeZone-base.activeZone;
+      const dp=base.activeZone?dz/base.activeZone*100:0;
+      deltaText=`${dz>=0?'+':''}${playFmt(dz,0)} m² (${dz>=0?'+':''}${playFmt(dp,0)}%)`;
+    }
     tr.append(
       playOverviewCell(r.proposalName),
       playOverviewCell(`${playFmt(r.activeZone,0)} m²`,true),
+      playOverviewCell(deltaText,true),
       playOverviewCell(`${playFmt(r.activeShare,1)}%`,true),
       playOverviewCell(String(r.positions),true),
       playOverviewCell(String(r.bridges),true),
@@ -4242,7 +4253,7 @@ function playRenderGeneralComparison(result){
   const body=playEl('playGeneralCompareBody');body.replaceChildren();
   const rows=[
     ['Área de uso activo N1–N4',`${playFmt(reference.activeZone,1)} m²`,`${playFmt(result.activeZone,1)} m²`,playSigned(result.activeZone-reference.activeZone,1,' m²')],
-    ['Participación del área de uso activo',`${playFmt(reference.activeShare,1)}%`,`${playFmt(result.activeShare,1)}%`,playSigned(result.activeShare-reference.activeShare,1,' pp')],
+    ['% de la placa N1–N4',`${playFmt(reference.activeShare,1)}%`,`${playFmt(result.activeShare,1)}%`,playSigned(result.activeShare-reference.activeShare,1,' pp')],
     ['Posiciones N1',String(reference.positions),String(result.positions),playSigned(result.positions-reference.positions,0)],
     ['Puentes N2–N4',String(reference.bridges),String(result.bridges),playSigned(result.bridges-reference.bridges,0)],
     ['Carros N5+S1+S2',String(reference.cars),String(result.cars),playSigned(result.cars-reference.cars,0)],
@@ -4258,7 +4269,7 @@ function playRenderGeneralComparison(result){
   playEl('playGeneralCompareIntro').textContent=`La referencia queda fija en Propuesta 2. El escenario usa ${result.proposalName}${mapped.length?` y datos de Excel confirmados en ${mapped.join(', ')}`:''}. Carros, puentes y posiciones permanecen separados para evitar una eficiencia total engañosa.`;
   const verdict=playEl('playGeneralVerdict');verdict.replaceChildren();
   const messages=[
-    {text:`Área de uso activo N1–N4: ${playSigned(result.activeZone-reference.activeZone,1,' m²')} frente a 2E; la participación cambia de ${playFmt(reference.activeShare,1)}% a ${playFmt(result.activeShare,1)}% de las siete placas.`},
+    {text:`Área de uso activo N1–N4: ${playSigned(result.activeZone-reference.activeZone,1,' m²')} frente a 2E; el aprovechamiento cambia de ${playFmt(reference.activeShare,1)}% a ${playFmt(result.activeShare,1)}% de las 4 placas N1–N4.`},
     {text:`Taller: ${reference.bridges} → ${result.bridges} puentes; módulo ponderado ${playFmt(reference.families.workshop.module,1)} → ${playFmt(result.families.workshop.module,1)} m²/puente.`},
     {text:`Parqueo: ${reference.cars} → ${result.cars} carros; módulo ponderado ${playFmt(reference.families.parking.module,1)} → ${playFmt(result.families.parking.module,1)} m²/carro.`}
   ];
